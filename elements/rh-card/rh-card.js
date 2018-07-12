@@ -1,13 +1,10 @@
 import Rhelement from "../rhelement/rhelement.js";
 
-/*
- * DO NOT EDIT. This will be autopopulated with the
- * html from rh-card.html and css from
- * rh-card.scss
- */
-const template = document.createElement("template");
-template.innerHTML = `
-<style>:host {
+class RhCard extends Rhelement {
+  get html() {
+    return `
+<style>
+:host {
   display: block;
   padding: var(--rhe-theme--spacer, 1rem);
   border: var(--rhe-theme--border--BorderWidth, 1px) var(--rhe-theme--border--BorderStyle, solid) transparent; }
@@ -26,25 +23,25 @@ template.innerHTML = `
 :host .rh-card__header::slotted(h4:first-child),
 :host .rh-card__header::slotted(h5:first-child),
 :host .rh-card__header::slotted(h6:first-child) {
-  margin-top: 0 !important; }</style>
+  margin-top: 0 !important; }
+</style>
+
 <slot class="rh-card__header" name="header"></slot>
 <slot class="rh-card__body"></slot>
-<slot class="rh-card__footer" name="footer"></slot>
-`;
-/* end DO NOT EDIT */
+<slot class="rh-card__footer" name="footer"></slot>`;
+  }
 
-class RhCard extends Rhelement {
   static get observedAttributes() {
     return ["theme"];
   }
 
   constructor() {
-    super("rh-card", template);
+    super("rh-card");
   }
 
   connectedCallback() {
     super.connectedCallback();
-    
+
     // this.button = this.shadowRoot.querySelector("button");
     //
     // const child = this.children[0];

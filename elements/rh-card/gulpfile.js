@@ -1,3 +1,6 @@
+const fs = require("fs");
+const path = require("path");
+
 const gulp = require("gulp");
 const babel = require("gulp-babel");
 const uglify = require("gulp-uglify");
@@ -5,7 +8,6 @@ const rename = require("gulp-rename");
 const replace = require("gulp-replace");
 const stripCssComments = require("strip-css-comments");
 const trim = require("trim");
-const fs = require("fs");
 const sass = require("node-sass");
 
 gulp.task("compile", () => {
@@ -35,20 +37,33 @@ gulp.task("merge", () => {
   return gulp
     .src("./src/rh-card.js")
     .pipe(
-      replace(/(template\.innerHTML = `)(`;)/, (match, p1, p2) => {
+      replace(/extends\s+Rhelement\s+{/, classStatement => {
+        console.log("classStatement", classStatement);
+
         const html = fs
           .readFileSync("./src/rh-card.html")
           .toString()
           .trim();
 
+        console.log("html", html);
+
         const cssResult = sass.renderSync({
           file: "./src/rh-card.scss"
         }).css;
 
-        return `${p1}
-<style>${stripCssComments(cssResult).trim()}</style>
-${html}
-${p2}`;
+        return `${classStatement}
+  get html() {
+    return \`
+<style>
+${stripCssComments(cssResult).trim()}
+</style>
+
+${html}\`;
+  }
+`;
+
+        // return `<style>${stripCssComments(cssResult).trim()}</style>
+        // ${html}`;
       })
     )
     .pipe(gulp.dest("./"));

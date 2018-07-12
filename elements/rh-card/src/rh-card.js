@@ -1,26 +1,17 @@
 import Rhelement from "../rhelement/rhelement.js";
 
-/*
- * DO NOT EDIT. This will be autopopulated with the
- * html from rh-card.html and css from
- * rh-card.scss
- */
-const template = document.createElement("template");
-template.innerHTML = ``;
-/* end DO NOT EDIT */
-
 class RhCard extends Rhelement {
   static get observedAttributes() {
     return ["theme"];
   }
 
   constructor() {
-    super("rh-card", template);
+    super("rh-card");
   }
 
   connectedCallback() {
     super.connectedCallback();
-    
+
     // this.button = this.shadowRoot.querySelector("button");
     //
     // const child = this.children[0];
