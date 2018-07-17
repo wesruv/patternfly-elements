@@ -1,17 +1,21 @@
 import Rhelement from "../rhelement/rhelement.js";
 
 class RhCard extends Rhelement {
-  static get observedAttributes() {
-    return ["theme"];
+  static get tag() {
+    return "rh-card";
+  }
+
+  get styleUrl() {
+    return "rh-card.scss";
+  }
+
+  get templateUrl() {
+    return "rh-card.html";
   }
 
   constructor() {
-    super("rh-card");
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
+    super(RhCard.tag);
   }
 }
 
-window.customElements.define("rh-card", RhCard);
+Rhelement.create(RhCard);

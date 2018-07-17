@@ -1,12 +1,18 @@
 class Rhelement extends HTMLElement {
-  constructor(id) {
+  static create(rhe) {
+    window.customElements.define(rhe.tag, rhe);
+  }
+
+  constructor(tag) {
     super();
+
+    this.tag = tag;
 
     this.template = document.createElement("template");
     this.template.innerHTML = this.html;
 
     if (window.ShadyCSS && this.html) {
-      ShadyCSS.prepareTemplate(this.template, id);
+      ShadyCSS.prepareTemplate(this.template, this.tag);
     }
 
     this.attachShadow({ mode: "open" });

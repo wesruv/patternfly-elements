@@ -37,18 +37,31 @@ gulp.task("merge", () => {
   return gulp
     .src("./src/rh-card.js")
     .pipe(
-      replace(/extends\s+Rhelement\s+{/, classStatement => {
-        console.log("classStatement", classStatement);
+      replace(/extends\s+Rhelement\s+{/, (classStatement, line, jsFile) => {
+        // extract the templateUrl and styleUrl with regex.  Would prefer to do
+        // this by require'ing rh-card.js and asking it directly, but without
+        // node.js support for ES modules, we're stuck with this.
+        const oneLineFile = jsFile.split("\n").join(" ");
+        const [
+          ,
+          templateUrl
+        ] = /get\s+templateUrl\([^)]*\)\s*{\s*return\s+"([^"]+)"/.exec(
+          oneLineFile
+        );
+        const [
+          ,
+          styleUrl
+        ] = /get\s+styleUrl\([^)]*\)\s*{\s*return\s+"([^"]+)"/.exec(
+          oneLineFile
+        );
 
         const html = fs
-          .readFileSync("./src/rh-card.html")
+          .readFileSync(path.join("./src", templateUrl))
           .toString()
           .trim();
 
-        console.log("html", html);
-
         const cssResult = sass.renderSync({
-          file: "./src/rh-card.scss"
+          file: path.join("./src", styleUrl)
         }).css;
 
         return `${classStatement}
