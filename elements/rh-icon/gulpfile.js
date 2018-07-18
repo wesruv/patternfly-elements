@@ -6,7 +6,7 @@ const babel = require("gulp-babel");
 const uglify = require("gulp-uglify");
 const rename = require("gulp-rename");
 const replace = require("gulp-replace");
-const sass = require("gulp-sass");
+const sass = require("node-sass");
 const nodesass = require("node-sass");
 const stripCssComments = require("strip-css-comments");
 const gulpStripCssComments = require("gulp-strip-css-comments");
@@ -21,34 +21,52 @@ gulp.task("clean", () => {
   return del(["./*.compiled.*"]);
 });
 
-gulp.task("sass", () => {
-  return gulp
-    .src(["./*.scss"])
-    .pipe(sass())
-    .pipe(gulpStripCssComments())
-    .pipe(trim())
-    .pipe(sass.sync().on("error", sass.logError))
-    .pipe(gulp.dest("./"));
-});
-
 gulp.task("replaceStyles", () => {
   return gulp
     .src("./rh-icon.js")
     .pipe(
-      replace(/(iconTemplate\.innerHTML = `)(`;)/, (match, p1, p2) => {
+      replace(/extends\s+Rhelement\s+{/, (classStatement, line, jsFile) => {
+        // extract the templateUrl and styleUrl with regex.  Would prefer to do
+        // this by require'ing rh-card.js and asking it directly, but without
+        // node.js support for ES modules, we're stuck with this.
+        const oneLineFile = jsFile.split("\n").join(" ");
+        console.log(jsFile);
+        console.log(oneLineFile);
+        const [
+          ,
+          templateUrl
+        ] = /get\s+templateUrl\([^)]*\)\s*{\s*return\s+"([^"]+)"/.exec(
+          oneLineFile
+        );
+        const [
+          ,
+          styleUrl
+        ] = /get\s+styleUrl\([^)]*\)\s*{\s*return\s+"([^"]+)"/.exec(
+          oneLineFile
+        );
+
         const html = fs
-          .readFileSync("./src/rh-icon.html")
+          .readFileSync(path.join("./src", templateUrl))
           .toString()
           .trim();
 
-        const cssResult = nodesass.renderSync({
-          file: "./src/rh-icon.scss"
+        const cssResult = sass.renderSync({
+          file: path.join("./src", styleUrl)
         }).css;
 
-        return `${p1}
-<style>${stripCssComments(cssResult).trim()}</style>
-${html}
-${p2}`;
+        return `${classStatement}
+  get html() {
+    return \`
+<style>
+${stripCssComments(cssResult).trim()}
+</style>
+
+${html}\`;
+  }
+`;
+
+        // return `<style>${stripCssComments(cssResult).trim()}</style>
+        // ${html}`;
       })
     )
     .pipe(gulp.dest("./"));
@@ -114,23 +132,13 @@ gulp.task("stopwatch", done => {
 gulp.task("watch", () => {
   watcher = gulp.watch(
     ["./rh-icon.js", "./*.scss"],
-    gulp.series(
-      "stopwatch",
-      "sass",
-      "replaceStyles",
-      "clean",
-      "compile",
-      "watch"
-    )
+    gulp.series("stopwatch", "replaceStyles", "clean", "compile", "watch")
   );
   return watcher;
 });
 
 gulp.task("svgs", gulp.series("svgSprite", "stuffSprite"));
 
-gulp.task(
-  "default",
-  gulp.series("clean", "sass", "svgs", "replaceStyles", "compile")
-);
+gulp.task("default", gulp.series("clean", "svgs", "replaceStyles", "compile"));
 
 gulp.task("dev", gulp.series("default", "watch"));

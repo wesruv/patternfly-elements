@@ -6,20 +6,18 @@ class Rhelement extends HTMLElement {
   constructor(tag) {
     super();
 
-    const html = this.html();
-
     this.tag = tag;
 
     this.template = document.createElement("template");
-    this.template.innerHTML = html;
+    this.template.innerHTML = this.html;
 
-    if (window.ShadyCSS && html) {
+    if (window.ShadyCSS && this.html) {
       ShadyCSS.prepareTemplate(this.template, this.tag);
     }
 
     this.attachShadow({ mode: "open" });
 
-    if (html) {
+    if (this.html) {
       this.shadowRoot.appendChild(this.template.content.cloneNode(true));
     }
   }
