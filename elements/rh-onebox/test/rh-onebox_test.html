@@ -52,9 +52,11 @@
           };
 
           class TestOnebox extends RhOnebox {
+            get html(data) {
+              return `<slot></slot>`;
+            }
             constructor() {
               super('test-onebox', {
-                template: bindTemplate,
                 arrayName: 'rules',
                 matchArrayName: 'keywords'
               });

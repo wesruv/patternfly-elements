@@ -1,3 +1,6 @@
+const path = require("path");
+const fs = require("fs");
+
 const gulp = require("gulp");
 const babel = require("gulp-babel");
 const uglify = require("gulp-uglify");
@@ -9,9 +12,7 @@ const stripCssComments = require("strip-css-comments");
 const gulpStripCssComments = require("gulp-strip-css-comments");
 const trim = require("gulp-trim");
 const del = require("del");
-const fs = require("fs");
 
-const path = require("path");
 const svgSprite = require("gulp-svg-sprite");
 
 let watcher;

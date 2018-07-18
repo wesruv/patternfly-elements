@@ -3,27 +3,25 @@ import "../rh-card/rh-card.js";
 import "../rh-datetime/rh-datetime.js";
 import "../../whatwg-fetch/fetch.js";
 
-const elementName = "cp-more-like-this";
-
-/*
- * DO NOT EDIT. This will be autopopulated with the
- * html from cp-dialog.html and css from
- * cp-dialog.scss
- */
-const template = document.createElement("template");
-const bindTemplate = data => {
-  template.innerHTML = ``;
-  return template;
-};
-/* end DO NOT EDIT */
-
 class CpMoreLikeThis extends Rhelement {
+  static get tag() {
+    return "cp-more-like-this";
+  }
+
+  get styleUrl() {
+    return "cp-more-like-this.scss";
+  }
+
+  get templateUrl() {
+    return "cp-more-like-this.html";
+  }
+
   static get observedAttributes() {
     return ["api-url", "content-type"];
   }
 
   constructor() {
-    super(elementName);
+    super(CpMoreLikeThis.tag);
 
     this.handleResponse = this.handleResponse.bind(this);
     this.handleError = this.handleError.bind(this);
@@ -76,7 +74,7 @@ class CpMoreLikeThis extends Rhelement {
     const template = bindTemplate(this.data);
 
     if (window.ShadyCSS) {
-      ShadyCSS.prepareTemplate(template, elementName);
+      ShadyCSS.prepareTemplate(template, CpMoreLikeThis.tag);
     }
 
     this.shadowRoot.appendChild(template.content.cloneNode(true));
@@ -87,4 +85,4 @@ class CpMoreLikeThis extends Rhelement {
   }
 }
 
-window.customElements.define(elementName, CpMoreLikeThis);
+Rhelement.create(CpMoreLikeThis);

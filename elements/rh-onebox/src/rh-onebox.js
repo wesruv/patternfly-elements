@@ -2,6 +2,18 @@ import Rhelement from "../rhelement/rhelement.js";
 import "../../whatwg-fetch/fetch.js";
 
 class RhOnebox extends Rhelement {
+  static get tag() {
+    return "rh-onebox";
+  }
+
+  get styleUrl() {
+    return "rh-onebox.scss";
+  }
+
+  get templateUrl() {
+    return "rh-onebox.html";
+  }
+
   get source() {
     return this._source;
   }

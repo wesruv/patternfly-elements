@@ -3,17 +3,11 @@ import "../rh-card/rh-card.js";
 import "../rh-datetime/rh-datetime.js";
 import "../../whatwg-fetch/fetch.js";
 
-const elementName = "cp-more-like-this";
-
-/*
- * DO NOT EDIT. This will be autopopulated with the
- * html from cp-dialog.html and css from
- * cp-dialog.scss
- */
-const template = document.createElement("template");
-const bindTemplate = data => {
-  template.innerHTML = `
-<style>:host {
+class CpMoreLikeThis extends Rhelement {
+  html(data) {
+    return `
+<style>
+:host {
   display: block; }
 
 rh-card {
@@ -41,10 +35,14 @@ rh-card {
       .card-container rh-card:first-child {
         margin-left: 0; }
       .card-container rh-card:last-child {
-        margin-right: 0; } }</style>
+        margin-right: 0; } }
+</style>
+
 <h3>People who viewed this ${data.contentType} also viewed</h3>
 <div class="card-container">
-  ${data.results.map(result => `
+  ${data.results
+    .map(
+      result => `
     <rh-card theme="light">
       <h4 slot="header"><a href="${result.view_uri}">${result.allTitle}</a></h4>
       <span>
@@ -58,20 +56,30 @@ rh-card {
         </rh-datetime>
       </span>
     </rh-card>
-  `).join('\n')}
-</div>
-`;
-  return template;
-};
-/* end DO NOT EDIT */
+  `
+    )
+    .join("\n")}
+</div>`;
+  }
 
-class CpMoreLikeThis extends Rhelement {
+  static get tag() {
+    return "cp-more-like-this";
+  }
+
+  get styleUrl() {
+    return "cp-more-like-this.scss";
+  }
+
+  get templateUrl() {
+    return "cp-more-like-this.html";
+  }
+
   static get observedAttributes() {
     return ["api-url", "content-type"];
   }
 
   constructor() {
-    super(elementName);
+    super(CpMoreLikeThis.tag);
 
     this.handleResponse = this.handleResponse.bind(this);
     this.handleError = this.handleError.bind(this);
@@ -124,7 +132,7 @@ class CpMoreLikeThis extends Rhelement {
     const template = bindTemplate(this.data);
 
     if (window.ShadyCSS) {
-      ShadyCSS.prepareTemplate(template, elementName);
+      ShadyCSS.prepareTemplate(template, CpMoreLikeThis.tag);
     }
 
     this.shadowRoot.appendChild(template.content.cloneNode(true));
@@ -135,4 +143,4 @@ class CpMoreLikeThis extends Rhelement {
   }
 }
 
-window.customElements.define(elementName, CpMoreLikeThis);
+Rhelement.create(CpMoreLikeThis);
