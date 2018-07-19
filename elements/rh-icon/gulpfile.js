@@ -30,8 +30,6 @@ gulp.task("replaceStyles", () => {
         // this by require'ing rh-card.js and asking it directly, but without
         // node.js support for ES modules, we're stuck with this.
         const oneLineFile = jsFile.split("\n").join(" ");
-        console.log(jsFile);
-        console.log(oneLineFile);
         const [
           ,
           templateUrl
