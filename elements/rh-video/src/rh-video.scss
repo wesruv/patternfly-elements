@@ -6,3 +6,99 @@
 :host([hidden]) {
   display: none;
 }
+
+
+:host {
+  background: gray;
+
+  ::slotted(iframe) {
+
+  }
+}
+.rh-video-band {
+	@extend %default--band;
+  &-container {
+  	@extend %default--container;
+
+  }
+  &-embed {
+    position: relative;
+    width: 90%;
+    @media (min-width: #{rh-var(grid-breakpoint--xs)}) {
+      width: 100%;
+    }
+  }
+  //  &-details {
+  //    &[data-ux-state="visible"] {
+  //      opacity: 1;
+  //      z-index: 1;
+  //      &[data-ux-animation="video-play"] {
+  //        animation: growBand 1s forwards ease-in;
+  //      }
+  //      &[data-ux-animation="video-close"] {
+  //        animation: shrinkBand 1s forwards ease-in;
+  //      }
+  //    }
+  //    &[data-ux-state="hidden"] {
+  //      z-index: -1;
+  //      opacity: 0;
+  //      position: absolute;
+  //      top: 0;
+  //      left: 0;
+  //      width: 100%;
+  //      &[data-ux-animation="video-play"] {
+  //        animation: opacity .5s .2s forwards ease-in;
+  //      }
+  //      &[data-ux-animation="video-close"] {
+  //        animation: opacity .5s forwards ease-in;
+  //      }
+  //    }
+  //  }
+  //}
+}
+ :root {
+  @keyframes growBand {
+      0% {
+          opacity: 1;
+          z-index: 1;
+          min-height: 0;
+      }
+      50% {
+          opacity: 0;
+          z-index: 1;
+          min-height: 550px;
+      }
+      100% {
+          opacity: 0;
+          z-index: -1;
+          min-height: 550px;
+      }
+  }
+  @keyframes shrinkBand {
+      0% {
+          opacity: 1;
+          z-index: 1;
+          max-height: 550px;
+      }
+      50% {
+          opacity: 0;
+          z-index: -1;
+          max-height: 550px;
+      }
+      100% {
+          opacity: 0;
+          z-index: -1;
+          max-height: 50px;
+      }
+  }
+  @keyframes opacity {
+      50% {
+          opacity: 0;
+          z-index: -1;
+      }
+      100% {
+          opacity: 1;
+          z-index: 1;
+      }
+  }
+} 

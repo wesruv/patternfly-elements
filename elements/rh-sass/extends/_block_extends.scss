@@ -1,0 +1,21 @@
+%default--band {
+    position: relative;
+    padding-top: calc( #{rh-var(container-spacer)} * 4);
+    padding-bottom: calc( #{rh-var(container-spacer)} * 4);
+}
+$gutter: 15px;  // clean up
+
+%default--container {
+	margin: 0 auto;
+    padding: 0 15px;
+    @media (min-width: $rh-global--grid-breakpoint--md) {
+        padding: 0;
+        width: calc(#{rh-var(grid-breakpoint--sm)} - #{$gutter * 4});
+    }
+    @media (min-width: $rh-global--grid-breakpoint--lg) {
+        width: calc(#{rh-var(grid-breakpoint--md)} - #{$gutter * 4});
+    }
+    @media (min-width: $rh-global--grid-breakpoint--xl) {
+        width: calc(#{rh-var(grid-breakpoint--lg)} - #{$gutter * 4});
+    }
+}
