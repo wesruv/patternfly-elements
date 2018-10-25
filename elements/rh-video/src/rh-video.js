@@ -21,6 +21,7 @@
  */
 
 import RHElement from "../rhelement/rhelement.js";
+import "../rh-cta/rh-cta.js";
 
 class RhVideo extends RHElement {
   static get tag() {

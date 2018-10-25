@@ -1,4 +1,5 @@
 import RHElement from "../rhelement/rhelement.js";
+import "../rh-cta/rh-cta.js";
 
 /*
  * Copyright 2018 Red Hat, Inc.
@@ -45,21 +46,74 @@ class RhVideo extends RHElement {
     .rh-video-band-container {
       width: calc(var(--rh-theme--grid-breakpoint--lg, 992px) - 60px); } }
 
+.rh-video-band-iframe-container {
+  width: 100%; }
+  .rh-video-band-iframe-container > * {
+    height: auto; }
+  @supports (--custom: property) {
+    .rh-video-band-iframe-container {
+      position: relative; }
+      .rh-video-band-iframe-container::before {
+        content: "";
+        display: block;
+        padding-bottom: calc(100% / (var(--aspect-ratio))); }
+      .rh-video-band-iframe-container > :first-child {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%; } }
+
 :host {
-  display: block; }
+  display: block;
+  --aspect-ratio: 16/9; }
 
 :host([hidden]) {
   display: none; }
 
 :host {
-  background: gray; }
+  background: black;
+  color: white; }
 
-.rh-video-band-embed {
-  position: relative;
-  width: 90%; }
-  @media (min-width: var(--rh-theme--grid-breakpoint--xs, 0)) {
-    .rh-video-band-embed {
-      width: 100%; } }
+.rh-video-band-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.rh-video-band-play-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 2px white;
+  border-radius: 100%;
+  padding: 0.49em;
+  margin-right: 0.7em;
+  height: 1.75em;
+  width: 1.75em; }
+  .rh-video-band-play-icon::before {
+    display: inline-block;
+    margin-left: calc(var(--rh-theme--content-spacer, 1rem) * 0.25);
+    vertical-align: middle;
+    border-style: solid;
+    border-width: 0.84em 0.7em 0;
+    border-color: transparent;
+    border-top-color: white;
+    transform: rotate(-90deg);
+    display: inline-block;
+    content: ""; }
+
+.rh-video-band-details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; }
+
+.rh-video-band-iframe-container {
+  border: 1px solid #555;
+  margin-bottom: var(--rh-theme--container-spacer, 1rem); }
+
+::slotted(*) {
+  text-transform: uppercase; }
 
 @keyframes growBand {
   0% {
@@ -97,26 +151,15 @@ class RhVideo extends RHElement {
     opacity: 1;
     z-index: 1; } }
 </style>
-<section class="rh-video-band" data-rh-theme="dark" data-rh-align="both" data-rh-band-grow="both">
-  <div class="rh-video-band-container" data-rh-layout="9" data-rh-align="horizontal">
-     <div class="rh-video-band-embed" data-rh-text-align="center">
-       <div class="rh-video-band-embed-details" data-rh-state="visible">
-         <slot name="video-play-icon">
-          <div class="rh-cta">
-            <a class="rh-cta-link" data-rh-cta-type="video-play" data-rh-action="video-play" href="//www.youtube.com/watch?4qCabv819Iw">The
-              Red Hat story</a>
+<section class="rh-video-band">
+  <div class="rh-video-band-container" >
+      <div class="rh-video-band-details" data-rh-state="hidden">
+          <div class="rh-video-band-iframe-container" >
+                    <iframe slot="video" width="560" height="315"  src="//www.youtube.com/embed/4qCabv819Iw?autoplay=0" frameborder="0"allowfullscreen></iframe>
           </div>
-        </slot>
-       </div>
-       <div class="rh-video-embed-details" data-rh-state="hidden">
-        <div class="rh-video-embed-media-container">
-          <slot class="rh-video-embed-iframe-container" name="video"></slot>
-        </div>
-         <div class="rh-cta">
-          <a class="rh-cta-link" data-rh-cta-type="ghost" data-rh-action="video-close">close</a>
-      </div>
-       </div>
-    </div>
+          <rh-cta priority="secondary" on="dark">
+            <a class="rh-cta-link" data-rh-cta-type="ghost" data-rh-action="video-close">Close</a>
+          </rh-cta>
    </div>
 </section>`;
   }

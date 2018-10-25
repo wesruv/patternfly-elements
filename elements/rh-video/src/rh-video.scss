@@ -1,6 +1,19 @@
 @import "../../rh-sass/rh-sass";
+
+/// ===========================================================================
+/// Component Specific SASS Vars
+/// ===========================================================================
+
+$rh-video-icon__size:   0.7em;
+$rh-video-icon__color: white;
+
+$rh-video-band__bg_color: black;
+$rh-video-band__text_color: white;
+
+
 :host {
   display: block;
+  --aspect-ratio: 16/9;
 }
 
 :host([hidden]) {
@@ -9,26 +22,67 @@
 
 
 :host {
-  background: gray;
+  background: $rh-video-band__bg_color;
+  color: $rh-video-band__text_color;
 
   ::slotted(iframe) {
 
   }
 }
 .rh-video-band {
-	@extend %default--band;
+  @extend %default--band;
   &-container {
   	@extend %default--container;
 
   }
-  &-embed {
-    position: relative;
-    width: 90%;
-    @media (min-width: #{rh-var(grid-breakpoint--xs)}) {
-      width: 100%;
-    }
+  &-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
   }
-  //  &-details {
+  &-play-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid 2px $rh-video-icon__color;
+    border-radius: 100%;
+    padding: $rh-video-icon__size * 0.7;
+    margin-right: $rh-video-icon__size;
+    height: $rh-video-icon__size * 2.5;
+    width: $rh-video-icon__size * 2.5;
+
+	&::before {
+		display: inline-block;
+		margin-left: calc(#{rh-var(content-spacer)} * 0.25); // 1/4 of the base `content-spacer`
+		vertical-align: middle;
+		@include rh-arrow(
+			right, 
+			$rh-video-icon__color, 
+			$rh-video-icon__size * 1.2, 
+			$rh-video-icon__size, 
+			true
+		);
+    }
+
+  }
+  &-details {
+  	display: flex;
+  	align-items: center;
+  	justify-content: center;
+  	flex-direction: column;
+  }
+  &-iframe-container {
+  	 border: 1px solid #555;
+     @extend %ratio;
+  	 margin-bottom: #{rh-var(container-spacer)};
+  }
+}
+::slotted(*) { 
+	text-transform: uppercase;
+}
+
+
   //    &[data-ux-state="visible"] {
   //      opacity: 1;
   //      z-index: 1;
@@ -55,7 +109,7 @@
   //    }
   //  }
   //}
-}
+
  :root {
   @keyframes growBand {
       0% {

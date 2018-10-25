@@ -19,3 +19,30 @@ $gutter: 15px;  // clean up
         width: calc(#{rh-var(grid-breakpoint--lg)} - #{$gutter * 4});
     }
 }
+
+%ratio { //https://css-tricks.com/aspect-ratio-boxes/
+    width: 100%;
+    > * {  
+      height: auto;
+    } 
+    @supports (--custom:property) {
+      position: relative;
+      
+      &::before {
+        content: "";
+        display: block;
+        padding-bottom: calc(100% / (var(--aspect-ratio)));
+      }  
+      & > :first-child {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+      }  
+    }
+}
+
+%debug {
+  border: pink solid 2px;
+}

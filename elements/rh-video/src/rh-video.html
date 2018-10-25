@@ -1,22 +1,17 @@
-<section class="rh-video-band" data-rh-theme="dark" data-rh-align="both" data-rh-band-grow="both">
-  <div class="rh-video-band-container" data-rh-layout="9" data-rh-align="horizontal">
-     <div class="rh-video-band-embed" data-rh-text-align="center">
-       <div class="rh-video-band-embed-details" data-rh-state="visible">
-         <slot name="video-play-icon">
-          <div class="rh-cta">
-            <a class="rh-cta-link" data-rh-cta-type="video-play" data-rh-action="video-play" href="//www.youtube.com/watch?4qCabv819Iw">The
-              Red Hat story</a>
+<section class="rh-video-band">
+  <div class="rh-video-band-container" >
+      <!--
+      <a class="rh-video-band-cta" data-rh-action="video-play" data-rh-state="visible">
+          <span class="rh-video-band-play-icon"></span>
+          <slot class="rh-video-band-play-cta" name="cta"></slot>
+      </a>
+      -->
+      <div class="rh-video-band-details" data-rh-state="hidden">
+          <div class="rh-video-band-iframe-container" >
+                    <iframe slot="video" width="560" height="315"  src="//www.youtube.com/embed/4qCabv819Iw?autoplay=0" frameborder="0"allowfullscreen></iframe>
           </div>
-        </slot>
-       </div>
-       <div class="rh-video-embed-details" data-rh-state="hidden">
-        <div class="rh-video-embed-media-container">
-          <slot class="rh-video-embed-iframe-container" name="video"></slot>
-        </div>
-         <div class="rh-cta">
-          <a class="rh-cta-link" data-rh-cta-type="ghost" data-rh-action="video-close">close</a>
-      </div>
-       </div>
-    </div>
+          <rh-cta priority="secondary" on="dark">
+            <a class="rh-cta-link" data-rh-cta-type="ghost" data-rh-action="video-close">Close</a>
+          </rh-cta>
    </div>
 </section>
