@@ -76,9 +76,13 @@ $rh-video-band__text_color: white;
   	 border: 1px solid #555;
      @extend %ratio;
   	 margin-bottom: #{rh-var(container-spacer)};
+
+  	 iframe ::slotted([slot="video"]) { 
+		@extend %debug;
+	}
   }
 }
-::slotted(*) { 
+a ::slotted(*) { 
 	text-transform: uppercase;
 }
 

@@ -1,17 +1,33 @@
 <section class="rh-video-band">
   <div class="rh-video-band-container" >
-      <!--
+
+
       <a class="rh-video-band-cta" data-rh-action="video-play" data-rh-state="visible">
           <span class="rh-video-band-play-icon"></span>
           <slot class="rh-video-band-play-cta" name="cta"></slot>
       </a>
-      -->
+
+
+
       <div class="rh-video-band-details" data-rh-state="hidden">
           <div class="rh-video-band-iframe-container" >
-                    <iframe slot="video" width="560" height="315"  src="//www.youtube.com/embed/4qCabv819Iw?autoplay=0" frameborder="0"allowfullscreen></iframe>
+              <iframe  width="560" height="315"  src="//www.youtube.com/embed/4qCabv819Iw?autoplay=0" frameborder="0"allowfullscreen></iframe>
+              <slot class="iframe" slot="video"></slot>
           </div>
           <rh-cta priority="secondary" on="dark">
             <a class="rh-cta-link" data-rh-cta-type="ghost" data-rh-action="video-close">Close</a>
           </rh-cta>
+      </div>
+
    </div>
+
 </section>
+
+
+<a11y-media-player accent-color="pink">
+  <source src="https://iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
+  <source src="https://iandevlin.github.io/mdn/video-player-with-captions/sintel-short.webm" type="video/webm">
+  <track label="English" kind="subtitles" srclang="en" src="samples/sintel-en.vtt" default>
+  <track label="Deutsch" kind="subtitles" srclang="de" src="samples/sintel-de.vtt">
+  <track label="Español" kind="subtitles" srclang="es" src="samples/sintel-es.vtt">
+</a11y-media-player>
