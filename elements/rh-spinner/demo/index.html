@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>RHElements: rh-spinner Demo</title>
+
+    <noscript>
+      <link href="../../rhelement/rhelement-noscript.min.css" rel="stylesheet">
+    </noscript>
+
+    <link href="../../rhelement/rhelement.min.css" rel="stylesheet">
+
+    <!-- uncomment the es5-adapter if you're using the umd version -->
+    <script src="/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"></script>
+    <script src="/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"></script>
+    <script>require(['../rh-spinner.umd.js'])</script>
+  </head>
+  <body unresolved>
+    <!-- <style media="screen">
+      .spinner {
+        animation:spin 1s linear infinite;
+        -webkit-animation:spin 1s linear infinite;
+        -moz-animation:spin 1s linear infinite;
+
+        border-bottom: 4px solid rgba(0,0,0,0.25);
+        border-left: 4px solid rgba(0,0,0,0.25);
+        border-radius: 100%;
+        border-right: 4px solid rgba(0,0,0,0.25);
+        border-top: 4px solid rgba(0,0,0,0.75);
+
+        display: inline-block;
+        height: 2rem;
+        margin: 0 auto;
+        position: relative;
+        width: 2rem;
+        vertical-align: middle;
+        visibility: visible;
+      }
+
+      @-ms-keyframes spin {
+          from {
+              -ms-transform: rotate(0deg);
+          } to {
+              -ms-transform: rotate(360deg);
+          }
+      }
+      @-moz-keyframes spin {
+          from {
+              -moz-transform: rotate(0deg);
+          } to {
+              -moz-transform: rotate(360deg);
+          }
+      }
+      @-webkit-keyframes spin {
+          from {
+              -webkit-transform: rotate(0deg);
+          } to {
+              -webkit-transform: rotate(360deg);
+          }
+      }
+      @keyframes spin {
+          from {
+              transform: rotate(0deg);
+          } to {
+              transform: rotate(360deg);
+          }
+      }
+
+      .sr-only {
+        visibility: hidden;
+      }
+    </style> -->
+    <rh-spinner>
+      <div class="spinner" slot="spinner">
+      </div>
+      <span clas="sr-only" slot="description">Loading...</span>
+    </rh-spinner>
+  </body>
+</html>
