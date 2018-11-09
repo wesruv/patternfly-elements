@@ -38,6 +38,21 @@ nav {
       margin: 1px;
       display: flex;
 
+      .ellipses {
+        display: block;
+        padding: 0
+          calc(#{rh-var(font-size)} * #{$rh-pagination_a--padding-factor});
+        line-height: calc(
+          #{rh-var(font-size)} * #{$rh-pagination_a--size-factor}
+        );
+        min-height: calc(
+          #{rh-var(font-size)} * #{$rh-pagination_a--size-factor}
+        );
+        min-width: calc(
+          #{rh-var(font-size)} * #{$rh-pagination_a--size-factor}
+        );
+      }
+
       & > a {
         display: block;
         padding: 0
@@ -82,4 +97,35 @@ nav {
       }
     }
   }
+}
+
+#jump {
+  margin: 0 rh-var(container-spacer);
+
+  a {
+    color: rh-color(ui-link);
+    text-decoration: none;
+
+    &:hover {
+      color: rh-color(ui-link--hover);
+      text-decoration: underline;
+    }
+
+    &:focus {
+      color: rh-color(ui-link--focus);
+      text-decoration: underline;
+    }
+  }
+}
+
+#currentPageInput {
+  margin-right: calc(#{rh-var(content-spacer)} * 0.5);
+  padding: 0 calc(#{rh-var(font-size)} * #{$rh-pagination_a--padding-factor});
+  line-height: calc(#{rh-var(font-size)} * #{$rh-pagination_a--size-factor});
+  min-height: calc(#{rh-var(font-size)} * #{$rh-pagination_a--size-factor});
+  border: rh-var(ui--border-width) rh-var(ui--border-style)
+    rh-color(surface--border);
+  box-shadow: rh-var(box-shadow--input);
+  width: 4em;
+  font-size: inherit;
 }

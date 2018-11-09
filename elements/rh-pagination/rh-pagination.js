@@ -47,6 +47,12 @@ nav ul {
   nav ul li {
     margin: 1px;
     display: flex; }
+    nav ul li .ellipses {
+      display: block;
+      padding: 0 calc(var(--rh-theme--font-size, 16px) * 0.75);
+      line-height: calc( var(--rh-theme--font-size, 16px) * 2.5);
+      min-height: calc( var(--rh-theme--font-size, 16px) * 2.5);
+      min-width: calc( var(--rh-theme--font-size, 16px) * 2.5); }
     nav ul li > a {
       display: block;
       padding: 0 calc(var(--rh-theme--font-size, 16px) * 0.75);
@@ -67,6 +73,28 @@ nav ul {
         color: var(--rh-theme--color--ui-complement--text, #fff); }
     nav ul li#next {
       order: 10; }
+
+#jump {
+  margin: 0 var(--rh-theme--container-spacer, 1rem); }
+  #jump a {
+    color: var(--rh-theme--color--ui-link, #06c);
+    text-decoration: none; }
+    #jump a:hover {
+      color: var(--rh-theme--color--ui-link--hover, #003366);
+      text-decoration: underline; }
+    #jump a:focus {
+      color: var(--rh-theme--color--ui-link--focus, #003366);
+      text-decoration: underline; }
+
+#currentPageInput {
+  margin-right: calc(var(--rh-theme--content-spacer, 1rem) * 0.5);
+  padding: 0 calc(var(--rh-theme--font-size, 16px) * 0.75);
+  line-height: calc(var(--rh-theme--font-size, 16px) * 2.5);
+  min-height: calc(var(--rh-theme--font-size, 16px) * 2.5);
+  border: var(--rh-theme--ui--border-width, 1px) var(--rh-theme--ui--border-style, solid) var(--rh-theme--color--surface--border, #dfdfdf);
+  box-shadow: var(--rh-theme--box-shadow--input, );
+  width: 4em;
+  font-size: inherit; }
 </style>
 <nav role="navigation" aria-label="Pagination">
   <ul>
@@ -81,7 +109,7 @@ nav ul {
       `
           : ``
       }
-      <li>
+      <li id="jump">
         <form>
           <input
             type="number"
@@ -105,14 +133,22 @@ nav ul {
         .map(
           page => `
         <li>
-          <a
-            href="#"
-            class="page"
-            page="${page.text}"
-            aria-label="${page.ariaLabel}"
-            ${this.currentPage == page.text ? ` aria-current="true"` : ``}>
-            ${page.text}
-          </a>
+          ${
+            page.ellipsize
+              ? `
+            <div class="ellipses">${page.text}</div>
+          `
+              : `
+            <a
+              href="#"
+              class="page"
+              page="${page.text}"
+              aria-label="${page.ariaLabel}"
+              ${this.currentPage == page.text ? ` aria-current="true"` : ``}>
+              ${page.text}
+            </a>
+          `
+          }
         </li>
       `
         )
