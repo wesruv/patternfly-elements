@@ -1,0 +1,85 @@
+@import "../../rh-sass/rh-sass";
+
+/// ===========================================================================
+/// Component Specific SASS Vars
+/// ===========================================================================
+
+$rh-pagination_a--padding-factor: 0.75;
+$rh-pagination_a--size-factor: 2.5;
+
+/// ===========================================================================
+/// DEFUALT PAGINATION
+/// ===========================================================================
+
+:host {
+  display: block;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+:focus:not(:focus-visible) {
+  // Thanks, Lea Verou!
+  outline: none;
+}
+
+nav {
+  @include rh-box-sizing();
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: baseline;
+
+    li {
+      margin: 1px;
+      display: flex;
+
+      & > a {
+        display: block;
+        padding: 0
+          calc(#{rh-var(font-size)} * #{$rh-pagination_a--padding-factor});
+        line-height: calc(
+          #{rh-var(font-size)} * #{$rh-pagination_a--size-factor}
+        );
+        min-height: calc(
+          #{rh-var(font-size)} * #{$rh-pagination_a--size-factor}
+        );
+        min-width: calc(
+          #{rh-var(font-size)} * #{$rh-pagination_a--size-factor}
+        );
+        border: rh-var(ui--border-width) rh-var(ui--border-style) transparent;
+        background: var(
+          --rh-theme--color--ui-subtle,
+          $rh-color--gray-50
+        ); // May need to resolve this with maps
+        color: var(
+          --rh-theme--color--ui-subtle--text,
+          $rh-color--text
+        ); // May need to resolve this with maps
+        text-align: center;
+        text-decoration: none;
+        vertical-align: middle;
+
+        &:hover,
+        &:focus,
+        &:active {
+          background: rh-color(ui-base);
+          color: rh-color(ui-base--text);
+        }
+
+        &[aria-current] {
+          background: rh-color(ui-complement);
+          color: rh-color(ui-complement--text);
+        }
+      }
+
+      &#next {
+        order: 10;
+      }
+    }
+  }
+}
