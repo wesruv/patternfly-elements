@@ -6,7 +6,7 @@
   display: none;
 }
 
-.rh-spinner__body {
+.spinner {
   animation:spin 1s linear infinite;
   -webkit-animation:spin 1s linear infinite;
   -moz-animation:spin 1s linear infinite;
@@ -54,6 +54,13 @@
     }
 }
 
-  .rh-spinner__description {
-    visibility: hidden;
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
   }
