@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <script src="/components/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="/components/web-component-tester/browser.js"></script>
+    <script type="module" src="../rh-some-combo.js"></script>
+  </head>
+  <body>
+
+    <rh-some-combo>
+      This is the element content.
+    </rh-some-combo>
+
+    <script>
+      suite('<rh-some-combo>', () => {
+        test('it should upgrade', () => {
+          assert.instanceOf(document.querySelector('rh-some-combo'), customElements.get("rh-some-combo", 'rh-some-combo should be an instance of rhSomeCombo'));
+        });
+
+        // you need to write more tests!!!
+
+      });
+    </script>
+  </body>
+</html>
