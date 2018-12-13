@@ -31,3 +31,6 @@ test/.wct-kludge
 # Temp files
 *~
 *.swp
+
+# build temp dirs
+elements/*/.build

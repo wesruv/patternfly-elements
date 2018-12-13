@@ -15,9 +15,13 @@ module.exports = function factory({
   const sass = require("node-sass");
   const shell = require("gulp-shell");
 
+  const TEMP_BUILD_DIR = "./.build/";
+  const DEST_DIR = "./";
+  const SRC_DIR = "./src/";
+
   gulp.task("compile", () => {
     return gulp
-      .src(`./${elementName}.js`)
+      .src(path.join(TEMP_BUILD_DIR, `${elementName}.js`))
       .pipe(
         replace(
           /^(import .*?)(['"]\.\.\/(?!\.\.\/).*)\.js(['"];)$/gm,
@@ -29,12 +33,22 @@ module.exports = function factory({
           suffix: ".umd"
         })
       )
-      .pipe(gulp.dest("./"));
+      .pipe(gulp.dest(TEMP_BUILD_DIR));
+  });
+
+  gulp.task("copy-to-temp", () => {
+    return gulp.src(path.join(SRC_DIR, "**/*")).pipe(gulp.dest(TEMP_BUILD_DIR));
+  });
+
+  gulp.task("copy-to-dest", () => {
+    return gulp
+      .src(path.join(TEMP_BUILD_DIR, "**/*.js"))
+      .pipe(gulp.dest(DEST_DIR));
   });
 
   gulp.task("merge", () => {
     return gulp
-      .src(`./src/${elementName}.js`)
+      .src(path.join(TEMP_BUILD_DIR, `${elementName}.js`))
       .pipe(
         replace(
           /extends\s+RHElement\s+{/g,
@@ -87,7 +101,7 @@ ${html}\`;
           }
         )
       )
-      .pipe(gulp.dest("./"));
+      .pipe(gulp.dest(TEMP_BUILD_DIR));
   });
 
   gulp.task("watch", () => {
@@ -96,7 +110,14 @@ ${html}\`;
 
   gulp.task("bundle", shell.task("../../node_modules/.bin/rollup -c"));
 
-  const buildTasks = ["merge", ...precompile, "compile", "bundle"];
+  const buildTasks = [
+    "copy-to-temp",
+    "merge",
+    ...precompile,
+    "compile",
+    "bundle",
+    "copy-to-dest"
+  ];
 
   gulp.task("build", gulp.series(...buildTasks));
 

@@ -4,7 +4,7 @@ import commonjs from "rollup-plugin-commonjs";
 import { uglify } from "rollup-plugin-uglify";
 
 function esmConfig({ elementName, className } = {}) {
-  const esmFilename = `${elementName}.js`;
+  const esmFilename = `.build/${elementName}.js`;
 
   return {
     input: esmFilename,
@@ -19,7 +19,7 @@ function esmConfig({ elementName, className } = {}) {
 }
 
 function umdConfig({ elementName, className } = {}) {
-  const umdFilename = `${elementName}.umd.js`;
+  const umdFilename = `.build/${elementName}.umd.js`;
 
   return {
     input: umdFilename,

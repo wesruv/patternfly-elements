@@ -1,7 +1,7 @@
 module.exports = {
   host: "localhost",
   port: 1234,
-  open: true,
+  open: !true,
   startPath: "/doc",
   verbose: false,
   routes: {
@@ -15,6 +15,7 @@ module.exports = {
     watchOptions: {
       ignoreInitial: true,
       ignored: ["node_modules"]
-    }
+    },
+    reloadDebounce: 1000
   }
 };
