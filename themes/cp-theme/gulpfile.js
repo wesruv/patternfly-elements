@@ -1,6 +1,7 @@
 const path = require("path");
 const fs = require("fs");
 
+const gulpFactory = require("../../scripts/gulpfile.factory.js");
 const gulp = require("gulp");
 const rename = require("gulp-rename");
 const replace = require("gulp-replace");
@@ -18,16 +19,16 @@ gulp.task("clean", () => {
 
 gulp.task("sass", () => {
   return gulp
-    .src(["./src/*.scss"])
+    .src(path.join(gulpFactory.TEMP_BUILD_DIR, "*.scss"))
     .pipe(sass())
     .pipe(stripCssComments())
     .pipe(trim())
-    .pipe(gulp.dest("./"));
+    .pipe(gulp.dest(gulpFactory.TEMP_BUILD_DIR));
 });
 
 gulp.task("replaceStyles", () => {
   return gulp
-    .src("./src/cp-theme.js")
+    .src(path.join(gulpFactory.TEMP_BUILD_DIR, "cp-theme.js"))
     .pipe(
       replace(
         /<style id="\${templateId}-style"><\/style>/g,
@@ -36,18 +37,34 @@ gulp.task("replaceStyles", () => {
           "</style>"
       )
     )
-    .pipe(gulp.dest("./"));
+    .pipe(gulp.dest(gulpFactory.TEMP_BUILD_DIR));
+});
+
+gulp.task("clean-temp", () => {
+  return del(path.join(gulpFactory.TEMP_BUILD_DIR, "**/*"));
+});
+
+gulp.task("copy-to-temp", () => {
+  return gulp
+    .src(path.join(gulpFactory.SRC_DIR, "**/*"))
+    .pipe(gulp.dest(gulpFactory.TEMP_BUILD_DIR));
+});
+
+gulp.task("copy-to-dest", () => {
+  return gulp
+    .src(path.join(gulpFactory.TEMP_BUILD_DIR, "**/*.{js,css,map}"))
+    .pipe(gulp.dest(gulpFactory.DEST_DIR));
 });
 
 gulp.task("compile", () => {
   return gulp
-    .src(["./cp-theme.js"])
+    .src([path.join(gulpFactory.TEMP_BUILD_DIR, "cp-theme.js")])
     .pipe(
       rename({
         suffix: ".umd"
       })
     )
-    .pipe(gulp.dest("./"));
+    .pipe(gulp.dest(gulpFactory.TEMP_BUILD_DIR));
 });
 
 gulp.task("stopwatch", done => {
@@ -56,7 +73,10 @@ gulp.task("stopwatch", done => {
 });
 
 gulp.task("watch", () => {
-  watcher = gulp.watch(["./src/*"], gulp.series("stopwatch", "build", "watch"));
+  watcher = gulp.watch(
+    [path.join(gulpFactory.SRC_DIR, "*")],
+    gulp.series("stopwatch", "build", "watch")
+  );
   return watcher;
 });
 
@@ -64,7 +84,15 @@ gulp.task("bundle", shell.task("../../node_modules/.bin/rollup -c"));
 
 gulp.task(
   "build",
-  gulp.series("clean", "sass", "replaceStyles", "compile", "bundle")
+  gulp.series(
+    "clean",
+    "clean-temp",
+    "copy-to-temp",
+    "sass",
+    "replaceStyles",
+    "compile",
+    "bundle"
+  )
 );
 
 gulp.task("default", gulp.series("build"));

@@ -14,8 +14,7 @@ module.exports = {
   bs: {
     watchOptions: {
       ignoreInitial: true,
-      ignored: ["node_modules"]
-    },
-    reloadDebounce: 1000
+      ignored: ["node_modules", "elements/*/.build"]
+    }
   }
 };

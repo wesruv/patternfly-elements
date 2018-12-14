@@ -34,8 +34,8 @@ function umdConfig({ elementName, className } = {}) {
       commonjs(),
       babel({
         // exclude: "node_modules/**" // only transpile our source code
-      }),
-      uglify()
+      })
+      // uglify()
     ],
     external: id => id.startsWith("..")
   };

@@ -1,2 +1,281 @@
-!function(t,e){"object"==typeof exports&&"undefined"!=typeof module?e(require("../rhelement/rhelement.umd")):"function"==typeof define&&define.amd?define(["../rhelement/rhelement.umd"],e):e(t.RHElement)}(this,function(n){"use strict";n=n&&n.hasOwnProperty("default")?n.default:n;var i=function(){function i(t,e){for(var n=0;n<e.length;n++){var i=e[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(t,i.key,i)}}return function(t,e,n){return e&&i(t.prototype,e),n&&i(t,n),t}}(),t=function(t){function e(){!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e);var t=function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,e));return t.type=t.getAttribute("type")||"local",t}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,n),i(e,[{key:"html",get:function(){return"\n<style>\n:host {\n  display: inline; }\n</style>\n<span></span>"}},{key:"styleUrl",get:function(){return"rh-datetime.scss"}},{key:"templateUrl",get:function(){return"rh-datetime.html"}}],[{key:"tag",get:function(){return"rh-datetime"}}]),i(e,[{key:"attributeChangedCallback",value:function(t,e,n){this[t]=n}},{key:"setDate",value:function(t){this._datetime=t,this.shadowRoot.querySelector("span").innerText=window.Intl?this._getTypeString():t.toLocaleString()}},{key:"_getOptions",value:function(){var t={weekday:{short:"short",long:"long"},day:{numeric:"numeric","2-digit":"2-digit"},month:{short:"short",long:"long"},year:{numeric:"numeric","2-digit":"2-digit"},hour:{numeric:"numeric","2-digit":"2-digit"},minute:{numeric:"numeric","2-digit":"2-digit"},second:{numeric:"numeric","2-digit":"2-digit"},timeZoneName:{short:"short",long:"long"}},e={};for(var n in t){var i=t[n][this.getAttribute(n)];i&&(e[n]=i)}return e}},{key:"_getTypeString",value:function(){var t=this._getOptions(),e=this.getAttribute("locale")||navigator.language,n="";switch(this.type){case"local":n=new Intl.DateTimeFormat(e,t).format(this._datetime);break;case"relative":n=this._getTimeRelative(this._datetime-Date.now());break;default:n=this._datetime}return n}},{key:"_getTimeRelative",value:function(t){var e=0<t?"until":"ago",n="just now",i=Math.round(Math.abs(t)/1e3),r=Math.round(i/60),o=Math.round(r/60),a=Math.round(o/24),u=Math.round(a/30),s=Math.round(u/12);return 18<=u?n=s+" years":12<=u?n="a year":45<=a?n=u+" months":30<=a?n="a month":36<=o?n=a+" days":24<=o?n="a day":90<=r?n=o+" hours":45<=r?n="an hour":90<=i?n=r+" minutes":45<=i?n="a minute":10<=i&&(n=i+" seconds"),"just now"!==n?n+" "+e:n}},{key:"type",get:function(){return this._type},set:function(t){this._type!==t&&(this._type=t)}},{key:"timestamp",get:function(){return this._timestamp},set:function(t){this._timestamp!==t&&(this._timestamp=t,this.setDate(new Date(1e3*t)))}},{key:"datetime",get:function(){return this._datetime},set:function(t){Date.parse(t)&&(Date.parse(t)&&this._datetime===Date.parse(t)||this.setDate(Date.parse(t)))}}],[{key:"observedAttributes",get:function(){return["datetime","type","timestamp"]}}]),e}();n.create(t)});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('../rhelement/rhelement.umd')) :
+  typeof define === 'function' && define.amd ? define(['../rhelement/rhelement.umd'], factory) :
+  (factory(global.RHElement));
+}(this, (function (RHElement) { 'use strict';
+
+  RHElement = RHElement && RHElement.hasOwnProperty('default') ? RHElement['default'] : RHElement;
+
+  var classCallCheck = function (instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  };
+
+  var createClass = function () {
+    function defineProperties(target, props) {
+      for (var i = 0; i < props.length; i++) {
+        var descriptor = props[i];
+        descriptor.enumerable = descriptor.enumerable || false;
+        descriptor.configurable = true;
+        if ("value" in descriptor) descriptor.writable = true;
+        Object.defineProperty(target, descriptor.key, descriptor);
+      }
+    }
+
+    return function (Constructor, protoProps, staticProps) {
+      if (protoProps) defineProperties(Constructor.prototype, protoProps);
+      if (staticProps) defineProperties(Constructor, staticProps);
+      return Constructor;
+    };
+  }();
+
+  var inherits = function (subClass, superClass) {
+    if (typeof superClass !== "function" && superClass !== null) {
+      throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+    }
+
+    subClass.prototype = Object.create(superClass && superClass.prototype, {
+      constructor: {
+        value: subClass,
+        enumerable: false,
+        writable: true,
+        configurable: true
+      }
+    });
+    if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+  };
+
+  var possibleConstructorReturn = function (self, call) {
+    if (!self) {
+      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+    }
+
+    return call && (typeof call === "object" || typeof call === "function") ? call : self;
+  };
+
+  /*
+   * Copyright 2018 Red Hat, Inc.
+   *
+   * Permission is hereby granted, free of charge, to any person obtaining a copy
+   * of this software and associated documentation files (the "Software"), to deal
+   * in the Software without restriction, including without limitation the rights
+   * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   * copies of the Software, and to permit persons to whom the Software is
+   * furnished to do so, subject to the following conditions:
+   *
+   * The above copyright notice and this permission notice shall be included in
+   * all copies or substantial portions of the Software.
+   *
+   * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   * SOFTWARE.
+   */
+
+  var RhDatetime = function (_RHElement) {
+    inherits(RhDatetime, _RHElement);
+    createClass(RhDatetime, [{
+      key: "html",
+      get: function get$$1() {
+        return "\n<style>\n:host {\n  display: inline; }\n</style>\n<span></span>";
+      }
+    }, {
+      key: "styleUrl",
+      get: function get$$1() {
+        return "rh-datetime.scss";
+      }
+    }, {
+      key: "templateUrl",
+      get: function get$$1() {
+        return "rh-datetime.html";
+      }
+    }], [{
+      key: "tag",
+      get: function get$$1() {
+        return "rh-datetime";
+      }
+    }]);
+
+    function RhDatetime() {
+      classCallCheck(this, RhDatetime);
+
+      var _this = possibleConstructorReturn(this, (RhDatetime.__proto__ || Object.getPrototypeOf(RhDatetime)).call(this, RhDatetime));
+
+      _this.type = _this.getAttribute("type") || "local";
+      return _this;
+    }
+
+    createClass(RhDatetime, [{
+      key: "attributeChangedCallback",
+      value: function attributeChangedCallback(attr, oldVal, newVal) {
+        this[attr] = newVal;
+      }
+    }, {
+      key: "setDate",
+      value: function setDate(date) {
+        this._datetime = date;
+        this.shadowRoot.querySelector("span").innerText = window.Intl ? this._getTypeString() : date.toLocaleString();
+      }
+    }, {
+      key: "_getOptions",
+      value: function _getOptions() {
+        var props = {
+          weekday: {
+            short: "short",
+            long: "long"
+          },
+          day: {
+            numeric: "numeric",
+            "2-digit": "2-digit"
+          },
+          month: {
+            short: "short",
+            long: "long"
+          },
+          year: {
+            numeric: "numeric",
+            "2-digit": "2-digit"
+          },
+          hour: {
+            numeric: "numeric",
+            "2-digit": "2-digit"
+          },
+          minute: {
+            numeric: "numeric",
+            "2-digit": "2-digit"
+          },
+          second: {
+            numeric: "numeric",
+            "2-digit": "2-digit"
+          },
+          timeZoneName: {
+            short: "short",
+            long: "long"
+          }
+        };
+
+        var options = {};
+
+        for (var prop in props) {
+          var value = props[prop][this.getAttribute(prop)];
+          if (value) {
+            options[prop] = value;
+          }
+        }
+
+        return options;
+      }
+    }, {
+      key: "_getTypeString",
+      value: function _getTypeString() {
+        var options = this._getOptions();
+        var locale = this.getAttribute("locale") || navigator.language;
+        var dt = "";
+        switch (this.type) {
+          case "local":
+            dt = new Intl.DateTimeFormat(locale, options).format(this._datetime);
+            break;
+          case "relative":
+            dt = this._getTimeRelative(this._datetime - Date.now());
+            break;
+          default:
+            dt = this._datetime;
+        }
+        return dt;
+      }
+    }, {
+      key: "_getTimeRelative",
+      value: function _getTimeRelative(ms) {
+        var tense = ms > 0 ? "until" : "ago";
+        var str = "just now";
+        // Based off of Github Relative Time
+        // https://github.com/github/time-elements/blob/master/src/relative-time.js
+        var s = Math.round(Math.abs(ms) / 1000);
+        var min = Math.round(s / 60);
+        var h = Math.round(min / 60);
+        var d = Math.round(h / 24);
+        var m = Math.round(d / 30);
+        var y = Math.round(m / 12);
+        if (m >= 18) {
+          str = y + " years";
+        } else if (m >= 12) {
+          str = "a year";
+        } else if (d >= 45) {
+          str = m + " months";
+        } else if (d >= 30) {
+          str = "a month";
+        } else if (h >= 36) {
+          str = d + " days";
+        } else if (h >= 24) {
+          str = "a day";
+        } else if (min >= 90) {
+          str = h + " hours";
+        } else if (min >= 45) {
+          str = "an hour";
+        } else if (s >= 90) {
+          str = min + " minutes";
+        } else if (s >= 45) {
+          str = "a minute";
+        } else if (s >= 10) {
+          str = s + " seconds";
+        }
+        return str !== "just now" ? str + " " + tense : str;
+      }
+    }, {
+      key: "type",
+      get: function get$$1() {
+        return this._type;
+      },
+      set: function set$$1(val) {
+        if (this._type === val) {
+          return;
+        }
+
+        this._type = val;
+      }
+    }, {
+      key: "timestamp",
+      get: function get$$1() {
+        return this._timestamp;
+      },
+      set: function set$$1(val) {
+        if (this._timestamp === val) {
+          return;
+        }
+
+        this._timestamp = val;
+        this.setDate(new Date(val * 1000));
+      }
+    }, {
+      key: "datetime",
+      get: function get$$1() {
+        return this._datetime;
+      },
+      set: function set$$1(val) {
+        if (!Date.parse(val)) {
+          return;
+        }
+
+        if (Date.parse(val) && this._datetime === Date.parse(val)) {
+          return;
+        }
+
+        this.setDate(Date.parse(val));
+      }
+    }], [{
+      key: "observedAttributes",
+      get: function get$$1() {
+        return ["datetime", "type", "timestamp"];
+      }
+    }]);
+    return RhDatetime;
+  }(RHElement);
+
+  RHElement.create(RhDatetime);
+
+})));
 //# sourceMappingURL=rh-datetime.umd.js.map

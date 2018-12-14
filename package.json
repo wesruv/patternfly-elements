@@ -6,7 +6,7 @@
     "test": "npm run build && wct --configFile wct.conf.json test/index.html",
     "dev": "bash scripts/dev.sh",
     "build": "lerna run build",
-    "clean": "rm -rf node_modules package-lock.json {elements,themes}/*/{node_modules,package-lock.json}",
+    "clean": "rm -rf node_modules package-lock.json {elements,themes}/*/{node_modules,package-lock.json,.build}",
     "bootstrap": "lerna bootstrap --hoist",
     "postinstall": "npm run bootstrap",
     "test-suite-inject": "node scripts/test-suite-inject.js",

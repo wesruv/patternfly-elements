@@ -34,3 +34,4 @@ test/.wct-kludge
 
 # build temp dirs
 elements/*/.build
+themes/*/.build

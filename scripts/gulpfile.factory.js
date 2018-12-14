@@ -1,10 +1,16 @@
+const TEMP_BUILD_DIR = "./.build/";
+const DEST_DIR = "./";
+const SRC_DIR = "./src/";
+
 module.exports = function factory({
   elementName,
   className,
-  precompile = []
+  precompile = [],
+  postbundle = []
 } = {}) {
   const fs = require("fs");
   const path = require("path");
+  const del = require("del");
 
   const gulp = require("gulp");
   const rename = require("gulp-rename");
@@ -14,10 +20,6 @@ module.exports = function factory({
   const decomment = require("decomment");
   const sass = require("node-sass");
   const shell = require("gulp-shell");
-
-  const TEMP_BUILD_DIR = "./.build/";
-  const DEST_DIR = "./";
-  const SRC_DIR = "./src/";
 
   gulp.task("compile", () => {
     return gulp
@@ -36,13 +38,17 @@ module.exports = function factory({
       .pipe(gulp.dest(TEMP_BUILD_DIR));
   });
 
+  gulp.task("clean-temp", () => {
+    return del(path.join(TEMP_BUILD_DIR, "**/*"));
+  });
+
   gulp.task("copy-to-temp", () => {
     return gulp.src(path.join(SRC_DIR, "**/*")).pipe(gulp.dest(TEMP_BUILD_DIR));
   });
 
   gulp.task("copy-to-dest", () => {
     return gulp
-      .src(path.join(TEMP_BUILD_DIR, "**/*.js"))
+      .src(path.join(TEMP_BUILD_DIR, "**/*.{js,css,map}"))
       .pipe(gulp.dest(DEST_DIR));
   });
 
@@ -111,12 +117,13 @@ ${html}\`;
   gulp.task("bundle", shell.task("../../node_modules/.bin/rollup -c"));
 
   const buildTasks = [
+    "clean-temp",
     "copy-to-temp",
     "merge",
     ...precompile,
     "compile",
     "bundle",
-    "copy-to-dest"
+    ...postbundle
   ];
 
   gulp.task("build", gulp.series(...buildTasks));
@@ -127,3 +134,7 @@ ${html}\`;
 
   return gulp;
 };
+
+module.exports.TEMP_BUILD_DIR = TEMP_BUILD_DIR;
+module.exports.DEST_DIR = DEST_DIR;
+module.exports.SRC_DIR = SRC_DIR;
