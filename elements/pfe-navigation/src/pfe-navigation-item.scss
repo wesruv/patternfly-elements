@@ -48,6 +48,9 @@ $pfe-nav-size: 4em;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
+
+
+		// LINK WRAPPER
 		.pfe-navigation-item--button {
 			//border: orange solid 1px;
 
@@ -56,49 +59,55 @@ $pfe-nav-size: 4em;
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
+	    	padding: calc(#{pfe-var(container-padding)} * 0.5)
+	    	 		 calc(#{pfe-var(container-padding)} * 1);
+		    //line-height: $pfe-nav-size;
+		    transition: all #{pfe-var(animation-timing)};
+	    
+			cursor: pointer;
+		    text-decoration: none;
+		    border-top:       transparent solid 2px;
+			background:       var(--pfe-nav-item--aux);  //bg
+			color:            var(--pfe-nav-item--main); //text
+
+		
+			&:hover {
+			    border-top-color: #{pfe-color(surface--accent)};
+			    background:       var(--pfe-nav-item--aux--hover);
+			    color:            var(--pfe-nav-item--main--hover);
+			}
+			&:active {
+			    border-top-color: #{pfe-color(surface-accent)};
+			    background:       var(--pfe-nav-item--aux--hover);
+			    color:            var(--pfe-nav-item--main--hover);
+			}
+			&:focus {
+			    border-top-color: #{pfe-color(surface-accent)};
+			    background:       var(--pfe-nav-item--aux--hover);
+			    color:            var(--pfe-nav-item--main--hover);
+			}
+			&:focus:not(:focus-visible) {
+				outline: none; // removes outline for mouse users, preserves it for keyboard users
+			}
 		}
+		// ICON
 		.pfe-navigation-item--icon {
 			//border: pink solid 1px;
 			margin: 0;
 		}
+		// TEXT 
 		.pfe-navigation-item--text {
+		//::slotted([slot="pfe-navigation-item--trigger"]) {
 			//border: green solid 1px;
+
 			margin: 0;
-			color:            var(--pfe-nav-item--main); //maybe temporary?
-			background:       var(--pfe-nav-item--aux); 
+			color:  inherit;
+			text-decoration: none;
 		}
-	    ::slotted([slot="pfe-navigation-item--trigger"]) {
-	    	padding: 0 calc(#{pfe-var(container-padding)} * 1);
-		    line-height: $pfe-nav-size;
+		.has-icon .pfe-navigation-item--text {
+			font-size: 80%;
+		}
 
-		    transition: all #{pfe-var(animation-timing)};
-	    }
-		::slotted(a) {
-			cursor: pointer;
-		    text-decoration: none;
-		    border-top:       transparent solid 2px;
-			color:            var(--pfe-nav-item--main); //text
-			background:       var(--pfe-nav-item--aux);  //bg
-		}
-		::slotted(a:hover) {
-		    border-top-color: #{pfe-color(surface--accent)};
-		    background:       var(--pfe-nav-item--aux--hover);
-		    color:            var(--pfe-nav-item--main--hover);
-		}
-		::slotted(a:active) {
-		    border-top-color: #{pfe-color(surface-accent)};
-		    background:       var(--pfe-nav-item--aux--hover);
-		    color:            var(--pfe-nav-item--main--hover);
-		}
-		::slotted(a:focus) {
-		    border-top-color: #{pfe-color(surface-accent)};
-		    background:       var(--pfe-nav-item--aux--hover);
-		    color:            var(--pfe-nav-item--main--hover);
-
-		}
-		::slotted(a:focus:not(:focus-visible)) {
-			outline: none; // removes outline for mouse users, preserves it for keyboard users
-		}
 	}
 }
 

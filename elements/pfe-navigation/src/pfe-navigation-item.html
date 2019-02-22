@@ -1,11 +1,20 @@
 <!-- Navigation item -->
 <slot name="pfe-navigation-item--trigger"></slot>
 
-<!--
-<div class="pfe-navigation-item--button">
-  <pfe-icon class="pfe-navigation-item--icon" icon="pfe-icon-server-stack" size="2x" color="critical"></pfe-icon>
-  <p class="pfe-navigation-item--text">Search</p>
+<!-- Kendall markup:
+
+<div class="pfe-navigation-item--button  ${this.has_slot('util') ? ` has-icon` : ''}">
+
+
+    ${this.has_slot("util") ? `
+      <pfe-icon class="pfe-navigation-item--icon" icon="pfe-icon-server-stack" size="2x" color="base"></pfe-icon>
+    ` : ""}
+
+
+    <slot class="pfe-navigation-item--text" name="pfe-navigation-item--trigger"></slot>
+
 </div>
+
 -->
 
 ${this.has_slot("pfe-navigation-item--tray") ? `
