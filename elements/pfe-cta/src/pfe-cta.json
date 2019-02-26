@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Call to Action",
+  "description": "pfe-cta is a call-to-action (CTA) element, that stands out from regular hypertext links, and is used for linking users to webpages.",
+  "type": "object",
+  "tag": "pfe-cta",
+  "class": "pfe-cta",
+  "category": "content",
+  "properties": {
+    "callToActionText": {
+      "title": "Call to Action text",
+      "description": "Text for the call to action",
+      "type": "string"
+    },
+    "callToActionUrl": {
+      "title": "Call to Action URL",
+      "description": "URL for the call to action",
+      "type": "string"
+    },
+    "slots": {
+      "title": "Slots",
+      "description": "Definition of the supported slots",
+      "type": "object",
+      "properties": {
+        "default": {
+          "title": "Default",
+          "type": "array",
+          "namedSlot": false,
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "a"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "attributes": {
+      "title": "Attributes",
+      "type": "object",
+      "properties": {
+        "color": {
+          "title": "Color",
+          "type": "string",
+          "enum": [
+            "default",
+            "base",
+            "complement",
+            "accent"
+          ],
+          "default": "default"
+        },
+        "priority": {
+          "title": "Priority",
+          "type": "string",
+          "enum": [
+            "default",
+            "primary",
+            "secondary"
+          ],
+          "default": "default"
+        }
+      }
+    }
+  },
+  "required": ["slots", "attributes", "callToActionUrl", "callToActionText"],
+  "additionalProperties": false
+}

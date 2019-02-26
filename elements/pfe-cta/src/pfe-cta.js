@@ -5,6 +5,10 @@ class PfeCta extends PFElement {
     return "pfe-cta";
   }
 
+  get schemaUrl() {
+    return "pfe-cta.json";
+  }
+
   get styleUrl() {
     return "pfe-cta.scss";
   }

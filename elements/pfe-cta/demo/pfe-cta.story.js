@@ -17,22 +17,7 @@ stories.addDecorator(storybookBridge.withKnobs);
 
 stories.add(PfeCta.tag, () => {
   let config = {};
-  // const props = PfeCta.properties;
-  // Manually defining props but this can be done in a schema instead
-  const props = {
-    priority: {
-      title: "Priority",
-      type: "string",
-      enum: ["default", "primary", "secondary"],
-      default: "primary"
-    },
-    color: {
-      title: "Color",
-      type: "string",
-      enum: ["default", "base", "complement", "accent"],
-      default: "default"
-    }
-  };
+  const props = PfeCta.properties;
 
   // Trigger the auto generation of the knobs for attributes
   config.prop = tools.autoPropKnobs(props, storybookBridge);
