@@ -7,14 +7,20 @@
   "class": "pfe-cta",
   "category": "content",
   "properties": {
-    "callToActionText": {
+    "text": {
       "title": "Call to Action text",
       "description": "Text for the call to action",
       "type": "string"
     },
-    "callToActionUrl": {
+    "title": {
+      "title": "Title for the tooltip",
+      "description": "Shown on mouseover",
+      "type": "string"
+    },
+    "url": {
       "title": "Call to Action URL",
       "description": "URL for the call to action",
+      "format": "url",
       "type": "string"
     },
     "slots": {
