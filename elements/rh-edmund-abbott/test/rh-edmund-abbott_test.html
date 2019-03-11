@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <script src="/components/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="/components/web-component-tester/browser.js"></script>
+    <script type="module" src="../rh-edmund-abbott.js"></script>
+  </head>
+  <body>
+
+    <rh-edmund-abbott>
+      This is the element content.
+    </rh-edmund-abbott>
+
+    <script>
+      suite('<rh-edmund-abbott>', () => {
+        test('it should upgrade', () => {
+          assert.instanceOf(document.querySelector('rh-edmund-abbott'), customElements.get("rh-edmund-abbott", 'rh-edmund-abbott should be an instance of rhEdmundAbbott'));
+        });
+
+        // you need to write more tests!!!
+
+      });
+    </script>
+  </body>
+</html>

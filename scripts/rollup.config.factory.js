@@ -34,7 +34,7 @@ function umdConfig({ elementName, className } = {}) {
         patterns: [
           {
             test: importRegex,
-            replace: "$1$2.umd$3"
+            replace: "$1$2.umd.js$3"
           }
         ]
       }),
@@ -87,7 +87,7 @@ function umdMinConfig({ elementName, className } = {}) {
         patterns: [
           {
             test: importRegex,
-            replace: "$1$2.umd.min$3"
+            replace: "$1$2.umd.min.js$3"
             // ".js" is not included here to maintain compability with the AMD
             // module format, see umdConfig above for more info.
           }

@@ -1,0 +1,17 @@
+:host {
+  display: block;
+
+  background-color: #f1f1f1;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+#results {
+    display: none;
+}
+
+#results.active {
+    display: block;
+}
