@@ -1,5 +1,5 @@
 {
-  "name": "@patternfly/rh-edmund-abbott",
+  "name": "@rhcp/rh-edmund-abbott",
   "pfelement": {
     "className": "RhEdmundAbbott",
     "elementName": "rh-edmund-abbott"
