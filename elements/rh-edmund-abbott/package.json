@@ -24,7 +24,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@patternfly/pfelement": "1.0.0-prerelease.9",
+    "@patternfly/pfelement": "1.0.0-prerelease.11",
     "xStore": "^2.0.5"
   },
   "generator-pfelement-version": "1.0.0"
