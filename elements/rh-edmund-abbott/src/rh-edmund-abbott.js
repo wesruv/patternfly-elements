@@ -1,4 +1,4 @@
-import PFElement from "../pfelement/pfelement.js";
+import PFElement from "../../@patternfly/pfelement/pfelement.js";
 
 let session;
 
