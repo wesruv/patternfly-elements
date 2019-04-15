@@ -194,7 +194,8 @@ module.exports = function factory({
               // Get the compiled css styles from the source directory
               let css_styles = path.join(
                 paths.compiled,
-                `${path.basename(url.style, ".scss")}.min.css`
+                url.style
+                // `${path.basename(url.style, ".scss")}.min.css`
               );
               // Read in the content of the compiled file
               if (fs.existsSync(css_styles)) {
