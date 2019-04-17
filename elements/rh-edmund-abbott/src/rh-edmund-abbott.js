@@ -120,11 +120,11 @@ class RhEdmundAbbott extends PFElement {
   }
 
   show() {
-    this.shadowRoot.querySelector("#results").classList.add("active");
+    this.shadowRoot.querySelector("#notification").classList.add("active");
   }
 
   hide() {
-    this.shadowRoot.querySelector("#results").classList.remove("active");
+    this.shadowRoot.querySelector("#notification").classList.remove("active");
   }
 }
 
