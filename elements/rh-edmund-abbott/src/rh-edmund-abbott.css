@@ -1,17 +1,57 @@
 :host {
   display: block;
+  padding: .8rem;
 
-  background-color: #f1f1f1;
+  background-color: #fff;
+  border: 1px solid #ededed;
+  border-left: 2px solid #06c;
+}
+
+#notification {
+    display: none;
+}
+
+#notification.active {
+    display: block;
 }
 
 :host([hidden]) {
   display: none;
 }
 
-#results {
-    display: none;
+:host #notification > * {
+  margin: 0;
+  padding: 0;
 }
 
-#results.active {
-    display: block;
+:host a {
+  margin-bottom: 1rem;
+  text-decoration: none;
+  font-weight: 500;
+  color: #06c;
+}
+
+:host a:hover,
+:host a:focus {
+  color: #004080;
+}
+
+:host p {
+  width: 90%;
+  font-size: 1rem;
+}
+
+:host #clear {
+  position: absolute;
+  top: 1.4rem;
+  right: 1.8rem;
+  padding: .4rem .6rem .5rem;
+  border: 0;
+  font-size: 1.6rem;
+  line-height: 14px;
+}
+
+:host #clear:hover,
+:host #clear:focus {
+  color: #06c;
 }
