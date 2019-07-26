@@ -235,8 +235,11 @@ module.exports = function factory({
   }`;
             if (cssResult || html) {
               template += `
-
   get html() {
+    return \`${cssResult}${html}\`;
+  }
+
+  static get html() {
     return \`${cssResult}${html}\`;
   }`;
             }

@@ -17,6 +17,7 @@ class PfeDatetime extends PFElement {
     super(PfeDatetime);
 
     this.type = this.getAttribute("type") || "local";
+    this.r = Math.random();
   }
 
   get type() {

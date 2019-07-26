@@ -3,6 +3,9 @@ const prefix = "pfe-";
 
 class PFElement extends HTMLElement {
   static create(pfe) {
+    console.log(`registering ${pfe.tag}`);
+    pfe.template = document.createElement("template");
+    pfe.template.innerHTML = pfe.html;
     window.customElements.define(pfe.tag, pfe);
   }
 
@@ -62,7 +65,7 @@ class PFElement extends HTMLElement {
     this.props = pfeClass.properties;
     this.slots = pfeClass.slots;
     this._queue = [];
-    this.template = document.createElement("template");
+    this.template = this._pfeClass.template;
 
     this.attachShadow({ mode: "open" });
 
@@ -259,9 +262,13 @@ class PFElement extends HTMLElement {
     return PFElement.var(name, this);
   }
 
+  updateTemplate() {
+    this.template = document.createElement("template");
+    this.template.innerHTML = this.html;
+  }
+
   render() {
     this.shadowRoot.innerHTML = "";
-    this.template.innerHTML = this.html;
 
     if (window.ShadyCSS) {
       window.ShadyCSS.prepareTemplate(this.template, this.tag);
