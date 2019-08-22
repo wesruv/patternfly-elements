@@ -29,6 +29,19 @@ Use this slot for anything that you want in the footer of the icon panel.
 
 The name of the icon that you want to use. If the value of this attribute changes, the new icon will show up in the UI.
 
+### color (observed)
+
+The color variant of the icon.  See [pfe-icon](../pfe-icon/README.md)'s README for documentation on `color`.
+
+### size (observed)
+
+Size of the icon.  Can be: `sm`, `md`, `lg`, `xl`, `2x`, `3x`, `4x`
+
+
+### circled (observed)
+
+Boolean attribute, no value is required.  When provided, the icon will be have a circular background.
+
 ## Test
 
     npm run test

@@ -15,13 +15,15 @@ class PfeIconPanel extends PFElement {
   }
 
   static get observedAttributes() {
-    return ["pfe-icon", "pfe-circled"];
+    return ["icon", "circled", "color", "size"];
   }
 
   static get cascadingAttributes() {
     return {
-      "pfe-icon": "pfe-icon",
-      "pfe-circled": "pfe-icon"
+      icon: "pfe-icon",
+      circled: "pfe-icon",
+      color: "pfe-icon",
+      size: "pfe-icon"
     };
   }
 
