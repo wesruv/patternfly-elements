@@ -27,12 +27,6 @@ class PfeIconPanel extends PFElement {
     };
   }
 
-  attributeChangedCallback() {
-    super.attributeChangedCallback(...arguments);
-
-    console.log(`attr changed ${[...arguments]}`);
-  }
-
   constructor() {
     super(PfeIconPanel);
   }
