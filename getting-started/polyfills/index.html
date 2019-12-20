@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta name="generator" content="Hugo 0.53" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Polyfills </title>
+
+  
+  <meta name="description" content="Add polyfills to support all of the major browsers."> 
+  
+  
+  
+  
+  
+
+  
+
+  <meta name="author" content="PatternFly Elements">
+
+
+  <meta property="og:title" content="Polyfills" />
+<meta property="og:description" content="Add polyfills to support all of the major browsers." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.patternfly.org/patternfly-elements/getting-started/polyfills/" />
+
+  
+
+
+
+
+  
+  
+  
+  
+
+  <link rel="canonical" href="https://www.patternfly.org/patternfly-elements/getting-started/polyfills/">  
+
+  <link rel="icon" href="https://www.patternfly.org/patternfly-elements/img/favicons/favicon.png" type="image/png">
+<link rel="shortcut icon" href="https://www.patternfly.org/patternfly-elements/img/favicons/favicon.png">
+
+
+  <link href="https://www.patternfly.org/patternfly-elements/css/font.css" rel="stylesheet" type="text/css">
+  <link href="https://www.patternfly.org/patternfly-elements/css/kube.min.css" rel="stylesheet" type="text/css">
+  <link href="https://www.patternfly.org/patternfly-elements/css/kube.legenda.css" rel="stylesheet" type="text/css">
+  <link href="https://www.patternfly.org/patternfly-elements/css/highlight.css" rel="stylesheet" type="text/css">
+  <link href="https://www.patternfly.org/patternfly-elements/css/master.css" rel="stylesheet" type="text/css">
+  <link href="https://www.patternfly.org/patternfly-elements/css/kube.demo.css" rel="stylesheet" type="text/css">
+
+  
+  
+  <link rel="stylesheet" href="https://www.patternfly.org/patternfly-elements/src/sass/kube.min.aa04947625c64fd050c88d1964d38109bb34a6aa0706f9018c55536d9dfe13fe.css">
+
+
+
+  <script src="https://www.patternfly.org/patternfly-elements/js/jquery-2.1.4.min.js" type="text/javascript">
+  </script>
+
+  <script type="text/javascript" src="https://www.patternfly.org/patternfly-elements/js/tocbot.min.js"></script>
+</head>
+
+
+<body class="page-kube">
+  <header> 
+<div class="show-sm" id="top-sm">
+  <div id="nav-toggle-box">
+    <div id="nav-toggle-brand">
+      <section id="top-brand-sm">
+        <a href="https://www.patternfly.org/patternfly-elements/" title="home"><span>PatternFly</span>Elements</a>
+      </section>
+    </div>
+    <a data-component="offcanvas" data-target="#mobile-toc" href="#" id="nav-toggle"><i class="kube-menu"></i></a>
+  </div>
+</div>
+<div class="hide-sm" id="top">
+  <section id="top-brand">
+    <a href="https://www.patternfly.org/patternfly-elements/" title="home"><span>PatternFly</span>Elements</a>
+  </section>
+  <nav id="top-nav-main">
+    <ul>
+      
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/getting-started/" >Getting Started</a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/" >Develop</a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/theme/" >Theme</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav id="top-nav-extra">
+    <ul>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/site-info/community">Community</a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/site-info/get-help">Help</a>
+        </li>
+      
+    </ul>
+  </nav>
+</div>
+
+
+<nav id="mobile-toc" class="hide">
+  <section class="inner-toc">
+    <span class="label big" style="margin-bottom: 1.5rem;">Version 1.0.0-prerelease.34</span>
+
+    <h3><a href="https://www.patternfly.org/patternfly-elements/getting-started">Getting Started</a></h3>
+    <ul>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/getting-started/component-status/" title="What&#39;s available?">
+            What&#39;s available?
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/getting-started/browser-support/" title="Browser Support">
+            Browser Support
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/getting-started/framework-support/" title="Framework Support">
+            Framework Support
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/templates/" title="Templates &amp; slots">
+            Templates &amp; slots
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/getting-started/polyfills/" title="Polyfills">
+            Polyfills
+          </a>
+        </li>
+      
+    </ul>
+    <h3><a href="https://www.patternfly.org/patternfly-elements/develop">Develop</a></h3>
+    <ul>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-1a/" title="Setup">
+            Setup
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-1b/" title="Create a PatternFly Element">
+            Create a PatternFly Element
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/javascript/" title="JavaScript">
+            JavaScript
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-2a/" title="Develop a Structure">
+            Develop a Structure
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-2b/" title="Write your HTML">
+            Write your HTML
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-2c/" title="Write your CSS (or Sass)">
+            Write your CSS (or Sass)
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-2d/" title="Integrate your JavaScript">
+            Integrate your JavaScript
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-3/" title="Write tests">
+            Write tests
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-4/" title="Pull requests">
+            Pull requests
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-5/" title="Publishing Releases">
+            Publishing Releases
+          </a>
+        </li>
+      
+    </ul>
+    <h3><a href="https://www.patternfly.org/patternfly-elements/theme">Theme</a></h3>
+    <ul>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/theme/pfe-color-palette/" title="Color palette">
+            Color palette
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/theme/pfe-layouts/" title="Layouts">
+            Layouts
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/theme/pfe-theme-slots/" title="Theming Slots">
+            Theming Slots
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/theme/pfe_dynamic_templates/" title="Dynamic HTML Templates">
+            Dynamic HTML Templates
+          </a>
+        </li>
+      
+    </ul>
+
+    <h3>Site Info</h3>
+    <ul>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/site-info/code-of-conduct/" title="Code of conduct">
+            Code of conduct
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/site-info/community/" title="Join the Community">
+            Join the Community
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/site-info/get-help/" title="Get Help">
+            Get Help
+          </a>
+        </li>
+      
+    </ul>
+
+    
+    
+  </section>
+</nav>
+ </header>
+  <main>
+
+<article style="display: flex; flex-direction: row;">
+
+  
+  <nav id="main-toc">
+    <section class="inner-toc">
+      <span class="label big" style="margin-bottom: 1.5rem;">Version 1.0.0-prerelease.34</span>
+
+      <h3><a href="https://www.patternfly.org/patternfly-elements/getting-started">Getting Started</a></h3>
+      <ul>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/getting-started/component-status/" title="What&#39;s available?">
+              What&#39;s available?
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/getting-started/browser-support/" title="Browser Support">
+              Browser Support
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/getting-started/framework-support/" title="Framework Support">
+              Framework Support
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/templates/" title="Templates &amp; slots">
+              Templates &amp; slots
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/getting-started/polyfills/" title="Polyfills">
+              Polyfills
+            </a>
+          </li>
+        
+      </ul>
+      <h3><a href="https://www.patternfly.org/patternfly-elements/develop">Develop</a></h3>
+      <ul>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-1a/" title="Setup">
+              Setup
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-1b/" title="Create a PatternFly Element">
+              Create a PatternFly Element
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/javascript/" title="JavaScript">
+              JavaScript
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-2a/" title="Develop a Structure">
+              Develop a Structure
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-2b/" title="Write your HTML">
+              Write your HTML
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-2c/" title="Write your CSS (or Sass)">
+              Write your CSS (or Sass)
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-2d/" title="Integrate your JavaScript">
+              Integrate your JavaScript
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-3/" title="Write tests">
+              Write tests
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-4/" title="Pull requests">
+              Pull requests
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-5/" title="Publishing Releases">
+              Publishing Releases
+            </a>
+          </li>
+        
+      </ul>
+      <h3><a href="https://www.patternfly.org/patternfly-elements/theme">Theme</a></h3>
+      <ul>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/theme/pfe-color-palette/" title="Color palette">
+              Color palette
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/theme/pfe-layouts/" title="Layouts">
+              Layouts
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/theme/pfe-theme-slots/" title="Theming Slots">
+              Theming Slots
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/theme/pfe_dynamic_templates/" title="Dynamic HTML Templates">
+              Dynamic HTML Templates
+            </a>
+          </li>
+        
+      </ul>
+
+      <h3>Site Info</h3>
+      <ul>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/site-info/code-of-conduct/" title="Code of conduct">
+              Code of conduct
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/site-info/community/" title="Join the Community">
+              Join the Community
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/site-info/get-help/" title="Get Help">
+              Get Help
+            </a>
+          </li>
+        
+      </ul>
+
+      
+      
+    </section>
+  </nav>
+
+  <section id="content" style="">
+    <header class="page-header">
+      <h1> Polyfills</h1>
+      <p>Add polyfills to support all of the major browsers.</p>
+    </header>
+
+    <ul id="posts">
+
+     
+
+<h2 id="browser-support">Browser Support</h2>
+
+<p>Some browsers do not support ES6 modules, custom elements, shadow DOM, and
+custom CSS variables yet. We&rsquo;ll need to add some polyfills to make everything
+work in our supported browsers.</p>
+
+<p>The easiest way to get everything working is to add the following polyfills to
+the head of your document.</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;PatternFly Elements&lt;/title&gt;
+
+    &lt;!-- polyfills --&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.2.4/custom-elements-es5-adapter.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.2.4/webcomponents-bundle.js&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;&lt;/body&gt;
+&lt;/html
+</code></pre>
+
+<h2 id="what-type-of-javascript-are-you-using">What type of Javascript are you using?</h2>
+
+<ul>
+<li><a href="#ES5">ES5 or older</a></li>
+<li><a href="#ES6">ES6</a></li>
+</ul>
+
+<p><a name="ES5"></a></p>
+
+<h2 id="custom-elements-es5-adapter">Custom elements ES5 adapter</h2>
+
+<p>This polyfill is needed if your custom elements have been compiled from ES6 to ES5.
+It&rsquo;s not necessary to include this polyfill for IE 11 and it will throw a syntax
+error in IE 11 because the adapter was written in ES6. However, you can ignore
+this error because it will not cause issues with your elements.</p>
+
+<ol>
+<li><p>Includes <a href="https://github.com/umdjs/umd#regular-module">UMD</a> (universal module definition)  wrapper in the compiled version which checks for</p>
+
+<ol>
+<li><a href="https://github.com/amdjs/amdjs-api/wiki/AMD">AMD</a> (Asynchronous Module Definition)</li>
+<li>Global, window.</li>
+<li><a href="http://www.commonjs.org/">Common.js</a></li>
+<li><a href="https://requirejs.org/">Require.js</a>
+
+<ol>
+<li>This handles all of the dependency management for you</li>
+<li>Specifies how to load a module, dependencies, and load order</li>
+<li>If require cannot be used, we could inline all the script tags. HTTP2 + server push would allow them to load all at once.</li>
+<li>If you don&rsquo;t have HTTP2 + server push, it might take a little longer. If you have 3 cards on the page, would it load that script 3 times? No because cache.</li>
+</ol></li>
+</ol></li>
+
+<li><p>The card could show up on the page with pfe-card.js, which then declares a dependency on pfelement.js.
+<img src="https://www.patternfly.org/patternfly-elements/pfe-card-dependency.png" alt="pfe-card dependency" /></p></li>
+</ol>
+
+<p><a name="ES6"></a></p>
+
+<h3 id="es6">ES6</h3>
+
+<p>Check out the ES6 pfelement and include it.</p>
+
+
+    </ul>
+
+  </section>
+
+  <aside class="page-toc">
+    <h3>Page Contents</h3>
+    
+
+<div class="js-toc">
+  
+</div>
+
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded",
+function(){
+tocbot.init({
+
+tocSelector: '.js-toc',
+
+contentSelector: '#posts',
+
+headingSelector: 'h2'
+})
+}
+);
+</script>
+
+
+  </aside>
+</article>
+
+</main>
+  <footer>
+  
+
+<nav>
+  <ul>
+    <li><span>PatternFly Elements Documentation</span></li>
+    <li>
+      <a href="https://www.patternfly.org/patternfly-elements/getting-started">Getting Started</a>
+    </li>
+    <li>
+      <a href="https://www.patternfly.org/patternfly-elements/develop">Develop</a>
+    </li>
+      <li>
+      <a href="https://www.patternfly.org/patternfly-elements/theme">Theme</a>
+    </li>
+    <li>
+      <a href="https://www.patternfly.org/patternfly-elements/community">Community</a>
+    </li>
+  </ul>
+</nav>
+<small>&copy; Licence MIT.</small>
+</footer>
+
+
+  <script src="https://www.patternfly.org/patternfly-elements/js/kube.min.js" type="text/javascript">
+  </script>
+  
+</body>
+
+</html>

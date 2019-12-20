@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PatternFly Elements</title>
+    <link>https://www.patternfly.org/patternfly-elements/</link>
+    <description>Recent content on PatternFly Elements</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 31 Aug 2018 14:02:31 -0400</lastBuildDate>
+    
+	<atom:link href="https://www.patternfly.org/patternfly-elements/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>What&#39;s available?</title>
+      <link>https://www.patternfly.org/patternfly-elements/getting-started/component-status/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/getting-started/component-status/</guid>
+      <description>Though we have tested and verified general usability within these frameworks, PFE makes no guarantees about compatibility within specific sites &amp;amp; applications. Please test accordingly. For more details, check out the official status card per component.
+
+ </description>
+    </item>
+    
+    <item>
+      <title>Browser Support</title>
+      <link>https://www.patternfly.org/patternfly-elements/getting-started/browser-support/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/getting-started/browser-support/</guid>
+      <description>PatternFly Elements are built on top of the Custom Elements v1 spec, but we can support all of the major browsers with web components polyfills, including IE 11.
+   Chrome Firefox Safari Edge IE 11     &amp;#10003; &amp;#10003; &amp;#10003; &amp;#10003; &amp;#10003;    Written in ES6 To make sure we&amp;rsquo;re future-proof, PatternFly Elements are written in ES6. As more browsers begin to support the use of ES6 modules and the ability to import dependencies, the ES6 versions of our PatternFly Elements can be used directly.</description>
+    </item>
+    
+    <item>
+      <title>Code of conduct</title>
+      <link>https://www.patternfly.org/patternfly-elements/site-info/code-of-conduct/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/site-info/code-of-conduct/</guid>
+      <description>Contributor Covenant Code of Conduct Our Pledge In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to making participation in our project and our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity and expression, level of experience, nationality, personal appearance, race, religion, or sexual identity and orientation.
+Our Standards Examples of behavior that contributes to creating a positive environment include:</description>
+    </item>
+    
+    <item>
+      <title>Setup</title>
+      <link>https://www.patternfly.org/patternfly-elements/develop/step-1a/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/develop/step-1a/</guid>
+      <description>Prerequisites Clone the PatternFly Elements repo and run the install command from the root of the repository.
+npm install  Generating a PatternFly Element Using the generator-pfelement, which is installed as a dev dependency, the generator will ask you a few questions that will help with the scaffolding. Make sure you are in the root directory of the PatternFly Elements repository.
+npm run new  Scaffolding Structure The generator will scaffold out a new PatternFly Element that will include an ES6 module version of your element as well as a version transpiled to ES5.</description>
+    </item>
+    
+    <item>
+      <title>Color palette</title>
+      <link>https://www.patternfly.org/patternfly-elements/theme/pfe-color-palette/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/theme/pfe-color-palette/</guid>
+      <description>Looking for values fast? You can find a list of all the system colors here.
+UI Colors A user interface uses color to convey:
+ Feedback: Error and success states Information: Charts, graphs, and wayfinding elements Hierarchy: Showing structured order through color and typography  We&amp;rsquo;ve exposed 3 color variants for this design system to represent your brand:
+ Base Complement Accent  These colors are used throughout PatternFly Elements, but accent is the color which should stand out the most.</description>
+    </item>
+    
+    <item>
+      <title>Create a PatternFly Element</title>
+      <link>https://www.patternfly.org/patternfly-elements/develop/step-1b/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/develop/step-1b/</guid>
+      <description>Prerequisites Before you begin, make sure you&amp;rsquo;ve followed the Prerequisites in Getting Started.
+The PatternFly Element Generator Use the PatternFly Element generator to start the scaffolding process. From the root directory of the PatternFly Elements repository, run the following command.
+npm run new  The generator will ask you a series of questions to set up your project.
+ Your element name:
+ Your element&amp;rsquo;s name should be lowercase and needs to contain at least one hyphen.</description>
+    </item>
+    
+    <item>
+      <title>Framework Support</title>
+      <link>https://www.patternfly.org/patternfly-elements/getting-started/framework-support/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/getting-started/framework-support/</guid>
+      <description>Supported and Tested Frameworks If a framework isn&amp;rsquo;t listed below, it doesn&amp;rsquo;t mean that PatternFly Elements won&amp;rsquo;t work with that framework. Chances are that PatternFly Elements will work, it&amp;rsquo;s just that we aren&amp;rsquo;t explicitly testing against that framework.
+ AngularJS Angular React Vue  Every PatternFly Element is built on top of the Custom Elements v1 spec. There are some caveats, but we&amp;rsquo;ll get into those later.
+Framework Integration We&amp;rsquo;re working on writing a few guides that will demonstrate how to incorporate PatternFly Elements into certain frameworks.</description>
+    </item>
+    
+    <item>
+      <title>JavaScript</title>
+      <link>https://www.patternfly.org/patternfly-elements/develop/javascript/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/develop/javascript/</guid>
+      <description> Javascript  Web components and constructors  Web Components: The Constructor and PatternFly Elements  Custom Events
+ We always add custom events if there are interactive. We use custom events to convey state changes We always making event names lowercase. This is the style most DOM events already use: mousedown, popstate, beforeunload, etc.  Using web components within a framework
+ Angular React Vue More Resilient Web Components in Angular (or anywhere else) with MutationObserver   </description>
+    </item>
+    
+    <item>
+      <title>Join the Community</title>
+      <link>https://www.patternfly.org/patternfly-elements/site-info/community/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/site-info/community/</guid>
+      <description>Contribute to PatternFly Elements How to Report a Bug Think you found a bug? Please check the list of open issues to see if your bug has already been reported. If it hasn&amp;rsquo;t please submit a new issue.
+How to Suggest a Feature or Enhancement Open an issue which describes the feature you would like to see, why you want it, how it should work, etc.
+Bootstrapping Your Local Development Environment npm install  Running Tests npm test  Code of Conduct This project is governed by the Contributor Covenant Code of Conduct.</description>
+    </item>
+    
+    <item>
+      <title>Templates &amp; slots</title>
+      <link>https://www.patternfly.org/patternfly-elements/develop/templates/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/develop/templates/</guid>
+      <description>Light DOM vs. Shadow DOM The concept of light DOM is already familiar to any web developer. Basic HTML elements that you place into a .html file are light DOM. Tags like &amp;lt;h1&amp;gt;, &amp;lt;div&amp;gt; and &amp;lt;aside&amp;gt; are all simple light DOM.
+However, when you add a tag to the light DOM such as select, the browser has additional styles that are invoked from within the Shadow DOM.
+When building web components, you may choose whether to keep content in the light DOM (i.</description>
+    </item>
+    
+    <item>
+      <title>Develop a Structure</title>
+      <link>https://www.patternfly.org/patternfly-elements/develop/step-2a/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/develop/step-2a/</guid>
+      <description>Run the dev command found in the package.json file at the root of your element to start watching for changes to any files located in the /src directory. This will build pfe-cool-element.js and pfe-cool-element.umd.js whenever you save changes.
+# from the root of your element npm run dev  After running the dev command, start a server at the root of the PatternFly Elements repository to view it in the browser.</description>
+    </item>
+    
+    <item>
+      <title>Get Help</title>
+      <link>https://www.patternfly.org/patternfly-elements/site-info/get-help/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/site-info/get-help/</guid>
+      <description>Drop us a line at patternfly-elements-announce@redhat.com</description>
+    </item>
+    
+    <item>
+      <title>Layouts</title>
+      <link>https://www.patternfly.org/patternfly-elements/theme/pfe-layouts/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/theme/pfe-layouts/</guid>
+      <description>.pfe-l-grid  * { background: #e0d7ee; padding: 8px; }    Grid  Pure Grid Item Item Item Item Item  Code &amp;lt;div class=&#34;pfe-l-grid pfe-m-gutters pfe-m-all-6-col pfe-m-all-4-col-on-md pfe-m-all-3-col-on-lg&#34;&amp;gt; &amp;lt;div&amp;gt;Item&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;Item&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;Item&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;Item&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;Item&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt;   Bootstrap-style Columns Default Item pfe-m-2-col pfe-m-10-col pfe-m-4-col pfe-m-4-col pfe-m-4-col pfe-m-6-col pfe-m-3-col-on-md pfe-m-6-col pfe-m-3-col-on-md pfe-m-startat-7-col-on-md pfe-m-6-col pfe-m-3-col-on-md  Code &amp;lt;div class=&#34;pfe-l-grid pfe-m-gutters&#34;&amp;gt; &amp;lt;div class=&#34;pfe-l-grid__item&#34;&amp;gt;Default Item&amp;lt;/div&amp;gt; &amp;lt;div class=&#34;pfe-l-grid__item pfe-m-2-col&#34;&amp;gt;&amp;lt;code&amp;gt;pfe-m-2-col&amp;lt;/code&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div class=&#34;pfe-l-grid__item pfe-m-10-col&#34;&amp;gt;&amp;lt;code&amp;gt;pfe-m-10-col&amp;lt;/code&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div class=&#34;pfe-l-grid__item pfe-m-4-col&#34;</description>
+    </item>
+    
+    <item>
+      <title>Polyfills</title>
+      <link>https://www.patternfly.org/patternfly-elements/getting-started/polyfills/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/getting-started/polyfills/</guid>
+      <description>Browser Support Some browsers do not support ES6 modules, custom elements, shadow DOM, and custom CSS variables yet. We&amp;rsquo;ll need to add some polyfills to make everything work in our supported browsers.
+The easiest way to get everything working is to add the following polyfills to the head of your document.
+&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt; &amp;lt;title&amp;gt;PatternFly Elements&amp;lt;/title&amp;gt; &amp;lt;!-- polyfills --&amp;gt; &amp;lt;script src=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.2.4/custom-elements-es5-adapter.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.2.4/webcomponents-bundle.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt;&amp;lt;/body&amp;gt; &amp;lt;/html  What type of Javascript are you using?</description>
+    </item>
+    
+    <item>
+      <title>Theming Slots</title>
+      <link>https://www.patternfly.org/patternfly-elements/theme/pfe-theme-slots/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/theme/pfe-theme-slots/</guid>
+      <description>Slot basics Vocab tip: Elements that can be inserted into slots are known as slotable; when an element has been inserted in a slot, it is said to be slotted.
+At first glace, there seem to be lots of &amp;ldquo;gotchas&amp;rdquo; related to web components, and a lot of documentation. Here’s a simplified guide with some basic code examples.
+ Slots are places to pass content or markup into specific regions within your web component template.</description>
+    </item>
+    
+    <item>
+      <title>Write your HTML</title>
+      <link>https://www.patternfly.org/patternfly-elements/develop/step-2b/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/develop/step-2b/</guid>
+      <description>Now that our element is set up and our dev server is running, let&amp;rsquo;s take advantage of the slot and shadow root to make our element a bit more interesting.
+We&amp;rsquo;ll edit the /src/pfe-cool-element.html file to add some additional HTML. Let&amp;rsquo;s turn pfe-cool-element into a profile element that has a profile photo, a username, and a button to follow the user.
+Here&amp;rsquo;s the updated HTML in /src/pfe-cool-element.html:
+&amp;lt;div id=&amp;quot;profile-pic&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;slot&amp;gt;&amp;lt;/slot&amp;gt; &amp;lt;div&amp;gt; &amp;lt;button&amp;gt;Follow&amp;lt;/button&amp;gt; &amp;lt;/div&amp;gt;  We&amp;rsquo;ll also need to update /demo/index.</description>
+    </item>
+    
+    <item>
+      <title>Dynamic HTML Templates</title>
+      <link>https://www.patternfly.org/patternfly-elements/theme/pfe_dynamic_templates/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/theme/pfe_dynamic_templates/</guid>
+      <description>Attributes &amp;amp; Variables Should you need to capture information via an attribute property on your web component, such as a number, URL, or some other piece of information that does not need to be exposed to search engines, here’s how you make that happen:
+// HTML using component: &amp;lt;my component how-many-bananas=&amp;quot;4&amp;quot;&amp;gt; &amp;lt;/my-component&amp;gt;  // Component javascript: get numberBananas() { **return** this.getAttribute(&amp;quot;how-many-bananas&amp;quot;); } connectedCallback() { super.connectedCallback(); this.render(); } }  // Component template can print variables as content: &amp;lt;h1&amp;gt;${this.</description>
+    </item>
+    
+    <item>
+      <title>Write your CSS (or Sass)</title>
+      <link>https://www.patternfly.org/patternfly-elements/develop/step-2c/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/develop/step-2c/</guid>
+      <description>We want the pfe-cool-element to have a profile photo, a username, and a follow button. Right now, it only contains the HTML structure, but we can style our element by updating our Sass (or CSS) to make it look the way we want.
+We&amp;rsquo;ll be working in the /src/pfe-cool-element.scss file since we decided to use the Sass option in the PatternFly Element generator.
+Your Sass file will initially import additional Sass from the pfe-sass node module, but we can ignore that for now.</description>
+    </item>
+    
+    <item>
+      <title>Integrate your JavaScript</title>
+      <link>https://www.patternfly.org/patternfly-elements/develop/step-2d/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/develop/step-2d/</guid>
+      <description>In this step, we will:
+ Add a click listener to the follow button Set a follow state on element Add a the profile photo Properly disconnect our element  First, we&amp;rsquo;ll go ahead and listen for click events on the button. The best place to add a click listener is in the constructor, according to the W3C Custom Elements draft section called &amp;ldquo;2.2 Requirements for custom element constructors&amp;rdquo;:</description>
+    </item>
+    
+    <item>
+      <title>Write tests</title>
+      <link>https://www.patternfly.org/patternfly-elements/develop/step-3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/develop/step-3/</guid>
+      <description>Let&amp;rsquo;s write a test for the pfe-cool-element.
+We rely on a few tools to ensure our element is reliable in production:
+ Web Component Tester, built and maintained by the Polymer team, makes testing easy. All we have to do is add the element&amp;rsquo;s HTML to a file and set up our suite of tests. We&amp;rsquo;ll use the Chai Assertion Library to make sure our tests pass since Mocha and Chai are both included in Web Component Tester.</description>
+    </item>
+    
+    <item>
+      <title>Pull requests</title>
+      <link>https://www.patternfly.org/patternfly-elements/develop/step-4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/develop/step-4/</guid>
+      <description>Opening your pull request  Create a PR using the template provided, ensure all fields are filled out to the best of your ability. If you used the discovery template, please copy that content as necessary into the README.md for that component. Confirm that your component has all attributes and slots documented clearly in the schema and the README file. Update the commit log with a stub for your PR: - [](https://github.</description>
+    </item>
+    
+    <item>
+      <title>Publishing Releases</title>
+      <link>https://www.patternfly.org/patternfly-elements/develop/step-5/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/develop/step-5/</guid>
+      <description>Release Tag, Docs, &amp;amp; Storybook Updates I. Get the latest from master locally, clean up  git status  Check where you are  git checkout master &amp;amp;&amp;amp; git fetch origin &amp;amp;&amp;amp; git pull origin  Grab master from origin  npm run clean  Wipes node_modules directory and deletes any components not in master what this does: rm -rf node_modules package-lock.json rm -rf node_modules  git reset --hard &amp;amp;&amp;amp; git clean -df  Remove any non-committed files, crufty directories  npm install  Installs all dependencies fresh  git checkout -b temp  Create temp branch   III.</description>
+    </item>
+    
+  </channel>
+</rss>

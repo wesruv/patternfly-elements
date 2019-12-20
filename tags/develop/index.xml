@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Develop on PatternFly Elements</title>
+    <link>https://www.patternfly.org/patternfly-elements/tags/develop/</link>
+    <description>Recent content in Develop on PatternFly Elements</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://www.patternfly.org/patternfly-elements/tags/develop/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Create a PatternFly Element</title>
+      <link>https://www.patternfly.org/patternfly-elements/develop/step-1b/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/develop/step-1b/</guid>
+      <description>Prerequisites Before you begin, make sure you&amp;rsquo;ve followed the Prerequisites in Getting Started.
+The PatternFly Element Generator Use the PatternFly Element generator to start the scaffolding process. From the root directory of the PatternFly Elements repository, run the following command.
+npm run new  The generator will ask you a series of questions to set up your project.
+ Your element name:
+ Your element&amp;rsquo;s name should be lowercase and needs to contain at least one hyphen.</description>
+    </item>
+    
+    <item>
+      <title>Develop a Structure</title>
+      <link>https://www.patternfly.org/patternfly-elements/develop/step-2a/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/develop/step-2a/</guid>
+      <description>Run the dev command found in the package.json file at the root of your element to start watching for changes to any files located in the /src directory. This will build pfe-cool-element.js and pfe-cool-element.umd.js whenever you save changes.
+# from the root of your element npm run dev  After running the dev command, start a server at the root of the PatternFly Elements repository to view it in the browser.</description>
+    </item>
+    
+    <item>
+      <title>Integrate your JavaScript</title>
+      <link>https://www.patternfly.org/patternfly-elements/develop/step-2d/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/develop/step-2d/</guid>
+      <description>In this step, we will:
+ Add a click listener to the follow button Set a follow state on element Add a the profile photo Properly disconnect our element  First, we&amp;rsquo;ll go ahead and listen for click events on the button. The best place to add a click listener is in the constructor, according to the W3C Custom Elements draft section called &amp;ldquo;2.2 Requirements for custom element constructors&amp;rdquo;:</description>
+    </item>
+    
+    <item>
+      <title>JavaScript</title>
+      <link>https://www.patternfly.org/patternfly-elements/develop/javascript/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/develop/javascript/</guid>
+      <description> Javascript  Web components and constructors  Web Components: The Constructor and PatternFly Elements  Custom Events
+ We always add custom events if there are interactive. We use custom events to convey state changes We always making event names lowercase. This is the style most DOM events already use: mousedown, popstate, beforeunload, etc.  Using web components within a framework
+ Angular React Vue More Resilient Web Components in Angular (or anywhere else) with MutationObserver   </description>
+    </item>
+    
+    <item>
+      <title>Publishing Releases</title>
+      <link>https://www.patternfly.org/patternfly-elements/develop/step-5/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/develop/step-5/</guid>
+      <description>Release Tag, Docs, &amp;amp; Storybook Updates I. Get the latest from master locally, clean up  git status  Check where you are  git checkout master &amp;amp;&amp;amp; git fetch origin &amp;amp;&amp;amp; git pull origin  Grab master from origin  npm run clean  Wipes node_modules directory and deletes any components not in master what this does: rm -rf node_modules package-lock.json rm -rf node_modules  git reset --hard &amp;amp;&amp;amp; git clean -df  Remove any non-committed files, crufty directories  npm install  Installs all dependencies fresh  git checkout -b temp  Create temp branch   III.</description>
+    </item>
+    
+    <item>
+      <title>Pull requests</title>
+      <link>https://www.patternfly.org/patternfly-elements/develop/step-4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/develop/step-4/</guid>
+      <description>Opening your pull request  Create a PR using the template provided, ensure all fields are filled out to the best of your ability. If you used the discovery template, please copy that content as necessary into the README.md for that component. Confirm that your component has all attributes and slots documented clearly in the schema and the README file. Update the commit log with a stub for your PR: - [](https://github.</description>
+    </item>
+    
+    <item>
+      <title>Setup</title>
+      <link>https://www.patternfly.org/patternfly-elements/develop/step-1a/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/develop/step-1a/</guid>
+      <description>Prerequisites Clone the PatternFly Elements repo and run the install command from the root of the repository.
+npm install  Generating a PatternFly Element Using the generator-pfelement, which is installed as a dev dependency, the generator will ask you a few questions that will help with the scaffolding. Make sure you are in the root directory of the PatternFly Elements repository.
+npm run new  Scaffolding Structure The generator will scaffold out a new PatternFly Element that will include an ES6 module version of your element as well as a version transpiled to ES5.</description>
+    </item>
+    
+    <item>
+      <title>Write tests</title>
+      <link>https://www.patternfly.org/patternfly-elements/develop/step-3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/develop/step-3/</guid>
+      <description>Let&amp;rsquo;s write a test for the pfe-cool-element.
+We rely on a few tools to ensure our element is reliable in production:
+ Web Component Tester, built and maintained by the Polymer team, makes testing easy. All we have to do is add the element&amp;rsquo;s HTML to a file and set up our suite of tests. We&amp;rsquo;ll use the Chai Assertion Library to make sure our tests pass since Mocha and Chai are both included in Web Component Tester.</description>
+    </item>
+    
+    <item>
+      <title>Write your CSS (or Sass)</title>
+      <link>https://www.patternfly.org/patternfly-elements/develop/step-2c/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/develop/step-2c/</guid>
+      <description>We want the pfe-cool-element to have a profile photo, a username, and a follow button. Right now, it only contains the HTML structure, but we can style our element by updating our Sass (or CSS) to make it look the way we want.
+We&amp;rsquo;ll be working in the /src/pfe-cool-element.scss file since we decided to use the Sass option in the PatternFly Element generator.
+Your Sass file will initially import additional Sass from the pfe-sass node module, but we can ignore that for now.</description>
+    </item>
+    
+    <item>
+      <title>Write your HTML</title>
+      <link>https://www.patternfly.org/patternfly-elements/develop/step-2b/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/develop/step-2b/</guid>
+      <description>Now that our element is set up and our dev server is running, let&amp;rsquo;s take advantage of the slot and shadow root to make our element a bit more interesting.
+We&amp;rsquo;ll edit the /src/pfe-cool-element.html file to add some additional HTML. Let&amp;rsquo;s turn pfe-cool-element into a profile element that has a profile photo, a username, and a button to follow the user.
+Here&amp;rsquo;s the updated HTML in /src/pfe-cool-element.html:
+&amp;lt;div id=&amp;quot;profile-pic&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;slot&amp;gt;&amp;lt;/slot&amp;gt; &amp;lt;div&amp;gt; &amp;lt;button&amp;gt;Follow&amp;lt;/button&amp;gt; &amp;lt;/div&amp;gt;  We&amp;rsquo;ll also need to update /demo/index.</description>
+    </item>
+    
+  </channel>
+</rss>

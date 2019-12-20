@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Theming Overview on PatternFly Elements</title>
+    <link>https://www.patternfly.org/patternfly-elements/theme/</link>
+    <description>Recent content in Theming Overview on PatternFly Elements</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://www.patternfly.org/patternfly-elements/theme/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Color palette</title>
+      <link>https://www.patternfly.org/patternfly-elements/theme/pfe-color-palette/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/theme/pfe-color-palette/</guid>
+      <description>Looking for values fast? You can find a list of all the system colors here.
+UI Colors A user interface uses color to convey:
+ Feedback: Error and success states Information: Charts, graphs, and wayfinding elements Hierarchy: Showing structured order through color and typography  We&amp;rsquo;ve exposed 3 color variants for this design system to represent your brand:
+ Base Complement Accent  These colors are used throughout PatternFly Elements, but accent is the color which should stand out the most.</description>
+    </item>
+    
+    <item>
+      <title>Layouts</title>
+      <link>https://www.patternfly.org/patternfly-elements/theme/pfe-layouts/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/theme/pfe-layouts/</guid>
+      <description>.pfe-l-grid  * { background: #e0d7ee; padding: 8px; }    Grid  Pure Grid Item Item Item Item Item  Code &amp;lt;div class=&#34;pfe-l-grid pfe-m-gutters pfe-m-all-6-col pfe-m-all-4-col-on-md pfe-m-all-3-col-on-lg&#34;&amp;gt; &amp;lt;div&amp;gt;Item&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;Item&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;Item&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;Item&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;Item&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt;   Bootstrap-style Columns Default Item pfe-m-2-col pfe-m-10-col pfe-m-4-col pfe-m-4-col pfe-m-4-col pfe-m-6-col pfe-m-3-col-on-md pfe-m-6-col pfe-m-3-col-on-md pfe-m-startat-7-col-on-md pfe-m-6-col pfe-m-3-col-on-md  Code &amp;lt;div class=&#34;pfe-l-grid pfe-m-gutters&#34;&amp;gt; &amp;lt;div class=&#34;pfe-l-grid__item&#34;&amp;gt;Default Item&amp;lt;/div&amp;gt; &amp;lt;div class=&#34;pfe-l-grid__item pfe-m-2-col&#34;&amp;gt;&amp;lt;code&amp;gt;pfe-m-2-col&amp;lt;/code&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div class=&#34;pfe-l-grid__item pfe-m-10-col&#34;&amp;gt;&amp;lt;code&amp;gt;pfe-m-10-col&amp;lt;/code&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div class=&#34;pfe-l-grid__item pfe-m-4-col&#34;</description>
+    </item>
+    
+    <item>
+      <title>Theming Slots</title>
+      <link>https://www.patternfly.org/patternfly-elements/theme/pfe-theme-slots/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/theme/pfe-theme-slots/</guid>
+      <description>Slot basics Vocab tip: Elements that can be inserted into slots are known as slotable; when an element has been inserted in a slot, it is said to be slotted.
+At first glace, there seem to be lots of &amp;ldquo;gotchas&amp;rdquo; related to web components, and a lot of documentation. Here’s a simplified guide with some basic code examples.
+ Slots are places to pass content or markup into specific regions within your web component template.</description>
+    </item>
+    
+    <item>
+      <title>Dynamic HTML Templates</title>
+      <link>https://www.patternfly.org/patternfly-elements/theme/pfe_dynamic_templates/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.patternfly.org/patternfly-elements/theme/pfe_dynamic_templates/</guid>
+      <description>Attributes &amp;amp; Variables Should you need to capture information via an attribute property on your web component, such as a number, URL, or some other piece of information that does not need to be exposed to search engines, here’s how you make that happen:
+// HTML using component: &amp;lt;my component how-many-bananas=&amp;quot;4&amp;quot;&amp;gt; &amp;lt;/my-component&amp;gt;  // Component javascript: get numberBananas() { **return** this.getAttribute(&amp;quot;how-many-bananas&amp;quot;); } connectedCallback() { super.connectedCallback(); this.render(); } }  // Component template can print variables as content: &amp;lt;h1&amp;gt;${this.</description>
+    </item>
+    
+  </channel>
+</rss>

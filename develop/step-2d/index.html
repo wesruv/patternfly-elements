@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta name="generator" content="Hugo 0.53" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Integrate your JavaScript </title>
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  <meta name="author" content="PatternFly Elements">
+
+
+  <meta property="og:title" content="Integrate your JavaScript" />
+<meta property="og:description" content="In this step, we will:
+ Add a click listener to the follow button Set a follow state on element Add a the profile photo Properly disconnect our element  First, we&rsquo;ll go ahead and listen for click events on the button. The best place to add a click listener is in the constructor, according to the W3C Custom Elements draft section called &ldquo;2.2 Requirements for custom element constructors&rdquo;:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.patternfly.org/patternfly-elements/develop/step-2d/" />
+
+  
+
+
+
+
+  
+  
+  
+  
+
+  <link rel="canonical" href="https://www.patternfly.org/patternfly-elements/develop/step-2d/">  
+
+  <link rel="icon" href="https://www.patternfly.org/patternfly-elements/img/favicons/favicon.png" type="image/png">
+<link rel="shortcut icon" href="https://www.patternfly.org/patternfly-elements/img/favicons/favicon.png">
+
+
+  <link href="https://www.patternfly.org/patternfly-elements/css/font.css" rel="stylesheet" type="text/css">
+  <link href="https://www.patternfly.org/patternfly-elements/css/kube.min.css" rel="stylesheet" type="text/css">
+  <link href="https://www.patternfly.org/patternfly-elements/css/kube.legenda.css" rel="stylesheet" type="text/css">
+  <link href="https://www.patternfly.org/patternfly-elements/css/highlight.css" rel="stylesheet" type="text/css">
+  <link href="https://www.patternfly.org/patternfly-elements/css/master.css" rel="stylesheet" type="text/css">
+  <link href="https://www.patternfly.org/patternfly-elements/css/kube.demo.css" rel="stylesheet" type="text/css">
+
+  
+  
+  <link rel="stylesheet" href="https://www.patternfly.org/patternfly-elements/src/sass/kube.min.aa04947625c64fd050c88d1964d38109bb34a6aa0706f9018c55536d9dfe13fe.css">
+
+
+
+  <script src="https://www.patternfly.org/patternfly-elements/js/jquery-2.1.4.min.js" type="text/javascript">
+  </script>
+
+  <script type="text/javascript" src="https://www.patternfly.org/patternfly-elements/js/tocbot.min.js"></script>
+</head>
+
+
+<body class="page-kube">
+  <header> 
+<div class="show-sm" id="top-sm">
+  <div id="nav-toggle-box">
+    <div id="nav-toggle-brand">
+      <section id="top-brand-sm">
+        <a href="https://www.patternfly.org/patternfly-elements/" title="home"><span>PatternFly</span>Elements</a>
+      </section>
+    </div>
+    <a data-component="offcanvas" data-target="#mobile-toc" href="#" id="nav-toggle"><i class="kube-menu"></i></a>
+  </div>
+</div>
+<div class="hide-sm" id="top">
+  <section id="top-brand">
+    <a href="https://www.patternfly.org/patternfly-elements/" title="home"><span>PatternFly</span>Elements</a>
+  </section>
+  <nav id="top-nav-main">
+    <ul>
+      
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/getting-started/" >Getting Started</a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/" >Develop</a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/theme/" >Theme</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav id="top-nav-extra">
+    <ul>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/site-info/community">Community</a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/site-info/get-help">Help</a>
+        </li>
+      
+    </ul>
+  </nav>
+</div>
+
+
+<nav id="mobile-toc" class="hide">
+  <section class="inner-toc">
+    <span class="label big" style="margin-bottom: 1.5rem;">Version 1.0.0-prerelease.34</span>
+
+    <h3><a href="https://www.patternfly.org/patternfly-elements/getting-started">Getting Started</a></h3>
+    <ul>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/getting-started/component-status/" title="What&#39;s available?">
+            What&#39;s available?
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/getting-started/browser-support/" title="Browser Support">
+            Browser Support
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/getting-started/framework-support/" title="Framework Support">
+            Framework Support
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/templates/" title="Templates &amp; slots">
+            Templates &amp; slots
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/getting-started/polyfills/" title="Polyfills">
+            Polyfills
+          </a>
+        </li>
+      
+    </ul>
+    <h3><a href="https://www.patternfly.org/patternfly-elements/develop">Develop</a></h3>
+    <ul>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-1a/" title="Setup">
+            Setup
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-1b/" title="Create a PatternFly Element">
+            Create a PatternFly Element
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/javascript/" title="JavaScript">
+            JavaScript
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-2a/" title="Develop a Structure">
+            Develop a Structure
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-2b/" title="Write your HTML">
+            Write your HTML
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-2c/" title="Write your CSS (or Sass)">
+            Write your CSS (or Sass)
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-2d/" title="Integrate your JavaScript">
+            Integrate your JavaScript
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-3/" title="Write tests">
+            Write tests
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-4/" title="Pull requests">
+            Pull requests
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-5/" title="Publishing Releases">
+            Publishing Releases
+          </a>
+        </li>
+      
+    </ul>
+    <h3><a href="https://www.patternfly.org/patternfly-elements/theme">Theme</a></h3>
+    <ul>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/theme/pfe-color-palette/" title="Color palette">
+            Color palette
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/theme/pfe-layouts/" title="Layouts">
+            Layouts
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/theme/pfe-theme-slots/" title="Theming Slots">
+            Theming Slots
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/theme/pfe_dynamic_templates/" title="Dynamic HTML Templates">
+            Dynamic HTML Templates
+          </a>
+        </li>
+      
+    </ul>
+
+    <h3>Site Info</h3>
+    <ul>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/site-info/code-of-conduct/" title="Code of conduct">
+            Code of conduct
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/site-info/community/" title="Join the Community">
+            Join the Community
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/site-info/get-help/" title="Get Help">
+            Get Help
+          </a>
+        </li>
+      
+    </ul>
+
+    
+    
+  </section>
+</nav>
+ </header>
+  <main>
+
+<article style="display: flex; flex-direction: row;">
+
+  
+  <nav id="main-toc">
+    <section class="inner-toc">
+      <span class="label big" style="margin-bottom: 1.5rem;">Version 1.0.0-prerelease.34</span>
+
+      <h3><a href="https://www.patternfly.org/patternfly-elements/getting-started">Getting Started</a></h3>
+      <ul>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/getting-started/component-status/" title="What&#39;s available?">
+              What&#39;s available?
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/getting-started/browser-support/" title="Browser Support">
+              Browser Support
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/getting-started/framework-support/" title="Framework Support">
+              Framework Support
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/templates/" title="Templates &amp; slots">
+              Templates &amp; slots
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/getting-started/polyfills/" title="Polyfills">
+              Polyfills
+            </a>
+          </li>
+        
+      </ul>
+      <h3><a href="https://www.patternfly.org/patternfly-elements/develop">Develop</a></h3>
+      <ul>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-1a/" title="Setup">
+              Setup
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-1b/" title="Create a PatternFly Element">
+              Create a PatternFly Element
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/javascript/" title="JavaScript">
+              JavaScript
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-2a/" title="Develop a Structure">
+              Develop a Structure
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-2b/" title="Write your HTML">
+              Write your HTML
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-2c/" title="Write your CSS (or Sass)">
+              Write your CSS (or Sass)
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-2d/" title="Integrate your JavaScript">
+              Integrate your JavaScript
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-3/" title="Write tests">
+              Write tests
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-4/" title="Pull requests">
+              Pull requests
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-5/" title="Publishing Releases">
+              Publishing Releases
+            </a>
+          </li>
+        
+      </ul>
+      <h3><a href="https://www.patternfly.org/patternfly-elements/theme">Theme</a></h3>
+      <ul>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/theme/pfe-color-palette/" title="Color palette">
+              Color palette
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/theme/pfe-layouts/" title="Layouts">
+              Layouts
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/theme/pfe-theme-slots/" title="Theming Slots">
+              Theming Slots
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/theme/pfe_dynamic_templates/" title="Dynamic HTML Templates">
+              Dynamic HTML Templates
+            </a>
+          </li>
+        
+      </ul>
+
+      <h3>Site Info</h3>
+      <ul>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/site-info/code-of-conduct/" title="Code of conduct">
+              Code of conduct
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/site-info/community/" title="Join the Community">
+              Join the Community
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/site-info/get-help/" title="Get Help">
+              Get Help
+            </a>
+          </li>
+        
+      </ul>
+
+      
+      
+    </section>
+  </nav>
+
+  <section id="content" style="">
+    <header class="page-header">
+      <h1> Integrate your JavaScript</h1>
+      <p></p>
+    </header>
+
+    <ul id="posts">
+
+     
+
+<p>In this step, we will:</p>
+
+<ol>
+<li>Add a click listener to the follow button</li>
+<li>Set a follow state on element</li>
+<li>Add a the profile photo</li>
+<li>Properly disconnect our element</li>
+</ol>
+
+<p>First, we&rsquo;ll go ahead and listen for click events on the button. The best place to add a click listener is in the constructor, according to the W3C Custom Elements draft section called <a href="https://w3c.github.io/webcomponents/spec/custom/#custom-element-conformance">&ldquo;2.2 Requirements for custom element constructors&rdquo;</a>:</p>
+
+<blockquote>
+<p>In general, the constructor is responsible for setting the initial state, default values, event listeners, and a shadow root.</p>
+</blockquote>
+
+<p>Since our base PFElement that we extended already sets up a shadow root, all we&rsquo;ll need to do is set up an event listener.</p>
+
+<pre><code>import PFElement from &quot;../pfelement/dist/pfelement.js&quot;;
+
+class PfeCoolElement extends PFElement {
+  static get tag() {
+    return &quot;pfe-cool-element&quot;;
+  }
+
+  get templateUrl() {
+    return &quot;pfe-cool-element.html&quot;;
+  }
+
+  get styleUrl() {
+    return &quot;pfe-cool-element.scss&quot;;
+  }
+
+  constructor() {
+    super(PfeCoolElement);
+
+    this.button = this.shadowRoot.querySelector(&quot;button&quot;);
+    this.button.addEventListener(&quot;click&quot;, this._clickHandler);
+  }
+
+  _clickHandler(evt) {
+    console.log(&quot;Button clicked!!!&quot;);
+  }
+}
+
+PFElement.create(PfeCoolElement);
+
+export default PfeCoolElement;
+</code></pre>
+
+<p>In the constructor, we ran <code>querySelector</code> on our <code>shadowRoot</code> to locate the button and added a click listener <code>this._clickHandler</code> to capture the event.</p>
+
+<p>Please note the underscore before the method name. This is a convention you&rsquo;ll notice in other custom elements where the author is trying to signal that it&rsquo;s meant as a private method.</p>
+
+<p>After saving your files, the demo page will refresh and you&rsquo;ll notice the start of your button interactivity.</p>
+
+<p><img src="https://www.patternfly.org/patternfly-elements/demo-page-js-click-setup-step.png" alt="demo page js click setup step" /></p>
+
+<p>Now that the click handler is set up, let&rsquo;s set a following state to keep track of whether or not you&rsquo;re following that user.</p>
+
+<p>We&rsquo;ll update the <code>constructor</code> like so:</p>
+
+<pre><code>constructor() {
+  super(PfeCoolElement);
+
+  this.following = false;
+  this._clickHandler = this._clickHandler.bind(this);
+
+  this.button = this.shadowRoot.querySelector(&quot;button&quot;);
+  this.button.addEventListener(&quot;click&quot;, this._clickHandler);
+}
+</code></pre>
+
+<p>We did a couple things here. First, we set the state of <code>pfe-following</code> to false on our element and then we bound <code>this</code> to our click handler to continue using <code>this</code> to refer to our element in the <code>_clickHandler</code>.</p>
+
+<h2 id="getter-setter-and-element-state">Getter, Setter, and Element State</h2>
+
+<p>Next, we&rsquo;ll need to create a getter and a setter for the <code>following</code> property of our element. The setter helps us reflect the state of following to an attribute on <code>pfe-cool-element</code>, and the getter provides us with the value of that attribute.</p>
+
+<p>Let&rsquo;s use <code>following</code> as an attribute:</p>
+
+<pre><code>set following(value) {
+  const isFollowing = Boolean(value);
+
+  if (isFollowing) {
+    this.setAttribute(&quot;pfe-following&quot;, &quot;&quot;);
+  } else {
+    this.removeAttribute(&quot;pfe-following&quot;);
+  }
+}
+
+get following() {
+  return this.hasAttribute(&quot;pfe-following&quot;);
+}
+</code></pre>
+
+<p>Now that our getter and setter is wired up, we can update the <code>_clickHandler</code> method to toggle the following state.</p>
+
+<pre><code>_clickHandler() {
+  this.following = !this.following;
+}
+</code></pre>
+
+<p>When we click the follow button now, you&rsquo;ll notice the <code>following</code> attribute set and unset as we toggle the button.</p>
+
+<p><img src="https://www.patternfly.org/patternfly-elements/demo-page-js-attribute-change-step.png" alt="demo page js attribute changed step" /></p>
+
+<h2 id="observed-attributes">Observed Attributes</h2>
+
+<p>Let&rsquo;s add one more thing with the follow state. We should update the button&rsquo;s text to &ldquo;Unfollow&rdquo; when <code>this.following</code> is true and to &ldquo;Follow&rdquo; when <code>this.following</code> is false. Observing attributes is an easy way to tell a custom element to perform an action when an attribute changes. In this case, we keep an eye on the <code>following</code> attribute for changes, and when it does, we&rsquo;ll update the button&rsquo;s text.</p>
+
+<p>To observe an attribute, add this code to the top of your class:</p>
+
+<pre><code>static get observedAttributes() {
+  return [&quot;following&quot;];
+}
+</code></pre>
+
+<p><code>observedAttributes</code> returns an array of attributes you want observed. To react to a change, we&rsquo;ll need to set up the <code>attributeChangedCallback</code> method.</p>
+
+<pre><code>attributeChangedCallback(name, oldValue, newValue) {
+  switch (name) {
+    case &quot;pfe-following&quot;:
+      this.button.textContent = this.following ? &quot;Unfollow&quot; : &quot;Follow&quot;;
+      break;
+  }
+}
+</code></pre>
+
+<p>If the changed attribute is <code>pfe-following</code>, the button text will update based on our conditional. Pretty straightforward, right? Now our button completely reflects the state of <code>pfe-following</code> with everything wired up.</p>
+
+<p>The UI will look like this when we click the follow button:</p>
+
+<p><img src="https://www.patternfly.org/patternfly-elements/demo-page-js-follow-attribute-changed-step.png" alt="demo page js attribute changed step" /></p>
+
+<p>Next, we add a <code>pfe-photo-url</code> attribute to pass in a profile image. Once again, we&rsquo;ll use the <code>observedAttributes</code> and the <code>attributeChangedCallback</code> to handle the work. We can add a profile image with only a few updates!</p>
+
+<p>Initially, we&rsquo;ll need to include a reference to <code>#profile-pic</code> in the constructor by setting <code>this.profilePic</code>.</p>
+
+<pre><code>constructor() {
+  super(PfeCoolElement);
+
+  this.following = false;
+  this._clickHandler = this._clickHandler.bind(this);
+
+  this.button = this.shadowRoot.querySelector(&quot;button&quot;);
+  this.button.addEventListener(&quot;click&quot;, this._clickHandler);
+
+  this.profilePic = this.shadowRoot.querySelector(&quot;#profile-pic&quot;);
+}
+</code></pre>
+
+<p>Now, we&rsquo;ll add the <code>pfe-photo-url</code> attribute to our <code>observedAttributes</code>:</p>
+
+<pre><code>static get observedAttributes() {
+  return [&quot;pfe-following&quot;, &quot;pfe-photo-url&quot;];
+}
+</code></pre>
+
+<p>Now we can update our <code>attributeChangedCallback</code> to set the image:</p>
+
+<pre><code>attributeChangedCallback(name, oldValue, newValue) {
+  switch (name) {
+    case &quot;pfe-following&quot;:
+      this.button.textContent = this.following ? &quot;Unfollow&quot; : &quot;Follow&quot;;
+      break;
+
+    case &quot;pfe-photo-url&quot;:
+      this.profilePic.style.backgroundImage = `url(${newValue})`;
+      break;
+  }
+}
+</code></pre>
+
+<p>Finally, we&rsquo;ll need to update our demo page (<code>/demo/index.html</code>) to include the <code>pfe-photo-url</code> attribute. Pass in an image URL to see that it&rsquo;s working.</p>
+
+<pre><code>&lt;pfe-cool-element pfe-photo-url=&quot;https://avatars2.githubusercontent.com/u/330256?s=400&amp;u=de56919e816dc9f821469c2f86174f29141a896e&amp;v=4&quot;&gt;
+  Kyle Buchanan
+&lt;/pfe-cool-element&gt;
+</code></pre>
+
+<p>We can also modify <code>/src/pfe-cool-element.scss</code> to adjust the background-size property on <code>#profile-pic</code>:</p>
+
+<pre><code>#profile-pic {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 16px;
+  border: 2px solid #333;
+  border-radius: 50%;
+  background-color: #efefef;
+  background-size: contain;
+}
+</code></pre>
+
+<p>The final result should look like this:</p>
+
+<p><img src="https://www.patternfly.org/patternfly-elements/demo-page-js-profile-pic-step.png" alt="demo page js profile pic step" /></p>
+
+<p>Great! You&rsquo;re almost there.</p>
+
+<h2 id="disconnected-callback">Disconnected Callback</h2>
+
+<p>It&rsquo;s a good idea to clean up your event listeners after a web component is disconnected. The lifecycle callback that runs on web components is the <code>disconnectedCallback</code>, ideal for cleaning up our code. For this example, all we&rsquo;ll need to do is remove the click listener we added to the follow button.</p>
+
+<pre><code>disconnectedCallback() {
+  this.button.removeEventListener(&quot;click&quot;, this._clickHandler);
+}
+</code></pre>
+
+<h2 id="wrap-up">Wrap-up</h2>
+
+<p>That&rsquo;s all it takes, folks! To summarize, we built a web component that extends our base element, and added some HTML, custom styles, and interactivity to our component. What&rsquo;s cool is that we&rsquo;ve only scratched the surface of what&rsquo;s possible with custom elements.</p>
+
+<p>For your reference, here&rsquo;s the final Javascript code for <code>pfe-cool-element</code>:</p>
+
+<pre><code>import PFElement from &quot;../pfelement/dist/pfelement.js&quot;;
+
+class PfeCoolElement extends PFElement {
+  static get tag() {
+    return &quot;pfe-cool-element&quot;;
+  }
+
+  get templateUrl() {
+    return &quot;pfe-cool-element.html&quot;;
+  }
+
+  get styleUrl() {
+    return &quot;pfe-cool-element.scss&quot;;
+  }
+
+  set following(value) {
+    const isFollowing = Boolean(value);
+
+    if (isFollowing) {
+      this.setAttribute(&quot;pfe-following&quot;, &quot;&quot;);
+    } else {
+      this.removeAttribute(&quot;pfe-following&quot;);
+    }
+  }
+
+  get following() {
+    return this.hasAttribute(&quot;pfe-following&quot;);
+  }
+
+  static get observedAttributes() {
+    return [&quot;pfe-following&quot;, &quot;pfe-photo-url&quot;];
+  }
+
+  constructor() {
+    super(PfeCoolElement);
+
+    this.following = false;
+    this._clickHandler = this._clickHandler.bind(this);
+
+    this.button = this.shadowRoot.querySelector(&quot;button&quot;);
+    this.button.addEventListener(&quot;click&quot;, this._clickHandler);
+
+    this.profilePic = this.shadowRoot.querySelector(&quot;#profile-pic&quot;);
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    switch (name) {
+      case &quot;pfe-following&quot;:
+        this.button.textContent = this.following ? &quot;Unfollow&quot; : &quot;Follow&quot;;
+        break;
+
+      case &quot;pfe-photo-url&quot;:
+        this.profilePic.style.backgroundImage = `url(${newValue})`;
+        break;
+    }
+  }
+
+  disconnectedCallback() {
+    this.button.removeEventListener(&quot;click&quot;, this._clickHandler);
+  }
+
+  _clickHandler(evt) {
+    this.following = !this.following;
+  }
+}
+
+PFElement.create(PfeCoolElement);
+
+export default PfeCoolElement;
+</code></pre>
+
+<p>Now that our code works, we should create tests to ensure our element works as we iterate on it in the future.</p>
+
+<p><a href="../step-3">Move to Step 3: Test</a></p>
+
+
+    </ul>
+
+  </section>
+
+  <aside class="page-toc">
+    <h3>Page Contents</h3>
+    
+
+<div class="js-toc">
+  
+</div>
+
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded",
+function(){
+tocbot.init({
+
+tocSelector: '.js-toc',
+
+contentSelector: '#posts',
+
+headingSelector: 'h2'
+})
+}
+);
+</script>
+
+
+  </aside>
+</article>
+
+</main>
+  <footer>
+  
+
+<nav>
+  <ul>
+    <li><span>PatternFly Elements Documentation</span></li>
+    <li>
+      <a href="https://www.patternfly.org/patternfly-elements/getting-started">Getting Started</a>
+    </li>
+    <li>
+      <a href="https://www.patternfly.org/patternfly-elements/develop">Develop</a>
+    </li>
+      <li>
+      <a href="https://www.patternfly.org/patternfly-elements/theme">Theme</a>
+    </li>
+    <li>
+      <a href="https://www.patternfly.org/patternfly-elements/community">Community</a>
+    </li>
+  </ul>
+</nav>
+<small>&copy; Licence MIT.</small>
+</footer>
+
+
+  <script src="https://www.patternfly.org/patternfly-elements/js/kube.min.js" type="text/javascript">
+  </script>
+  
+</body>
+
+</html>

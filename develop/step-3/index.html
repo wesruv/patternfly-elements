@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta name="generator" content="Hugo 0.53" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Write tests </title>
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  <meta name="author" content="PatternFly Elements">
+
+
+  <meta property="og:title" content="Write tests" />
+<meta property="og:description" content="Let&rsquo;s write a test for the pfe-cool-element.
+We rely on a few tools to ensure our element is reliable in production:
+ Web Component Tester, built and maintained by the Polymer team, makes testing easy. All we have to do is add the element&rsquo;s HTML to a file and set up our suite of tests. We&rsquo;ll use the Chai Assertion Library to make sure our tests pass since Mocha and Chai are both included in Web Component Tester." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.patternfly.org/patternfly-elements/develop/step-3/" />
+
+  
+
+
+
+
+  
+  
+  
+  
+
+  <link rel="canonical" href="https://www.patternfly.org/patternfly-elements/develop/step-3/">  
+
+  <link rel="icon" href="https://www.patternfly.org/patternfly-elements/img/favicons/favicon.png" type="image/png">
+<link rel="shortcut icon" href="https://www.patternfly.org/patternfly-elements/img/favicons/favicon.png">
+
+
+  <link href="https://www.patternfly.org/patternfly-elements/css/font.css" rel="stylesheet" type="text/css">
+  <link href="https://www.patternfly.org/patternfly-elements/css/kube.min.css" rel="stylesheet" type="text/css">
+  <link href="https://www.patternfly.org/patternfly-elements/css/kube.legenda.css" rel="stylesheet" type="text/css">
+  <link href="https://www.patternfly.org/patternfly-elements/css/highlight.css" rel="stylesheet" type="text/css">
+  <link href="https://www.patternfly.org/patternfly-elements/css/master.css" rel="stylesheet" type="text/css">
+  <link href="https://www.patternfly.org/patternfly-elements/css/kube.demo.css" rel="stylesheet" type="text/css">
+
+  
+  
+  <link rel="stylesheet" href="https://www.patternfly.org/patternfly-elements/src/sass/kube.min.aa04947625c64fd050c88d1964d38109bb34a6aa0706f9018c55536d9dfe13fe.css">
+
+
+
+  <script src="https://www.patternfly.org/patternfly-elements/js/jquery-2.1.4.min.js" type="text/javascript">
+  </script>
+
+  <script type="text/javascript" src="https://www.patternfly.org/patternfly-elements/js/tocbot.min.js"></script>
+</head>
+
+
+<body class="page-kube">
+  <header> 
+<div class="show-sm" id="top-sm">
+  <div id="nav-toggle-box">
+    <div id="nav-toggle-brand">
+      <section id="top-brand-sm">
+        <a href="https://www.patternfly.org/patternfly-elements/" title="home"><span>PatternFly</span>Elements</a>
+      </section>
+    </div>
+    <a data-component="offcanvas" data-target="#mobile-toc" href="#" id="nav-toggle"><i class="kube-menu"></i></a>
+  </div>
+</div>
+<div class="hide-sm" id="top">
+  <section id="top-brand">
+    <a href="https://www.patternfly.org/patternfly-elements/" title="home"><span>PatternFly</span>Elements</a>
+  </section>
+  <nav id="top-nav-main">
+    <ul>
+      
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/getting-started/" >Getting Started</a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/" >Develop</a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/theme/" >Theme</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav id="top-nav-extra">
+    <ul>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/site-info/community">Community</a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/site-info/get-help">Help</a>
+        </li>
+      
+    </ul>
+  </nav>
+</div>
+
+
+<nav id="mobile-toc" class="hide">
+  <section class="inner-toc">
+    <span class="label big" style="margin-bottom: 1.5rem;">Version 1.0.0-prerelease.34</span>
+
+    <h3><a href="https://www.patternfly.org/patternfly-elements/getting-started">Getting Started</a></h3>
+    <ul>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/getting-started/component-status/" title="What&#39;s available?">
+            What&#39;s available?
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/getting-started/browser-support/" title="Browser Support">
+            Browser Support
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/getting-started/framework-support/" title="Framework Support">
+            Framework Support
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/templates/" title="Templates &amp; slots">
+            Templates &amp; slots
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/getting-started/polyfills/" title="Polyfills">
+            Polyfills
+          </a>
+        </li>
+      
+    </ul>
+    <h3><a href="https://www.patternfly.org/patternfly-elements/develop">Develop</a></h3>
+    <ul>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-1a/" title="Setup">
+            Setup
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-1b/" title="Create a PatternFly Element">
+            Create a PatternFly Element
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/javascript/" title="JavaScript">
+            JavaScript
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-2a/" title="Develop a Structure">
+            Develop a Structure
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-2b/" title="Write your HTML">
+            Write your HTML
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-2c/" title="Write your CSS (or Sass)">
+            Write your CSS (or Sass)
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-2d/" title="Integrate your JavaScript">
+            Integrate your JavaScript
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-3/" title="Write tests">
+            Write tests
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-4/" title="Pull requests">
+            Pull requests
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-5/" title="Publishing Releases">
+            Publishing Releases
+          </a>
+        </li>
+      
+    </ul>
+    <h3><a href="https://www.patternfly.org/patternfly-elements/theme">Theme</a></h3>
+    <ul>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/theme/pfe-color-palette/" title="Color palette">
+            Color palette
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/theme/pfe-layouts/" title="Layouts">
+            Layouts
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/theme/pfe-theme-slots/" title="Theming Slots">
+            Theming Slots
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/theme/pfe_dynamic_templates/" title="Dynamic HTML Templates">
+            Dynamic HTML Templates
+          </a>
+        </li>
+      
+    </ul>
+
+    <h3>Site Info</h3>
+    <ul>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/site-info/code-of-conduct/" title="Code of conduct">
+            Code of conduct
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/site-info/community/" title="Join the Community">
+            Join the Community
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/site-info/get-help/" title="Get Help">
+            Get Help
+          </a>
+        </li>
+      
+    </ul>
+
+    
+    
+  </section>
+</nav>
+ </header>
+  <main>
+
+<article style="display: flex; flex-direction: row;">
+
+  
+  <nav id="main-toc">
+    <section class="inner-toc">
+      <span class="label big" style="margin-bottom: 1.5rem;">Version 1.0.0-prerelease.34</span>
+
+      <h3><a href="https://www.patternfly.org/patternfly-elements/getting-started">Getting Started</a></h3>
+      <ul>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/getting-started/component-status/" title="What&#39;s available?">
+              What&#39;s available?
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/getting-started/browser-support/" title="Browser Support">
+              Browser Support
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/getting-started/framework-support/" title="Framework Support">
+              Framework Support
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/templates/" title="Templates &amp; slots">
+              Templates &amp; slots
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/getting-started/polyfills/" title="Polyfills">
+              Polyfills
+            </a>
+          </li>
+        
+      </ul>
+      <h3><a href="https://www.patternfly.org/patternfly-elements/develop">Develop</a></h3>
+      <ul>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-1a/" title="Setup">
+              Setup
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-1b/" title="Create a PatternFly Element">
+              Create a PatternFly Element
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/javascript/" title="JavaScript">
+              JavaScript
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-2a/" title="Develop a Structure">
+              Develop a Structure
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-2b/" title="Write your HTML">
+              Write your HTML
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-2c/" title="Write your CSS (or Sass)">
+              Write your CSS (or Sass)
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-2d/" title="Integrate your JavaScript">
+              Integrate your JavaScript
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-3/" title="Write tests">
+              Write tests
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-4/" title="Pull requests">
+              Pull requests
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-5/" title="Publishing Releases">
+              Publishing Releases
+            </a>
+          </li>
+        
+      </ul>
+      <h3><a href="https://www.patternfly.org/patternfly-elements/theme">Theme</a></h3>
+      <ul>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/theme/pfe-color-palette/" title="Color palette">
+              Color palette
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/theme/pfe-layouts/" title="Layouts">
+              Layouts
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/theme/pfe-theme-slots/" title="Theming Slots">
+              Theming Slots
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/theme/pfe_dynamic_templates/" title="Dynamic HTML Templates">
+              Dynamic HTML Templates
+            </a>
+          </li>
+        
+      </ul>
+
+      <h3>Site Info</h3>
+      <ul>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/site-info/code-of-conduct/" title="Code of conduct">
+              Code of conduct
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/site-info/community/" title="Join the Community">
+              Join the Community
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/site-info/get-help/" title="Get Help">
+              Get Help
+            </a>
+          </li>
+        
+      </ul>
+
+      
+      
+    </section>
+  </nav>
+
+  <section id="content" style="">
+    <header class="page-header">
+      <h1> Write tests</h1>
+      <p></p>
+    </header>
+
+    <ul id="posts">
+
+     
+
+<p>Let&rsquo;s write a test for the <code>pfe-cool-element</code>.</p>
+
+<p>We rely on a few tools to ensure our element is reliable in production:</p>
+
+<ol>
+<li><a href="https://github.com/Polymer/web-component-tester">Web Component Tester</a>, built and maintained by the Polymer team, makes testing easy. All we have to do is add the element&rsquo;s HTML to a file and set up our suite of tests.</li>
+<li>We&rsquo;ll use the <a href="http://chaijs.com/api/assert/">Chai Assertion Library</a> to make sure our tests pass since Mocha and Chai are both included in Web Component Tester.</li>
+<li>Finally, we integrate tests with <a href="https://travis-ci.org">Travis CI</a>.</li>
+</ol>
+
+<h2 id="web-component-tester">Web Component Tester</h2>
+
+<p>If you followed the <a href="{{ &quot;/docs/get-started.html#prerequisites&quot; | relative_url }}">Prerequisites</a> in <a href="{{ &quot;/docs/get-started.html&quot; | relative_url }}">Getting Started</a>, your setup should already be done.</p>
+
+<h3 id="test-setup">Test Setup</h3>
+
+<p>In the root of the element, there&rsquo;s a <code>/test</code> directory with an <code>index.html</code> and a <code>pfe-cool-element_test.html</code> file. The <code>index.html</code> file tells Web Component Tester which files to test.</p>
+
+<p>For this example, <code>pfe-cool-element_test.html</code> is the only file.</p>
+
+<pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes&quot;&gt;
+    &lt;script src=&quot;/components/web-component-tester/browser.js&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;script&gt;
+      // Load and run all tests (.html, .js):
+      WCT.loadSuites([
+        'pfe-cool-element_test.html'
+      ]);
+    &lt;/script&gt;
+
+&lt;/body&gt;&lt;/html&gt;
+</code></pre>
+
+<p>We&rsquo;ve included the web component polyfill and <code>wct-browser-legacy/browser.js</code> in the <code>/test/index.html</code> file. We need <code>wct-browser-legacy/browser.js</code> because Web Component Tester looks for web components loaded from a <code>bower_components</code> directory. However, our web components are installed via npm and served from a <code>node_modules</code> directory, meaning that we&rsquo;re required to use <code>wct-browser-legacy</code> (Reference to the <a href="https://github.com/Polymer/web-component-tester#node-support">Node support section of the Web Component Tester README</a>).</p>
+
+<p>The setup for <code>/test/pfe-cool-element_test.html</code> is pretty simple.</p>
+
+<p>We&rsquo;ll add four stubs for the functionality we need to test:</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes&quot;&gt;
+    &lt;script src=&quot;/components/@webcomponents/webcomponentsjs/webcomponents-bundle.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;/components/web-component-tester/browser.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;module&quot; src=&quot;../pfe-cool-element.js&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+
+    &lt;pfe-cool-element pfe-photo-url=&quot;https://avatars2.githubusercontent.com/u/330256?s=400&amp;u=de56919e816dc9f821469c2f86174f29141a896e&amp;v=4&quot;&gt;
+      Kyle Buchanan
+    &lt;/pfe-cool-element&gt;
+
+    &lt;script&gt;
+      suite('&lt;pfe-cool-element&gt;', () =&gt; {
+        test('it should upgrade', () =&gt; {
+          const pfeCoolElement = document.querySelector('pfe-cool-element');
+          assert.instanceOf(pfeCoolElement, customElements.get(&quot;pfe-cool-element&quot;, 'pfe-cool-element should be an instance of pfeCoolElement'));
+        });
+
+        test('it should set a username from the light DOM', () =&gt; {
+
+        });
+
+        test('it should allow a user to follow a profile', () =&gt; {
+
+        });
+
+        test('it should set the state to follow if the following attribute is present', () =&gt; {
+
+        });
+
+        test('it should set a profile pic from the photo-url attribute', () =&gt; {
+
+        });
+      });
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>Note that we using <code>&lt;script type=&quot;module&quot;...</code> to load our element definition to make sure we&rsquo;re testing the true source of our element instead of the transpiled version. You&rsquo;ll also notice the HTML included to set up our tests. This is the same HTML from our <code>/demo/index.html</code> file.</p>
+
+<p>Lastly, there&rsquo;s one additional piece that can help us test thoroughly. In the root of the PatternFly Elements repo, locate the <code>wct.conf.json</code> file.</p>
+
+<p>We&rsquo;ll use this to tell Web Component Tester to test in Chrome:</p>
+
+<pre><code>{
+  &quot;verbose&quot;: false,
+  &quot;npm&quot;: true,
+  &quot;plugins&quot;: {
+    &quot;local&quot;: {
+      &quot;browsers&quot;: [&quot;chrome&quot;],
+      &quot;browserOptions&quot;: {
+        &quot;chrome&quot;: [&quot;headless&quot;, &quot;disable-gpu&quot;, &quot;no-sandbox&quot;]
+      }
+    }
+  }
+}
+</code></pre>
+
+<p>Now that our setup is complete, we can start building our tests.</p>
+
+<h3 id="test-cases">Test Cases</h3>
+
+<p>Let&rsquo;s build out the &lsquo;pfe-cool-element&rsquo; test suites. We&rsquo;ll use <code>document.querySelector</code> to grab our element and include DOM API methods to interact with what we&rsquo;re testing.</p>
+
+<p>Here is the code:</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes&quot;&gt;
+    &lt;script src=&quot;/components/@webcomponents/webcomponentsjs/webcomponents-bundle.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;/components/web-component-tester/browser.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;module&quot; src=&quot;../pfe-cool-element.js&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+
+    &lt;pfe-cool-element pfe-photo-url=&quot;https://avatars2.githubusercontent.com/u/330256?s=400&amp;u=de56919e816dc9f821469c2f86174f29141a896e&amp;v=4&quot;&gt;
+      Kyle Buchanan
+    &lt;/pfe-cool-element&gt;
+
+    &lt;script&gt;
+      suite('&lt;pfe-cool-element&gt;', () =&gt; {
+        test('it should upgrade', () =&gt; {
+          const pfeCoolElement = document.querySelector('pfe-cool-element');
+          assert.instanceOf(pfeCoolElement, customElements.get(&quot;pfe-cool-element&quot;, 'pfe-cool-element should be an instance of pfeCoolElement'));
+        });
+
+        test('it should set a username from the light DOM', () =&gt; {
+          const element = document.querySelector('pfe-cool-element');
+          const elementLightDOMContent = element.textContent.trim();
+          const shadowRoot = element.shadowRoot;
+          const slotContent = shadowRoot.querySelector('slot').assignedNodes()[0].textContent.trim();
+
+          assert.equal(slotContent, elementLightDOMContent);
+        });
+
+        test('it should allow a user to follow a profile', () =&gt; {
+          const element = document.querySelector('pfe-cool-element');
+          element.button.click();
+
+          assert.isTrue(element.hasAttribute('pfe-following'));
+          assert.equal(element.button.textContent, 'Unfollow');
+
+          element.button.click();
+
+          assert.isNotTrue(element.hasAttribute('pfe-following'));
+          assert.equal(element.button.textContent, 'Follow');
+        });
+
+        test('it should set the state to follow if the following attribute is present', () =&gt; {
+          const element = document.querySelector('pfe-cool-element');
+          element.setAttribute('pfe-following', '');
+
+          assert.isTrue(element.hasAttribute('pfe-following'));
+          assert.equal(element.button.textContent, 'Unfollow');
+
+          element.removeAttribute('pfe-following');
+
+          assert.isNotTrue(element.hasAttribute('pfe-following'));
+          assert.equal(element.button.textContent, 'Follow');
+        });
+
+        test('it should set a profile pic from the photo-url attribute', () =&gt; {
+          const element = document.querySelector('pfe-cool-element');
+          const photoUrlAttribute = element.getAttribute('pfe-photo-url');
+          const shadowRoot = element.shadowRoot;
+          const profilePicContainer = shadowRoot.querySelector('#profile-pic');
+          const backgroundImage = profilePicContainer.style.backgroundImage.slice(5, -2);
+
+          assert.equal(photoUrlAttribute, backgroundImage);
+        });
+      });
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>You may notice we&rsquo;re accessing the <code>shadowRoot</code> here, available to our element by extending <code>PFElement</code> in the definition of our element. You can also access content in the <code>&lt;slot&gt;&lt;/slot&gt;</code> of your element by using the <code>assignedNodes()</code> method.</p>
+
+<p>We use a slot for the username in <code>pfe-cool-element</code>, making it available to us in the array returned by <code>assignedNodes()</code>.</p>
+
+<pre><code>shadowRoot.querySelector('slot').assignedNodes()[0].textContent.trim();
+</code></pre>
+
+<h3 id="run-the-test">Run the Test</h3>
+
+<p>Lastly, we can run the test command below to see how we did.</p>
+
+<pre><code>npm test
+</code></pre>
+
+<p>Here is the command line output:</p>
+
+<p><img src="https://www.patternfly.org/patternfly-elements/test-output.png" alt="test output" /></p>
+
+<p>Nice! All four tests are working in Chrome.</p>
+
+<h2 id="travis-integration">Travis Integration</h2>
+
+<p>That&rsquo;s it for testing, but you can also set up continuous integration on <a href="https://travis-ci.org">Travis CI</a> to run tests for every push to your repository to keep track of future updates.</p>
+
+<p>Now that we&rsquo;ve created our <code>pfe-cool-element</code> and all of our code passes, the final step is to publish and share your component on npm!</p>
+
+<p><a href="../step-4">Move to Step 4: Opening a Pull request</a></p>
+
+
+    </ul>
+
+  </section>
+
+  <aside class="page-toc">
+    <h3>Page Contents</h3>
+    
+
+<div class="js-toc">
+  
+</div>
+
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded",
+function(){
+tocbot.init({
+
+tocSelector: '.js-toc',
+
+contentSelector: '#posts',
+
+headingSelector: 'h2'
+})
+}
+);
+</script>
+
+
+  </aside>
+</article>
+
+</main>
+  <footer>
+  
+
+<nav>
+  <ul>
+    <li><span>PatternFly Elements Documentation</span></li>
+    <li>
+      <a href="https://www.patternfly.org/patternfly-elements/getting-started">Getting Started</a>
+    </li>
+    <li>
+      <a href="https://www.patternfly.org/patternfly-elements/develop">Develop</a>
+    </li>
+      <li>
+      <a href="https://www.patternfly.org/patternfly-elements/theme">Theme</a>
+    </li>
+    <li>
+      <a href="https://www.patternfly.org/patternfly-elements/community">Community</a>
+    </li>
+  </ul>
+</nav>
+<small>&copy; Licence MIT.</small>
+</footer>
+
+
+  <script src="https://www.patternfly.org/patternfly-elements/js/kube.min.js" type="text/javascript">
+  </script>
+  
+</body>
+
+</html>

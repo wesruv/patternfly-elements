@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://www.patternfly.org/patternfly-elements/develop/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.patternfly.org/patternfly-elements/getting-started/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.patternfly.org/patternfly-elements/theme/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.patternfly.org/patternfly-elements/getting-started/component-status/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.patternfly.org/patternfly-elements/getting-started/browser-support/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.patternfly.org/patternfly-elements/site-info/code-of-conduct/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.patternfly.org/patternfly-elements/develop/step-1a/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.patternfly.org/patternfly-elements/theme/pfe-color-palette/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.patternfly.org/patternfly-elements/develop/step-1b/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.patternfly.org/patternfly-elements/getting-started/framework-support/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.patternfly.org/patternfly-elements/develop/javascript/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.patternfly.org/patternfly-elements/site-info/community/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.patternfly.org/patternfly-elements/develop/templates/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.patternfly.org/patternfly-elements/develop/step-2a/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.patternfly.org/patternfly-elements/site-info/get-help/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.patternfly.org/patternfly-elements/theme/pfe-layouts/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.patternfly.org/patternfly-elements/getting-started/polyfills/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.patternfly.org/patternfly-elements/theme/pfe-theme-slots/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.patternfly.org/patternfly-elements/develop/step-2b/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.patternfly.org/patternfly-elements/theme/pfe_dynamic_templates/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.patternfly.org/patternfly-elements/develop/step-2c/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.patternfly.org/patternfly-elements/develop/step-2d/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.patternfly.org/patternfly-elements/develop/step-3/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.patternfly.org/patternfly-elements/develop/step-4/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.patternfly.org/patternfly-elements/develop/step-5/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.patternfly.org/patternfly-elements/</loc>
+    <lastmod>2018-08-31T14:02:31-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.patternfly.org/patternfly-elements/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.patternfly.org/patternfly-elements/tags/develop/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.patternfly.org/patternfly-elements/tags/info/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.patternfly.org/patternfly-elements/site-info/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.patternfly.org/patternfly-elements/tags/start/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.patternfly.org/patternfly-elements/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.patternfly.org/patternfly-elements/tags/theme/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

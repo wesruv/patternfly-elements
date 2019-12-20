@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta name="generator" content="Hugo 0.53" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Theming Slots </title>
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  <meta name="author" content="PatternFly Elements">
+
+
+  <meta property="og:title" content="Theming Slots" />
+<meta property="og:description" content="Slot basics Vocab tip: Elements that can be inserted into slots are known as slotable; when an element has been inserted in a slot, it is said to be slotted.
+At first glace, there seem to be lots of &ldquo;gotchas&rdquo; related to web components, and a lot of documentation. Here’s a simplified guide with some basic code examples.
+ Slots are places to pass content or markup into specific regions within your web component template." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.patternfly.org/patternfly-elements/theme/pfe-theme-slots/" />
+
+  
+
+
+
+
+  
+  
+  
+  
+
+  <link rel="canonical" href="https://www.patternfly.org/patternfly-elements/theme/pfe-theme-slots/">  
+
+  <link rel="icon" href="https://www.patternfly.org/patternfly-elements/img/favicons/favicon.png" type="image/png">
+<link rel="shortcut icon" href="https://www.patternfly.org/patternfly-elements/img/favicons/favicon.png">
+
+
+  <link href="https://www.patternfly.org/patternfly-elements/css/font.css" rel="stylesheet" type="text/css">
+  <link href="https://www.patternfly.org/patternfly-elements/css/kube.min.css" rel="stylesheet" type="text/css">
+  <link href="https://www.patternfly.org/patternfly-elements/css/kube.legenda.css" rel="stylesheet" type="text/css">
+  <link href="https://www.patternfly.org/patternfly-elements/css/highlight.css" rel="stylesheet" type="text/css">
+  <link href="https://www.patternfly.org/patternfly-elements/css/master.css" rel="stylesheet" type="text/css">
+  <link href="https://www.patternfly.org/patternfly-elements/css/kube.demo.css" rel="stylesheet" type="text/css">
+
+  
+  
+  <link rel="stylesheet" href="https://www.patternfly.org/patternfly-elements/src/sass/kube.min.aa04947625c64fd050c88d1964d38109bb34a6aa0706f9018c55536d9dfe13fe.css">
+
+
+
+  <script src="https://www.patternfly.org/patternfly-elements/js/jquery-2.1.4.min.js" type="text/javascript">
+  </script>
+
+  <script type="text/javascript" src="https://www.patternfly.org/patternfly-elements/js/tocbot.min.js"></script>
+</head>
+
+
+<body class="page-kube">
+  <header> 
+<div class="show-sm" id="top-sm">
+  <div id="nav-toggle-box">
+    <div id="nav-toggle-brand">
+      <section id="top-brand-sm">
+        <a href="https://www.patternfly.org/patternfly-elements/" title="home"><span>PatternFly</span>Elements</a>
+      </section>
+    </div>
+    <a data-component="offcanvas" data-target="#mobile-toc" href="#" id="nav-toggle"><i class="kube-menu"></i></a>
+  </div>
+</div>
+<div class="hide-sm" id="top">
+  <section id="top-brand">
+    <a href="https://www.patternfly.org/patternfly-elements/" title="home"><span>PatternFly</span>Elements</a>
+  </section>
+  <nav id="top-nav-main">
+    <ul>
+      
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/getting-started/" >Getting Started</a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/" >Develop</a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/theme/" >Theme</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav id="top-nav-extra">
+    <ul>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/site-info/community">Community</a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/site-info/get-help">Help</a>
+        </li>
+      
+    </ul>
+  </nav>
+</div>
+
+
+<nav id="mobile-toc" class="hide">
+  <section class="inner-toc">
+    <span class="label big" style="margin-bottom: 1.5rem;">Version 1.0.0-prerelease.34</span>
+
+    <h3><a href="https://www.patternfly.org/patternfly-elements/getting-started">Getting Started</a></h3>
+    <ul>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/getting-started/component-status/" title="What&#39;s available?">
+            What&#39;s available?
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/getting-started/browser-support/" title="Browser Support">
+            Browser Support
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/getting-started/framework-support/" title="Framework Support">
+            Framework Support
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/templates/" title="Templates &amp; slots">
+            Templates &amp; slots
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/getting-started/polyfills/" title="Polyfills">
+            Polyfills
+          </a>
+        </li>
+      
+    </ul>
+    <h3><a href="https://www.patternfly.org/patternfly-elements/develop">Develop</a></h3>
+    <ul>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-1a/" title="Setup">
+            Setup
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-1b/" title="Create a PatternFly Element">
+            Create a PatternFly Element
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/javascript/" title="JavaScript">
+            JavaScript
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-2a/" title="Develop a Structure">
+            Develop a Structure
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-2b/" title="Write your HTML">
+            Write your HTML
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-2c/" title="Write your CSS (or Sass)">
+            Write your CSS (or Sass)
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-2d/" title="Integrate your JavaScript">
+            Integrate your JavaScript
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-3/" title="Write tests">
+            Write tests
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-4/" title="Pull requests">
+            Pull requests
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/develop/step-5/" title="Publishing Releases">
+            Publishing Releases
+          </a>
+        </li>
+      
+    </ul>
+    <h3><a href="https://www.patternfly.org/patternfly-elements/theme">Theme</a></h3>
+    <ul>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/theme/pfe-color-palette/" title="Color palette">
+            Color palette
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/theme/pfe-layouts/" title="Layouts">
+            Layouts
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/theme/pfe-theme-slots/" title="Theming Slots">
+            Theming Slots
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/theme/pfe_dynamic_templates/" title="Dynamic HTML Templates">
+            Dynamic HTML Templates
+          </a>
+        </li>
+      
+    </ul>
+
+    <h3>Site Info</h3>
+    <ul>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/site-info/code-of-conduct/" title="Code of conduct">
+            Code of conduct
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/site-info/community/" title="Join the Community">
+            Join the Community
+          </a>
+        </li>
+      
+        <li>
+          <a href="https://www.patternfly.org/patternfly-elements/site-info/get-help/" title="Get Help">
+            Get Help
+          </a>
+        </li>
+      
+    </ul>
+
+    
+    
+  </section>
+</nav>
+ </header>
+  <main>
+
+<article style="display: flex; flex-direction: row;">
+
+  
+  <nav id="main-toc">
+    <section class="inner-toc">
+      <span class="label big" style="margin-bottom: 1.5rem;">Version 1.0.0-prerelease.34</span>
+
+      <h3><a href="https://www.patternfly.org/patternfly-elements/getting-started">Getting Started</a></h3>
+      <ul>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/getting-started/component-status/" title="What&#39;s available?">
+              What&#39;s available?
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/getting-started/browser-support/" title="Browser Support">
+              Browser Support
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/getting-started/framework-support/" title="Framework Support">
+              Framework Support
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/templates/" title="Templates &amp; slots">
+              Templates &amp; slots
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/getting-started/polyfills/" title="Polyfills">
+              Polyfills
+            </a>
+          </li>
+        
+      </ul>
+      <h3><a href="https://www.patternfly.org/patternfly-elements/develop">Develop</a></h3>
+      <ul>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-1a/" title="Setup">
+              Setup
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-1b/" title="Create a PatternFly Element">
+              Create a PatternFly Element
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/javascript/" title="JavaScript">
+              JavaScript
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-2a/" title="Develop a Structure">
+              Develop a Structure
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-2b/" title="Write your HTML">
+              Write your HTML
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-2c/" title="Write your CSS (or Sass)">
+              Write your CSS (or Sass)
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-2d/" title="Integrate your JavaScript">
+              Integrate your JavaScript
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-3/" title="Write tests">
+              Write tests
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-4/" title="Pull requests">
+              Pull requests
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/develop/step-5/" title="Publishing Releases">
+              Publishing Releases
+            </a>
+          </li>
+        
+      </ul>
+      <h3><a href="https://www.patternfly.org/patternfly-elements/theme">Theme</a></h3>
+      <ul>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/theme/pfe-color-palette/" title="Color palette">
+              Color palette
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/theme/pfe-layouts/" title="Layouts">
+              Layouts
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/theme/pfe-theme-slots/" title="Theming Slots">
+              Theming Slots
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/theme/pfe_dynamic_templates/" title="Dynamic HTML Templates">
+              Dynamic HTML Templates
+            </a>
+          </li>
+        
+      </ul>
+
+      <h3>Site Info</h3>
+      <ul>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/site-info/code-of-conduct/" title="Code of conduct">
+              Code of conduct
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/site-info/community/" title="Join the Community">
+              Join the Community
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://www.patternfly.org/patternfly-elements/site-info/get-help/" title="Get Help">
+              Get Help
+            </a>
+          </li>
+        
+      </ul>
+
+      
+      
+    </section>
+  </nav>
+
+  <section id="content" style="">
+    <header class="page-header">
+      <h1> Theming Slots</h1>
+      <p></p>
+    </header>
+
+    <ul id="posts">
+
+     
+
+<h2 id="slot-basics">Slot basics</h2>
+
+<p><strong>Vocab tip:</strong> Elements that can be inserted into slots are known as <em>slotable</em>; when an element has been inserted in a slot, it is said to be <em>slotted</em>.</p>
+
+<p>At first glace, there seem to be lots of &ldquo;gotchas&rdquo; related to web components, and a <em>lot</em> of <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots">documentation</a>. Here’s a simplified guide with some basic code examples.</p>
+
+<ol>
+<li><p><strong>Slots are places to pass content or markup into specific regions within your web component template.</strong></p>
+
+<pre><code> // pfe-card.html:
+ &lt;slot name=&quot;pfe-card--header&quot;&gt;&lt;/slot&gt;
+ &lt;slot&gt;&lt;/slot&gt;
+ &lt;slot name=&quot;pfe-card--footer&quot;&gt;&lt;/slot&gt;
+</code></pre></li>
+
+<li><p><strong>If you put content within a web component tag without a slot name, it will place that markup into the unnamed slot, if there is one.</strong></p>
+
+<pre><code>&lt;pfe-card&gt;
+   This would appear in the unnamed slot
+&lt;/pfe-card&gt;
+</code></pre>
+
+<ul>
+<li><p>If there is no unnamed slot in the component, it will not render that content. For this reason, it’s perhaps a good idea to leave one unnamed slot if general markup is allowed.</p></li>
+
+<li><p>For example, the reason we are able to style links within the CTA component is because the <code>&lt;a&gt;</code> tag is being passed into the only unnamed slot in the CTA component. The link tag doesn’t need an explicit attribute like <code>slot=&quot;link&quot;</code> because if a web component has one unnamed <code>&lt;slot&gt;&lt;/slot&gt;</code> then anything you put inside that custom component tag will be in that slot by default.</p></li>
+</ul>
+
+<pre><code>&lt;pfe-cta pfe-priority=&quot;primary&quot;&gt;
+&lt;a href=&quot;#&quot;&gt;Primary&lt;/a&gt;   &lt;!-- this element is slotted by default --&gt;
+&lt;/pfe-cta&gt;
+</code></pre></li>
+
+<li><p><strong>The slot attribute must be applied to direct descendant of the custom tag.</strong></p>
+
+<pre><code>// my-web-page.html:
+&lt;pfe-card&gt;
+ &lt;div&gt;
+   &lt;h1 slot=&quot;pfe-card--header&quot;&gt;This content will not render in the header slot of the card&lt;/h1&gt;
+ &lt;/div&gt;
+&lt;/pfe-card&gt;
+</code></pre>
+
+<p>Once you nest an element inside another element in a custom tag, it can no longer be slotted. This is true of named slots and the default unnamed slot.</p>
+
+<p>For example, if the <code>pfe-cta</code> web component has some basic styles on all slots like this: <code>::slotted()  { color: red; }</code> Then both the div and link tag would be styled red:</p>
+
+<pre><code>&lt;pfe-cta pfe-priority=&quot;primary&quot;&gt;
+    &lt;div&gt;styled!&lt;/div&gt;
+    &lt;a href=&quot;#&quot;&gt;styled!&lt;/a&gt;
+&lt;/pfe-cta&gt;
+</code></pre>
+
+<p>However, if the link tag is nested inside the div, then it would not receive styles because it’s not a direct child of the pfe-cta component anymore.</p>
+
+<pre><code> &lt;pfe-cta pfe-priority=&quot;primary&quot;&gt;
+   &lt;div&gt;
+     &lt;a href=&quot;#&quot;&gt;cannot receive styles, because it’s not a direct descendant of the slot. The div is.&lt;/a&gt;
+   &lt;/div&gt;
+ &lt;/pfe-cta&gt;
+</code></pre>
+
+<p>In the template, slots cannot have the same name, however you can put multiple elements inside a slot by assigning that slot multiple times in your light DOM code.</p>
+
+<pre><code>&lt;pfe-demo&gt;
+    &lt;h1 slot=&quot;foo&quot;&gt;Bar&lt;/h1&gt;
+    &lt;p slot=&quot;foo&quot;&gt;Testing slots&lt;/p&gt;
+&lt;/pfe-demo&gt;
+</code></pre>
+
+<p>Both the h1 and p tag in this example will render inside the &ldquo;foo&rdquo; slot of the component&rsquo;s template.</p></li>
+
+<li><p><strong>Whenever you add the attribute <code>slot=&quot;foo&quot;</code> in your web component template, you are prescribing <em>where</em> elements will appear in the shadow DOM template.</strong></p>
+
+<p>Using the pfe-card template example above, let&rsquo;s explore what would happen if we called the slots out of order:</p>
+
+<pre><code>// my-web-page.html template
+&lt;pfe-card&gt;
+    &lt;div slot=&quot;pfe-card--footer&quot;&gt;World&lt;/div&gt;
+    &lt;div slot=&quot;pfe-card--header&quot;&gt;Hello&lt;/div&gt;
+&lt;/pfe-card&gt;
+</code></pre>
+
+<p>will render the content like this:</p>
+
+<div style="background:#eee;padding:30px;width: 250px;">
+    <div>Hello</div>
+    <div>World</div>
+</div></li>
+</ol>
+
+<h2 id="styling-slots">Styling Slots</h2>
+
+<p>The lines blur between shadow DOM &amp; light DOM when slots are involved. Basically if you add the attribute <code>slot=&quot; &quot;</code> to a regular HTML element inside a web component, you are opening a window to allow styles from the web component to style that thing. It only applies directly to the item with the slot name on it though, nothing nested inside it.</p>
+
+<pre><code>```
+&lt;!--example-page.html--&gt;
+&lt;pfe-card&gt;
+    &lt;h1 slot=&quot;pfe-card--header&quot;&gt;
+      &lt;a&gt;Yes!&lt;/a&gt;
+    &lt;/h1&gt;
+    &lt;h1&gt;
+      &lt;a slot=&quot;pfe-card--header&quot;&gt;Nope.&lt;/a&gt;
+    &lt;/h1&gt;
+&lt;/pfe-card&gt;
+```
+</code></pre>
+
+<ol>
+<li><p>Style any slot. Probably way too general.</p>
+
+<pre><code>/* my-component.scss */
+::slotted()  {
+  color: red;
+}
+</code></pre></li>
+
+<li><p>Style any link in any slot. Still too general.</p>
+
+<pre><code>/* my-component.scss */
+::slotted(a)  {
+  color: red;
+}
+</code></pre></li>
+
+<li><p>Apply styles to any HTML element with attribute <code>slot=&quot;headline&quot;</code>. Styles will cascade to nested children, but the specificity will <em>not</em> override anything inside the slot.</p>
+
+<p>For example, this CSS:</p>
+
+<pre><code>/* my-component.scss */
+[name=&quot;headline&quot;]::slotted(*)  {
+  color: red;
+  text-decoration: none;
+}
+</code></pre>
+
+<p>will style the markup inside the web component accordingly:</p>
+
+<pre><code>&lt;!--example-page.html--&gt;
+&lt;my-component&gt;
+  &lt;header slot=&quot;headline&quot;&gt;
+    I will be red!
+    &lt;a href=&quot;#&quot;&gt;I will be red too, but will keep the underline provided by the browser styles.&lt;/h2&gt;
+  &lt;/header&gt;
+  &lt;a slot=&quot;pfe-card--header&quot;&gt;I shall have no underline.&lt;/a&gt;
+&lt;/my-component&gt;
+</code></pre></li>
+
+<li><p>Add further specificity, styling only <code>&lt;h1&gt;</code> tags with the attribute <code>slot=&quot;headline&quot;</code></p>
+
+<pre><code>/* my-component.scss */
+[name=&quot;headline&quot;]::slotted(h1)  {
+  color: red;
+}
+</code></pre>
+
+<pre><code>&lt;!--example-page.html--&gt;
+&lt;my-component&gt;
+  &lt;h1 slot=&quot;headline&quot;&gt;
+    I will be red!
+  &lt;/h1&gt;
+  &lt;h2 slot=&quot;headline&quot;&gt;
+    I will not.
+  &lt;/h2&gt;
+&lt;/my-component&gt;
+</code></pre></li>
+
+<li><p>Nothing may follow the <code>::slotted()</code> selector, so these <span style="text-decoration:underline;">won’t</span> work</p>
+
+<pre><code>/* my-component.scss */
+::slotted() iframe[name=&quot;video&quot;] {}
+::slotted() h2 {}
+::slotted() [name=&quot;headline&quot;] {}
+::slotted() .headline {}
+</code></pre></li>
+</ol>
+
+<p><a href="https://jsfiddle.net/kendalltotten/qdz0tkcm/">More examples in JSFiddle</a></p>
+
+<h2 id="web-component-style-specificity">Web component style specificity</h2>
+
+<ul>
+<li><p>Note that anything in the light DOM can be styled by regular classes loaded on the page (in the document head or inline) and they will <em>win</em> the specificity battle. For example, this style:</p>
+
+<pre><code>&lt;head&gt;
+&lt;style&gt;
+  iframe {
+    border: 2px solid red;
+  }
+&lt;/style&gt;
+&lt;/head&gt;
+</code></pre>
+
+<p>Will beat any slotted styles coming from the web component CSS, such as:</p>
+
+<pre><code>[name=&quot;video&quot;]::slotted(iframe)  {
+    border: 2px solid blue;
+}
+</code></pre>
+
+<p>However, you can move an element into the Shadow DOM, where document styles will not apply.</p>
+
+<pre><code>connectedCallback() {
+  super.connectedCallback();
+
+  const iframe = this.querySelector(&quot;iframe&quot;);
+  this.shadowRoot.appendChild(iframe);
+}
+
+</code></pre></li>
+</ul>
+
+<h2 id="writing-web-component-styles">Writing web component styles</h2>
+
+<h3 id="theme-variables-related-functions">Theme variables &amp; related functions</h3>
+
+<p>Theme variables exist so that when a user changes a system property such as color or font-size, they see the effects of that trickle through the system to nearly every component.</p>
+
+<p>Several functions exist in the <code>pfe-sass</code> component to make it easier to theme individual components you are building!</p>
+
+<ol>
+<li><p><strong>Color</strong>:  Rather than using only Sass variables <code>$red</code> or hexidecimal colors like <code>#c00</code>, please use the <code>pfe-color()</code> function along with a theme variable, i.e. <code>pfe-color(ui-base)</code>. Occasionally you may have to wrap interpolation syntax <code>#{ }</code> around the function to allow Sass to compile, i.e. <code>#{pfe-color(ui-base)}</code>.</p>
+
+<ul>
+<li>This function does some heavy-lifting by looking up the <code>$pfe-colors: ()</code> map and returning namespaced CSS variables for the theme and fallback color, in that order:</li>
+</ul>
+
+<pre><code>:host {
+   background-color: #{pfe-color(ui-base)};
+}
+</code></pre>
+
+<p>returns:</p>
+
+<pre><code class="language-css"> :host {
+    background-color: var(--pfe-theme--color--ui-base, #0477a4));
+ }
+</code></pre>
+
+<ul>
+<li>Component color properties should almost always use <a href="https://raw.githubusercontent.com/starryeyez024/patternfly-theme/prerelease-1.0/dist/advanced-theme.css">theme colors</a> as values.  (Sidenote, there is no &ldquo;light&rdquo; or &ldquo;dark&rdquo; color, only &ldquo;lighter&rdquo;/ &ldquo;darker&rdquo;, it&rsquo;s all relative to the base color, it can only get lighter or darker from there.
+
+<ul>
+<li>Lightest</li>
+<li>Lighter</li>
+<li>Base</li>
+<li>Darker</li>
+<li>Darkest</li>
+<li>Accent</li>
+<li>Complement</li>
+</ul></li>
+</ul></li>
+
+<li><p><strong>Non-color Properties</strong>:   Similarly, the <code>pfe-var</code> function does the same work of looking up values from the <code>$pfe-vars: ()</code> map, and returning the variable name and the fallback value:</p>
+
+<pre><code class="language-sass">:host {
+    font-size:   #{pfe-var(font-size)};
+}
+</code></pre>
+
+<p>returns:</p>
+
+<pre><code>:host {
+    font-size: var(--pfe-theme--font-size, 16px);
+}
+</code></pre></li>
+
+<li><p><strong>Broadcast Variables</strong>: These variables are designed to cascade and influence the text or link styles of <a href="https://www.patternfly.org/patternfly-elements/getting-started/#3-use-patternfly-elements-markup">content components nested inside container components</a>.  Typically container components come with background colors, and thus need to communicate this to their children so that text and link colors can be adjusted for usability.</p></li>
+</ol>
+
+<p>Inside the stylesheet for a container component, the following snippet will allow that component to broadcast its context to its children. The <code>surfaces</code> and <code>theme-contexts</code> mixins can be found in <code>pfe-sass/mixins/_custom-properties.scss</code>.  For these to work, please ensure you are importing pfe-sass and have the $LOCAL variable set to the name of your component at the top of your Sass file as shown below.</p>
+
+<p><strong>In your container component:</strong></p>
+
+<pre><code>  @import &quot;../../pfe-sass/pfe-sass&quot;;
+
+ // name of the component, minus the pfe prefix:
+  $LOCAL: band;
+
+  // Pull in pfe-color settings for all supported surface colors
+  @include surfaces;
+</code></pre>
+
+<p>This mixin will compile to the following CSS, one entry for each supported surface color (darkest, darker, base, lighter, lightest, accent, complement):</p>
+
+<pre><code>:host([pfe-color=&quot;darker&quot;]) {
+  --pfe-band--BackgroundColor: var(--pfe-theme--color--surface--darker, #464646);
+  --theme: dark;
+}
+</code></pre>
+
+<p>You can optionally customize this set by passing in a list of just the surfaces you would like added; you can also optionally use a different attribute name should you prefer.</p>
+
+<pre><code>  @import &quot;../../pfe-sass/pfe-sass&quot;;
+
+  $LOCAL: band;
+
+  // Pull in pfe-color settings for all supported surface colors
+  @include surfaces($surfaces: (lightest, darkest), $attr-name: pfe-background);
+</code></pre>
+
+<p>Inside the stylesheet for a content component, the following snippet will allow that component to opt-into the broadcast styles coming from it&rsquo;s parent.</p>
+
+<p><strong>In your content component:</strong></p>
+
+<pre><code>  @import &quot;../../pfe-sass/pfe-sass&quot;;
+
+  // Pull in all themes with broadcast variables
+  @include theme-contexts;
+</code></pre>
+
+<p>This mixin will expand to the following in your compiled CSS, one entry for each supported theme context (light, dark, saturated):</p>
+
+<pre><code>:host([on=&quot;dark&quot;]) {
+  --pfe-broadcasted--text: var(--pfe-theme--color--text--on-dark, #fff);
+  --pfe-broadcasted--link: var(--pfe-theme--color--link--on-dark, #99ccff);
+  --pfe-broadcasted--link--hover: var(--pfe-theme--color--link--hover--on-dark, #cce6ff);
+  --pfe-broadcasted--link--focus: var(--pfe-theme--color--link--focus--on-dark, #cce6ff);
+  --pfe-broadcasted--link--visited: var(--pfe-theme--color--link--visited--on-dark, #b38cd9);
+  --pfe-broadcasted--link-decoration: none;
+  --pfe-broadcasted--link-decoration--hover: underline;
+  --pfe-broadcasted--link-decoration--focus: underline;
+  --pfe-broadcasted--link-decoration--visited: none;
+}
+
+@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+  :host([on=&quot;dark&quot;]) {
+    color: #fff;
+    color: var(--pfe-theme--color--text--on-dark, #fff);
+  }
+}
+</code></pre>
+
+<p>You can optionally customize this set by passing in a list of just the themes you would like supported; you can also optionally turn off fallback support for older browsers.</p>
+
+<pre><code>  @import &quot;../../pfe-sass/pfe-sass&quot;;
+
+  // Pull in all themes with broadcast variables
+  @include theme-contexts($themes: (light, dark), $fallback: false);
+</code></pre>
+
+<h3 id="local-variables-related-functions">Local variables &amp; related functions</h3>
+
+<ol>
+<li><p>It is recommended to create &ldquo;local&rdquo; variables for properties that developers are likely to override, such as color and sizing. You may use these functions that refer to theme variables to set the values of these local vars. Here&rsquo;s an example of some local variables you would find in the <code>pfe-cta.scss</code> file:</p>
+
+<pre><code>:host {
+     --pfe-cta--BorderRadius: 0;
+     --pfe-cta--Color:  #{pfe-apply-broadcast(link)};
+}
+</code></pre>
+
+<ul>
+<li>When utilizing variables which are scoped to the component, you can use the <code>pfe-local()</code> function to refer to them by the shorthand property name:</li>
+</ul>
+
+<pre><code>::slotted(*) {
+   color: #{pfe-local(Color--hover)};
+}
+</code></pre>
+
+<ul>
+<li>If you are using the function to set multiple values, you will need to add the interpolation syntax:</li>
+</ul>
+
+<pre><code>:host([pfe-priority]) {
+   padding: #{pfe-var(container-padding)} calc( #{pfe-var(container-padding) } * 2)}
+}
+</code></pre>
+
+<ul>
+<li>Naming conventions.. BEM.. @TODO</li>
+</ul></li>
+
+<li><p>Avoid use of !Important if possible</p>
+
+<ul>
+<li>ShadyCSS adds !important to styles, which means we generally should not add !important to our stylesheets.</li>
+<li>@TODO is this still the case? pfe-cta uses important</li>
+</ul></li>
+
+<li><p>Suggested easiest approach to theming:</p>
+
+<ol>
+<li>Add properties with normal values first, <code>color: #c00</code>.</li>
+<li>Then go back and add / replace with local variables, <code>color: var(--pfe-cta--Color)</code> or use the local var function <code>pfe-local(Color)</code>.
+
+<ul>
+<li><em>It&rsquo;s worth noting that very time we surface something as a variable, we offer an opportunity to lean away from the design system. There&rsquo;s no need to create a local variable for all properties.</em></li>
+</ul></li>
+<li>Replace the values of local variables with functions that refer to the theme, <code>color: pfe-color(accent)</code> and <code>pfe-vars(padding)</code></li>
+
+<li><p>Add additional attributes to a component, to allow users to switch between variants without CSS overrides, i.e.  <code>&lt;pfe card color=&quot;darkest&quot;&gt;</code></p>
+
+<ul>
+<li><p>Any component that can change background colors MUST provide colors for the broadcast variables. The <code>pfe-theme</code> mixin is useful to loop through system colors:</p>
+
+<pre><code>pfe-card {
+   @include pfe-set-broadcast-theme(light);
+}
+</code></pre></li>
+
+<li><p>Use CSS property, such as <code>color:</code> once. If value needs to change based on variant, reset the value of the CSS variable rather than calling the property again.</p></li>
+</ul></li>
+</ol>
+
+<h4 id="example-of-a-component-sass-file">Example of a Component Sass file</h4>
+
+<pre><code>// 1. Create local variable. Set value using color
+// function to look up theme variables.
+:host {
+  --pfe-local--Color: pfe-color(link);
+}
+
+
+// 2. Use color property once, map to local var value
+:host {
+  ::slotted(a) {
+     color: pfe-local(Color);
+  }
+}
+
+// 3. Reset value of local variable for variants.
+// Continue to use theme functions.
+:host([priority])
+  --pfe-local--Color: pfe-var(accent);   
+}
+
+// 4. Override broadcasted last
+[on=&quot;dark&quot;] {
+  --pfe-local--Color: pfe-var(link--on-dark);
+}
+[color=&quot;accent&quot;] {
+  --pfe-local--Color: pfe-var(accent--link);
+}
+</code></pre>
+
+<p>compiled css:</p>
+
+<pre><code>:host(:not([priority]) {
+    ::slotted(a) {
+        //NOTE: the compiled CSS will print color twice for IE11
+        // which sometimes trips over CSS variables.
+        //color: blue;
+        color: var(--pfe-local--Color, blue) !important;
+    }
+}
+</code></pre></li>
+</ol>
+
+<hr />
+
+<p><a name="broadcasted"></a></p>
+
+<h1 id="containers-broadcast-variables">Containers + broadcast variables</h1>
+
+<p>If the container allows changes to background colors, then it should also influence the children by setting values of broadcast colors.</p>
+
+<h2 id="notes-on-using-broadcast-colors-in-pfe-components">Notes on using broadcast colors in pfe-components</h2>
+
+<ol>
+<li>Only define CSS color <span style="text-decoration:underline;">property</span> once per element</li>
+<li>Set the value equal to local variable:   <br />
+<code>color: var(pfe-local--Color);</code></li>
+<li>In the pfe-component, do not set <span style="text-decoration:underline;">value</span> of the broadcasted variables, instead set local variable values equal to the value of broadcasted, then with fallback colors
+
+<ol>
+<li>Content components should never set the value of broadcasted vars, otherwise container components won&rsquo;t be able to pass them that information</li>
+</ol></li>
+<li>Reset local variable values as needed for color attribute overrides.</li>
+</ol>
+
+<h2 id="troubleshooting-web-component-style-issues">Troubleshooting web component style issues</h2>
+
+<h4 id="problem-i-expect-that-the-pfe-cta-should-have-a-red-background-but-it-does-not">Problem: I expect that the pfe-cta should have a red background, but it does not.</h4>
+
+<ol>
+<li><p><strong>Inspect the element &amp; look for the style property</strong></p>
+
+<ol>
+<li>Check the light DOM</li>
+
+<li><p>In the styles tab of web inspector, look for the CSS property <code>background</code>. Is the property present? Remember styles can be applied to <code>:host</code> as opposed to the actual component name, such as <code>pfe-cta</code>.</p>
+
+<p><img src="https://www.patternfly.org/patternfly-elements/theme__code_block_1.png" width="450px"></p></li>
+
+<li><p>What is the value of the property? Try changing the value to a funny color. If there&rsquo;s no change then…</p></li>
+</ol></li>
+
+<li><p><strong>Check the shadow DOM</strong></p>
+
+<ol>
+<li><p>Check to see if the property you expect is actually being applied elsewhere, like some other element in the shadow root:</p>
+
+<p><img src="https://www.patternfly.org/patternfly-elements/theme__code_block_2.png" width="450px"></p></li>
+
+<li><p>What is the value of the property? Try changing the value to a funny color. If there&rsquo;s no change then…</p></li>
+</ol></li>
+
+<li><p><strong>Check to see if the property is overridden</strong></p>
+
+<ol>
+<li><p>If the styles are being applied to the light DOM, and if it&rsquo;s still the wrong color, it means something other style from elsewhere on the page is winning the specificity war. <a href="https://developers.google.com/web/tools/chrome-devtools/css/overrides">Learn more about detecting overrides.</a></p>
+
+<p><img src="https://www.patternfly.org/patternfly-elements/theme__code_block_3.png" width="450px"></p></li>
+
+<li><p>Options:</p>
+
+<ol>
+<li>Remove the styles that are more specific than your styles (may not be a viable option)</li>
+<li>Adjust the web component so that the styles are targeting the component itself, rather than it&rsquo;s children. Use <code>:host { }</code></li>
+<li>Move the styles to target an element in the Shadow DOM</li>
+<li>If the styles are on a child of the web component (like a link tag inside the pfe-cta tag) you might need to hook into <a href="https://docs.google.com/document/d/1P6ohcr13y0DTca_aow6Lm5qSnUcIdM56wu8Fc4SwE00/edit#heading=h.l0fiuwszzxzg">broadcast variables.</a></li>
+<li>If this still doesn&rsquo;t work then&hellip;</li>
+</ol></li>
+</ol></li>
+
+<li><p><strong>Check to see if the value of the property set to a CSS variable</strong></p>
+
+<ol>
+<li>Sometimes CSS variables map to other CSS variables which have similar names, which can be confusing. Copy the exact name you are looking for and paste it into the <a href="https://developers.google.com/web/tools/chrome-devtools/css/reference#fiilter">web inspector filter</a>. Look for a plain hex value or RGBa value. For example:</li>
+</ol>
+
+<pre><code>--pfe-cta--background: var(--pfe-theme--color--surface--accent, #fe460d);
+--pfe-theme--color--surface--accent: #ee0000;
+</code></pre>
+
+<ol>
+<li>And every time you hit a variable as the value, <a href="http://www.giphy.com/gifs/hu1kdgZ1ObIGPcENJ0">change it to a funny color</a>, so you can verify that is indeed the property you are looking for.</li>
+</ol></li>
+</ol>
+
+
+    </ul>
+
+  </section>
+
+  <aside class="page-toc">
+    <h3>Page Contents</h3>
+    
+
+<div class="js-toc">
+  
+</div>
+
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded",
+function(){
+tocbot.init({
+
+tocSelector: '.js-toc',
+
+contentSelector: '#posts',
+
+headingSelector: 'h2'
+})
+}
+);
+</script>
+
+
+  </aside>
+</article>
+
+</main>
+  <footer>
+  
+
+<nav>
+  <ul>
+    <li><span>PatternFly Elements Documentation</span></li>
+    <li>
+      <a href="https://www.patternfly.org/patternfly-elements/getting-started">Getting Started</a>
+    </li>
+    <li>
+      <a href="https://www.patternfly.org/patternfly-elements/develop">Develop</a>
+    </li>
+      <li>
+      <a href="https://www.patternfly.org/patternfly-elements/theme">Theme</a>
+    </li>
+    <li>
+      <a href="https://www.patternfly.org/patternfly-elements/community">Community</a>
+    </li>
+  </ul>
+</nav>
+<small>&copy; Licence MIT.</small>
+</footer>
+
+
+  <script src="https://www.patternfly.org/patternfly-elements/js/kube.min.js" type="text/javascript">
+  </script>
+  
+</body>
+
+</html>
