@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <script src="/components/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="/components/web-component-tester/browser.js"></script>
+    <script type="module" src="../dist/pfe-documentation.js"></script>
+  </head>
+  <body>
+    <pfe-documentation>
+      <!-- Default slot -->
+      <h2>This is pfe-documentation</h2>
+      
+    </pfe-documentation>
+
+    <!-- Preview different properties -->
+    <pfe-documentation loaded>
+      <h2>This is pfe-documentation</h2>
+    </pfe-documentation>
+
+    <pfe-documentation  endpoint>
+      <h2>This is pfe-documentation</h2>
+    </pfe-documentation>
+
+    <pfe-documentation  css>
+      <h2>This is pfe-documentation</h2>
+    </pfe-documentation>
+
+    <script>
+      const elements = [...document.querySelectorAll("pfe-documentation")];
+
+      suite("<pfe-documentation>", () => {
+        test("it should upgrade", () => {
+          assert.instanceOf(
+            document.querySelector("pfe-documentation"),
+            customElements.get("pfe-documentation"),
+            "pfe-documentation should be an instance of pfeDocumentation"
+          );
+        });
+
+        // Write tests for each attribute
+        test("loaded attribute is applied correctly", () => {
+          // Test that the attribute applied correctly
+          // assert.equal();
+        });
+        test(" endpoint attribute is applied correctly", () => {
+          // Test that the attribute applied correctly
+          // assert.equal();
+        });
+        test(" css attribute is applied correctly", () => {
+          // Test that the attribute applied correctly
+          // assert.equal();
+        });
+
+        // Write tests for each slot
+
+      });
+    </script>
+  </body>
+</html>

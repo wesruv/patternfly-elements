@@ -1,0 +1,41 @@
+// Please see the pfe-sass README for guidance on using these tools
+@import "../../pfe-sass/pfe-sass";
+
+
+$LOCAL: documentation;
+
+:host {
+  // Example local variable, using BEM format
+  // --pfe-documentation--Property: value;
+
+  display: block;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+// Header information is shown in parent scope
+.rhdocs-header {
+  display: none;
+}
+
+//-- Custom styles applied by attributes
+// @each $option in () {
+//   :host([pfe-loaded="#{$option}"]) {
+//     // Add styles here
+//   }
+// }
+
+// @each $option in () {
+//   :host([pfe-endpoint="#{$option}"]) {
+//     // Add styles here
+//   }
+// }
+
+// @each $option in () {
+//   :host([pfe-css="#{$option}"]) {
+//     // Add styles here
+//   }
+// }
+

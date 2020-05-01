@@ -1,0 +1,30 @@
+{
+  "module": {
+    "module_uuid": "f9a39194-60cf-49de-9be8-4f07c45a6c1f",
+    "description": "ref_data_export_API_parameters",
+    "locale": "en-us",
+    "title": "Data export request API parameters",
+    "body": "<article class=\"rhdocs\" id=\"rhdocs\"> \n <header class=\"rhdocs-header\" id=\"rhdocs-header\"> \n  <h1>Data export request API parameters</h1> \n  <ul class=\"rhdocs-details\"> \n   <li class=\"rh-docs-details-item rhdocs-products\"> <span class=\"rhdocs-product-name\">A Test Product RH_cqob</span> <span class=\"rhdocs-product-version\">1.1</span> </li> \n   <li class=\"rh-docs-details-item rhdocs-updated-date\">Updated 02 April 2020</li> \n   <li class=\"rh-docs-details-item rhdocs-published-date\">Published 07 April 2020</li> \n  </ul> \n </header> \n <main class=\"rhdocs-content\" id=\"rhdocs-content\"> \n  <p>This table provides details on the parameters available to use for data export requests in the API.</p> \n  <table class=\"tableblock frame-all grid-all spread\"> \n   <caption class=\"title\">\n     Table 1. Data Export Request API parameters \n   </caption> \n   <colgroup> \n    <col style=\"width: 25%;\"> \n    <col style=\"width: 25%;\"> \n    <col style=\"width: 25%;\"> \n    <col style=\"width: 25%;\"> \n   </colgroup> \n   <thead> \n    <tr> \n     <th class=\"tableblock halign-left valign-top\" id=\"table2_th_parameter\" scope=\"col\">Parameter</th> \n     <th class=\"tableblock halign-left valign-top\" id=\"table2_th_format\" scope=\"col\">Format</th> \n     <th class=\"tableblock halign-left valign-top\" id=\"table2_th_example\" scope=\"col\">Example</th> \n     <th class=\"tableblock halign-left valign-top\" id=\"table2_th_details\" scope=\"col\">Details</th> \n    </tr> \n   </thead> \n   <tbody> \n    <tr> \n     <td class=\"tableblock halign-left valign-top\" headers=\"table2_th_parameter\"><p class=\"tableblock\">start_date</p></td> \n     <td class=\"tableblock halign-left valign-top\" headers=\"table2_th_format\"><p class=\"tableblock\">ISO-8601 formatted start date (inclusive)</p></td> \n     <td class=\"tableblock halign-left valign-top\" headers=\"table2_th_example\"><p class=\"tableblock\">'2019-09-01'</p></td> \n     <td class=\"tableblock halign-left valign-top\" headers=\"table2_th_details\"><p class=\"tableblock\">The first day in a date range you want to view cost data for.</p></td> \n    </tr> \n    <tr> \n     <td class=\"tableblock halign-left valign-top\" headers=\"table2_th_parameter\"><p class=\"tableblock\">end_date</p></td> \n     <td class=\"tableblock halign-left valign-top\" headers=\"table2_th_format\"><p class=\"tableblock\">ISO-8601 formatted end date (exclusive)</p></td> \n     <td class=\"tableblock halign-left valign-top\" headers=\"table2_th_example\"><p class=\"tableblock\">'2019-10-01'</p></td> \n     <td class=\"tableblock halign-left valign-top\" headers=\"table2_th_details\"><p class=\"tableblock\">The end date is outside the desired date range for the request.</p></td> \n    </tr> \n    <tr> \n     <td class=\"tableblock halign-left valign-top\" headers=\"table2_th_parameter\"><p class=\"tableblock\">bucket_name</p></td> \n     <td class=\"tableblock halign-left valign-top\" headers=\"table2_th_format\"><p class=\"tableblock\">Destination Amazon S3 bucket name</p></td> \n     <td class=\"tableblock halign-left valign-top\" headers=\"table2_th_example\"><p class=\"tableblock\">'koku-customer-sample-bucket'</p></td> \n     <td class=\"tableblock halign-left valign-top\" headers=\"table2_th_details\"><p class=\"tableblock\">The bucket must be configured to allow cost management to write files to it.</p></td> \n    </tr> \n   </tbody> \n  </table> \n  <div class=\"paragraph\"> \n   <strong class=\"heading\">Example request</strong> \n   <p>The following example requests data for the entire month of September 2019, to be written to the <em>koku-customer-sample-bucket</em> AWS S3 bucket:</p> \n  </div> \n  <div class=\"listingblock\"> \n   <div class=\"content\"> \n    <pre>http localhost:8000/api/cost-management/v1/dataexportrequests/ \\\n    HTTP_X_RH_IDENTITY:\"${IDENTITY}\" \\\n    start_date='2019-09-01' \\\n    end_date='2019-10-01' \\\n    bucket_name='koku-customer-sample-bucket'</pre> \n   </div> \n  </div> \n </main> \n</article>",
+    "search_keywords": [],
+    "products": [
+      {
+        "product_version": "1.1",
+        "product_name": "A Test Product RH_cqob",
+        "product_link": "https://www.redhat.com/productlinkplaceholder"
+      }
+    ],
+    "content_type": "module",
+    "date_modified": "2020-04-02T15:40:11.963Z",
+    "date_published": "2020-04-07T18:58:25.577Z",
+    "vanity_url_fragment": "/fege",
+    "context_id": "",
+    "headline": "",
+    "module_url_fragment": "pantheonSampleRepo/Red Hat Cost Management/modules/ref_data_export_API_parameters.adoc",
+    "view_uri": "https://access.qa.redhat.com/topics/en-us/f9a39194-60cf-49de-9be8-4f07c45a6c1f",
+    "revision_id": "1",
+    "status": "published",
+    "context_url_fragment": ""
+  },
+  "message": "Module Found",
+  "status": 200
+}

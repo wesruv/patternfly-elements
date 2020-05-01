@@ -1,0 +1,30 @@
+{
+  "module": {
+    "module_uuid": "52f8f7aa-6ac4-4ee4-9e0e-8ea716779161",
+    "description": "uploading_data_with_usage_collector_ocp",
+    "locale": "en-us",
+    "title": "Uploading data with Usage Collector",
+    "body": "<article class=\"rhdocs\" id=\"rhdocs\"> \n <header class=\"rhdocs-header\" id=\"rhdocs-header\"> \n  <ul class=\"rhdocs-details\"> \n   <li class=\"rh-docs-details-item rhdocs-products\"> <span class=\"rhdocs-product-name\">test_product_test2</span> <span class=\"rhdocs-product-version\">1.2</span> </li> \n   <li class=\"rh-docs-details-item rhdocs-updated-date\">Updated 02 April 2020</li> \n   <li class=\"rh-docs-details-item rhdocs-published-date\">Published 07 April 2020</li> \n  </ul> \n </header> \n <main class=\"rhdocs-content\" id=\"rhdocs-content\"> \n  <!-- / Do the HTML part --> \n  <section class=\"sect1\"> \n   <h2 id=\"uploading_data_with_usage_collector_ocp\">Uploading data with Usage Collector</h2> \n   <div class=\"sectionbody\"> \n    <p>The Usage Collector retrieves usage data from the Operator Metering endpoint and compresses it into a package (an OpenShift Container Platform metrics report) that is uploaded for processing by cost management via the Red Hat Insights Client. Data collection is performed via the <em>ocp_usage.sh</em> script.</p> \n    <p>Create a cron job to regularly upload data collected by the Usage Collector to cost management.</p> \n    <div class=\"admonitionblock important\"> \n     <strong class=\"title icon-title\"></strong> \n     <div class=\"content\"> \n      <p>The cron user requires:</p> \n      <ul> \n       <li> <p>access to the file with metering-operator token</p> </li> \n       <li> <p>sudo access to interact with the Red Hat Insights client.</p> </li> \n      </ul> \n     </div> \n    </div> \n    <ol class=\"arabic\"> \n     <li> <p>To configure sudo access, add the following to the <em>/etc/sudoers</em> file, substituting <em>ocpcollector</em> with the cron user:</p> \n      <div class=\"listingblock\"> \n       <div class=\"content\"> \n        <pre>ocpcollector    ALL=(ALL)    NOPASSWD: ALL</pre> \n       </div> \n      </div> </li> \n     <li> <p>Open the crontab for the user that will execute the scheduled upload:</p> \n      <div class=\"listingblock\"> \n       <div class=\"content\"> \n        <pre># crontab -u &lt;username&gt; -e</pre> \n       </div> \n      </div> </li> \n     <li> <p>Create a crontab entry to run the Usage Collector every 45 minutes:</p> \n      <div class=\"listingblock\"> \n       <div class=\"content\"> \n        <pre>*/45 * * * * /path/to/ocp_usage.sh --collect --e OCP_CLUSTER_ID=&lt;YOUR_OCP_IDENTIFIER&gt;</pre> \n       </div> \n      </div> </li> \n     <li> <p>In the cost management application, click <strong>Next</strong> to move to the confirmation screen.</p> </li> \n     <li> <p>In the cost management application, review the details and click <strong>Add source</strong> to finish adding the OpenShift Container Platform cluster.</p> </li> \n    </ol> \n   </div> \n  </section> \n </main> \n</article>",
+    "search_keywords": [],
+    "products": [
+      {
+        "product_version": "1.2",
+        "product_name": "test_product_test2",
+        "product_link": "https://www.redhat.com/productlinkplaceholder"
+      }
+    ],
+    "content_type": "module",
+    "date_modified": "2020-04-02T15:40:16.651Z",
+    "date_published": "2020-04-07T18:57:25.266Z",
+    "vanity_url_fragment": "/fdsagfsdg",
+    "context_id": "",
+    "headline": "Uploading data with Usage Collector",
+    "module_url_fragment": "pantheonSampleRepo/Red Hat Cost Management/modules/uploading_data_with_usage_collector_ocp.adoc",
+    "view_uri": "https://access.qa.redhat.com/topics/en-us/52f8f7aa-6ac4-4ee4-9e0e-8ea716779161",
+    "revision_id": "1",
+    "status": "published",
+    "context_url_fragment": ""
+  },
+  "message": "Module Found",
+  "status": 200
+}

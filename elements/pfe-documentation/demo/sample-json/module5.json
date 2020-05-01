@@ -1,0 +1,30 @@
+{
+  "module": {
+    "module_uuid": "8ac74a75-9119-48d3-90ab-fdb51d502695",
+    "description": "proc_openshift_source_preqrequisites",
+    "locale": "en-us",
+    "title": "Prerequisites for OpenShift sources",
+    "body": "<article class=\"rhdocs\" id=\"rhdocs\"> \n <header class=\"rhdocs-header\" id=\"rhdocs-header\"> \n  <h1>Prerequisites for OpenShift sources</h1> \n  <ul class=\"rhdocs-details\"> \n   <li class=\"rh-docs-details-item rhdocs-products\"> <span class=\"rhdocs-product-name\">A Test Product RH_cqob</span> <span class=\"rhdocs-product-version\">1</span> </li> \n   <li class=\"rh-docs-details-item rhdocs-updated-date\">Updated 02 April 2020</li> \n   <li class=\"rh-docs-details-item rhdocs-published-date\">Published 23 April 2020</li> \n  </ul> \n </header> \n <main class=\"rhdocs-content\" id=\"rhdocs-content\"> \n  <p>This paragraph is the procedure module introduction: a short description of the procedure.</p> \n  <div class=\"ulist\"> \n   <strong class=\"heading\" id=\"ulist_heading_128\">Prerequisites</strong> \n   <ul aria-labelledby=\"ulist_heading_128\"> \n    <li> <p>A bulleted list of conditions that must be satisfied before the user starts following this module.</p> </li> \n    <li> <p>You can also link to other modules or assemblies the user must follow before starting this module.</p> </li> \n    <li> <p>Delete the section title and bullets if the module has no prerequisites.</p> </li> \n   </ul> \n  </div> \n  <div class=\"olist arabic\"> \n   <strong class=\"heading\" id=\"olist_heading_129\">Procedure</strong> \n   <ol aria-labelledby=\"olist_heading_129\" class=\"arabic\"> \n    <li> <p>Start each step with an active verb.</p> </li> \n    <li> <p>Include one command or action per step.</p> </li> \n    <li> <p>Use an unnumbered bullet (*) if the procedure includes only one step.</p> </li> \n   </ol> \n  </div> \n  <div class=\"ulist\"> \n   <strong class=\"heading\" id=\"ulist_heading_129\">Additional resources</strong> \n   <ul aria-labelledby=\"ulist_heading_129\"> \n    <li> <p>A bulleted list of links to other material closely related to the contents of the procedure module.</p> </li> \n    <li> <p>Currently, modules cannot include xrefs, so you cannot include links to other content in your collection. If you need to link to another assembly, add the xref to the assembly that includes this module.</p> </li> \n    <li> <p>For more details on writing procedure modules, see the <a href=\"https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide\">Modular Documentation Reference Guide</a>.</p> </li> \n    <li> <p>Use a consistent system for file names, IDs, and titles. For tips, see <em>Anchor Names and File Names</em> in <a href=\"https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide\">Modular Documentation Reference Guide</a>.</p> </li> \n   </ul> \n  </div> \n  <div class=\"rh-docs-legal-notice\"> \n   <a class=\"rh-docs-legal-notice__link\" href=\"https://access.redhat.com/docs-legal-notice\">Legal Notice</a> \n  </div> \n </main> \n</article>",
+    "search_keywords": [],
+    "products": [
+      {
+        "product_version": "1",
+        "product_name": "A Test Product RH_cqob",
+        "product_link": "https://www.redhat.com/productlinkplaceholder"
+      }
+    ],
+    "content_type": "module",
+    "date_modified": "2020-04-02T15:40:03.018Z",
+    "date_published": "2020-04-23T15:09:37.373Z",
+    "vanity_url_fragment": "/greg",
+    "context_id": "",
+    "headline": "",
+    "module_url_fragment": "pantheonSampleRepo/Red Hat Cost Management/modules/proc_openshift_source_preqrequisites.adoc",
+    "view_uri": "https://access.qa.redhat.com/topics/en-us/8ac74a75-9119-48d3-90ab-fdb51d502695",
+    "revision_id": "1",
+    "status": "published",
+    "context_url_fragment": ""
+  },
+  "message": "Module Found",
+  "status": 200
+}
